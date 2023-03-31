@@ -14,6 +14,8 @@ import NoticePage from './pages/noticepage/NoticePage';
 import UpdateNoticePage from './pages/noticepage/UpdateNoticePage';
 import SearchPage from './pages/SearchPage';
 
+import "./common.css";
+
 function App() {
   return (
     <BrowserRouter>
