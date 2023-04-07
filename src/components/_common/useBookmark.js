@@ -4,10 +4,12 @@ const useBookmark = (isBookmarked, currentBoothID) => {
   const [state, setState] = useState(isBookmarked);
   const [trigger, setTrigger] = useState(0);
   const refetch = () => {
+    // refetch 함수 실행 시 trigger 값이 변경됨
     setTrigger(Date.now());
   };
   useEffect(() => {
-    if (typeof isBookmarked !== 'boolean') return;
+    if (typeof isBookmarked !== 'boolean' || typeof currentBoothID !== 'number')
+      return;
     if (state) {
       // if (login) {
       //   Unlike(currentBoothID)
@@ -34,6 +36,7 @@ const useBookmark = (isBookmarked, currentBoothID) => {
       setState(!state);
     }
   }, [trigger]);
+  // deps에 trigger를 추가하여 refetch 될 때마다 내부 코드가 실행되도록 함
   return { state, refetch };
 };
 
