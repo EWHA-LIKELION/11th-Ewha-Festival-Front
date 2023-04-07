@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
 
 const useBookmark = (isBookmarked, currentBoothID) => {
+  console.log(isBookmarked);
   const [state, setState] = useState(isBookmarked);
   const [trigger, setTrigger] = useState(0);
+  let id = Number(currentBoothID);
   const toggle = () => {
     // toggle 함수 실행 시 trigger 값이 변경됨
     setTrigger(Date.now());
   };
   useEffect(() => {
-    if (typeof isBookmarked !== 'boolean' || typeof currentBoothID !== 'number')
-      return;
+    if (typeof isBookmarked !== 'boolean') return;
     if (state) {
       // if (login) {
-      //   Unlike(currentBoothID)
+      //   Unlike(id)
       //     .then(res => {
       //       console.log(res);
       //       setState(!state);
@@ -24,7 +25,7 @@ const useBookmark = (isBookmarked, currentBoothID) => {
       setState(!state);
     } else {
       // if (login) {
-      //   Like(currentBoothID)
+      //   Like(id)
       //     .then(res => {
       //       console.log(res);
       //       setState(!state);
@@ -37,6 +38,7 @@ const useBookmark = (isBookmarked, currentBoothID) => {
     }
   }, [trigger]);
   // deps에 trigger를 추가하여 refetch 될 때마다 내부 코드가 실행되도록 함
+  console.log(state);
   return { state, toggle };
 };
 
