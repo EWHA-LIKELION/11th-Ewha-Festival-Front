@@ -24,7 +24,7 @@ const BoothDetailTitle = props => {
           <T.Img src={thumnail ? thumnail : defaultthumnail} />
         </T.ImgDiv>
         <p>{name}</p>
-        <p onClick={toggle}>{`${is_liked}`}</p>
+        <button onClick={toggle}>{`${is_liked}`}</button>
         <p>{hashtag}</p>
       </T.Wrapper>
     </div>

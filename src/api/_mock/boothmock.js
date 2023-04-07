@@ -1,4 +1,4 @@
-export const response = {
+export const boothdetail = {
   message: '부스 상세 조회 성공',
   data: {
     id: 1,
