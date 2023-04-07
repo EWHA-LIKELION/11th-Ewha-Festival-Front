@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 
 const useBookmark = (isBookmarked, currentBoothID) => {
-  console.log(isBookmarked);
   const [state, setState] = useState(isBookmarked);
   const [trigger, setTrigger] = useState(0);
   let id = Number(currentBoothID);
@@ -38,7 +37,6 @@ const useBookmark = (isBookmarked, currentBoothID) => {
     }
   }, [trigger]);
   // deps에 trigger를 추가하여 refetch 될 때마다 내부 코드가 실행되도록 함
-  console.log(state);
   return { state, toggle };
 };
 
