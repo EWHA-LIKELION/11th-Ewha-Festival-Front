@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 const useBookmark = (isBookmarked, currentBoothID) => {
   const [state, setState] = useState(isBookmarked);
   const [trigger, setTrigger] = useState(0);
-  const refetch = () => {
-    // refetch 함수 실행 시 trigger 값이 변경됨
+  const toggle = () => {
+    // toggle 함수 실행 시 trigger 값이 변경됨
     setTrigger(Date.now());
   };
   useEffect(() => {
@@ -37,7 +37,7 @@ const useBookmark = (isBookmarked, currentBoothID) => {
     }
   }, [trigger]);
   // deps에 trigger를 추가하여 refetch 될 때마다 내부 코드가 실행되도록 함
-  return { state, refetch };
+  return { state, toggle };
 };
 
 export default useBookmark;

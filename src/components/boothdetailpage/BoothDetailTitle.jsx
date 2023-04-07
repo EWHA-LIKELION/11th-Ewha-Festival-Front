@@ -10,7 +10,7 @@ const BoothDetailTitle = props => {
   let { id } = useParams();
   const { currentBooth, setCurrentBooth } = props;
   const { name, thumnail, hashtag, is_liked } = currentBooth;
-  const { state, refetch } = useBookmark(is_liked, id);
+  const { state, toggle } = useBookmark(is_liked, id);
   useEffect(() => {
     setCurrentBooth({
       ...currentBooth,
@@ -24,7 +24,7 @@ const BoothDetailTitle = props => {
           <T.Img src={thumnail ? thumnail : defaultthumnail} />
         </T.ImgDiv>
         <p>{name}</p>
-        <p onClick={refetch}>{`${is_liked}`}</p>
+        <p onClick={toggle}>{`${is_liked}`}</p>
         <p>{hashtag}</p>
       </T.Wrapper>
     </div>
