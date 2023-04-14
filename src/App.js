@@ -14,7 +14,7 @@ import NoticePage from './pages/noticepage/NoticePage';
 import UpdateNoticePage from './pages/noticepage/UpdateNoticePage';
 import SearchPage from './pages/SearchPage';
 
-import "./css/common.css";
+import './css/common.css';
 
 function App() {
   return (

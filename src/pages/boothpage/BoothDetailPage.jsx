@@ -1,5 +1,11 @@
+import BoothDetail from '../../components/boothdetailpage/BoothDetail';
+
 const BoothDetailPage = () => {
-  return <></>;
+  return (
+    <>
+      <BoothDetail />
+    </>
+  );
 };
 
 export default BoothDetailPage;
