@@ -20,9 +20,8 @@ const TopBar = props =>{
                 <BsFillPersonFill/>
                 :path.includes("booth")?
                     <HiOutlineSearch onClick={()=>{navigate("/search")}}/>
-                    : <HiOutlineSearch style={{visibility:"hidden"}}/>
-            }           
-            
+                    :<HiOutlineSearch style={{visibility:"hidden"}}/>
+            }          
         </S.Wrapper>
     </>)
 }
