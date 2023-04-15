@@ -5,3 +5,22 @@
 	overflow-x: hidden;
   }
   
+  :root {
+	/* color */
+	--black: #1F2225;
+	--gray1: #2D2D2D;
+	--gray2: #9B9B9B;
+	--gray3: #EFEFEF;
+	--white: #FFFFFF; 
+	--green1: #004628;
+	--green2: #029C54;
+	--green3: #D3F44B;
+	--yellow: #FFF258;
+	--red: #F55B1D;
+	--pink: #FA8AA7;
+	--beige: #FFF9F1;
+
+	/* font */
+	--pre-font: 'Pretendard-Regular';
+  }
+  
