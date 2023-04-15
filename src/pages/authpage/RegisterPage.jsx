@@ -1,8 +1,10 @@
-import RegisterMenu from "../../components/authpage/RegisterMenu";
+import RegisterMenu from '../../components/authpage/RegisterMenu';
 const RegisterPage = () => {
-  return <>
-    <RegisterMenu/>
-  </>;
+  return (
+    <>
+      <RegisterMenu />
+    </>
+  );
 };
 
 export default RegisterPage;

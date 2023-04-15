@@ -1,8 +1,10 @@
-import LoginMenu from "../../components/authpage/LoginMenu";
+import LoginMenu from '../../components/authpage/LoginMenu';
 const LoginPage = () => {
-  return <>
-    <LoginMenu/>
-  </>;
+  return (
+    <>
+      <LoginMenu />
+    </>
+  );
 };
 
 export default LoginPage;
