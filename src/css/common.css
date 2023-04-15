@@ -1,26 +1,25 @@
 /* html 기본 적용 */
 * {
-	margin: 0;
-	padding: 0;
-	overflow-x: hidden;
-  }
-  
-  :root {
-	/* color */
-	--black: #1F2225;
-	--gray1: #2D2D2D;
-	--gray2: #9B9B9B;
-	--gray3: #EFEFEF;
-	--white: #FFFFFF; 
-	--green1: #004628;
-	--green2: #029C54;
-	--green3: #D3F44B;
-	--yellow: #FFF258;
-	--red: #F55B1D;
-	--pink: #FA8AA7;
-	--beige: #FFF9F1;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
 
-	/* font */
-	--pre-font: 'Pretendard-Regular';
-  }
-  
+:root {
+  /* color */
+  --black: #1f2225;
+  --gray1: #2d2d2d;
+  --gray2: #9b9b9b;
+  --gray3: #efefef;
+  --white: #ffffff;
+  --green1: #004628;
+  --green2: #029c54;
+  --green3: #d3f44b;
+  --yellow: #fff258;
+  --red: #f55b1d;
+  --pink: #fa8aa7;
+  --beige: #fff9f1;
+
+  /* font */
+  --pre-font: 'Pretendard-Regular';
+}

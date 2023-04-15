@@ -1,8 +1,10 @@
-import MyMenu from "../../components/mypage/MyMenu";
+import MyMenu from '../../components/mypage/MyMenu';
 const MyPage = () => {
-  return<>
-    <MyMenu/>
-  </>
+  return (
+    <>
+      <MyMenu />
+    </>
+  );
 };
 
 export default MyPage;

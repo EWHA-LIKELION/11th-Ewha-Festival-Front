@@ -1,6 +1,6 @@
 // 회원 및 인증과 관련된 api
-import { useNavigate } from "react-router-dom";
-import { http } from "./http";
+import { useNavigate } from 'react-router-dom';
+import { http } from './http';
 
 // 회원가입 (POST)
 export const RequestSignin = async (id, pw, nickname) => {
@@ -27,9 +27,9 @@ export const RequestLogin = async (id, pw) => {
   try {
     const response = await http.post(`/account/login/`, userData);
 
-    localStorage.setItem("token", response.data.data.access_token);
+    localStorage.setItem('token', response.data.data.access_token);
 
-    window.location.replace("/");
+    window.location.replace('/');
 
     return Promise.resolve(response);
   } catch (error) {
@@ -39,7 +39,6 @@ export const RequestLogin = async (id, pw) => {
 
 // 로그아웃
 export const RequestLogout = async () => {
-  window.localStorage.removeItem("token");
-  window.location.replace("/");
+  window.localStorage.removeItem('token');
+  window.location.replace('/');
 };
-
