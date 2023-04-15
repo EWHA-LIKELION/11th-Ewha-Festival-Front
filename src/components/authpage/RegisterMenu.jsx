@@ -6,9 +6,8 @@ import * as S from "./LoginReigster.style";
 import { BiUser, BiLockOpen } from "react-icons/bi";
 import { BsFlower2, BsFillCheckCircleFill, BsFillInfoCircleFill } from "react-icons/bs";
 import { MdOutlineVpnKey } from "react-icons/md";
-import { IoIosWarning } from "react-icons/io";
 // components 
-import TopBar from "../_common/topBar/TopBar";
+import TopBar from "../_common/topbar/TopBar";
 import Modal from "../_common/modal/Modal";
 //api
 import { RequestSignin } from "../../api/auth";
@@ -24,11 +23,21 @@ const RegisterMenu = () =>{
     const [secretNum, setSecretNum] = useState(""); 
 
     // modal 관리 
+    const contents = "이화여자대학교 유레카 포털 \n 자유게시판에서 ‘이웃제’ 검색하여 확인"
     const [modal, setModal] = useState(false);
-    const title = "비밀단어 안내";
-    const subTitle ="회원가입을 위해서 비밀단어를 입력해주세요.";
-    const contents = "이화여자대학교 유레카 포털 \n 자유게시판에서 ‘이웃제’ 검색하여 확인";
-
+    const [secretModal, setSecretModal] = useState(false);
+    const openModal = () =>{
+        setModal(true);
+    }
+    const openSModal = () =>{
+        setSecretModal(true);
+    }
+    const closeModal = () =>{
+        setModal(false);
+    }
+    const closeSModal = () =>{
+        setSecretModal(false);
+    }
     // 필수 필드 확인 함수 
     const checkInput =()=>{
         var isSame;
@@ -78,8 +87,16 @@ const RegisterMenu = () =>{
     };
     return(
     <>
-        {modal ? <Modal title={title} subTitle={subTitle} 
-                    contents={contents} setModal={setModal}/>: null}
+        {secretModal ? <Modal open={openSModal} close={closeSModal}
+                    title="비밀단어 안내" subTitle="회원가입을 위해서 비밀단어를 입력해주세요."
+                    contents={contents} secret="true"
+                    onClick={closeSModal} 
+                />
+        : null}
+        {modal ? <Modal open={openModal} close={closeModal}
+                    onClick={closeModal} 
+                />
+        : null}
         <S.Container>
             <TopBar title="회원가입"/>
             <S.LogoBox/>
@@ -128,16 +145,9 @@ const RegisterMenu = () =>{
                             onChange={e => setSecretNum(e.target.value)}
                         />
                     </S.InputWrapper>
-                    <BsFillInfoCircleFill color="#FF9FC7" onClick={()=>setModal(true)}/>
+                    <BsFillInfoCircleFill color="#FF9FC7" onClick={openSModal}/>
                 </S.CheckWrapper>
-                <S.AlertWrapper>
-                    <IoIosWarning/>
-                    <S.AlertText>
-                    잃어버린 계정 정보는 다시 찾을 수 있는 방법이 없으니<br/> 
-                    회원가입 시 잘 기억해두세요!  
-                    </S.AlertText>
-                </S.AlertWrapper>
-                <S.Button type="submit">회원가입</S.Button>
+                <S.Button type="submit" onClick={openModal}>회원가입</S.Button>
             </S.InputForm>
         </S.Container>
     </>
