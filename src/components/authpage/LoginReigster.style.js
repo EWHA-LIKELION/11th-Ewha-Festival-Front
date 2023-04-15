@@ -14,6 +14,7 @@ export const Container = styled.div`
 export const LogoBox = styled.div`
     width: 158px;
     height: 91px;
+    margin-top: 20%;
     margin-bottom: 10px;
 
     background-image: url(${flower});
@@ -69,26 +70,6 @@ export const Button = styled.button`
     background: #029C54;
     color: #ffffff;
 `
-export const AlertWrapper = styled.div`
-    width: 100%;
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    svg{
-        color: #F55B1D;
-        width: 30px;
-        height: 30px;   
-    }
-`
-export const AlertText = styled.div`
-    margin-top: 5px;
-    color: #9B9B9B;
-    font-size: 8px;
-    text-align: center;
-`
-
 export const GoRegister = styled.a`
     width: 100%;
     margin-top: 10px;
