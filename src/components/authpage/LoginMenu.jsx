@@ -5,7 +5,7 @@ import axios from "axios";
 import * as S from "./LoginReigster.style";
 import { BiUser, BiLockOpen } from "react-icons/bi";
 // components
-import TopBar from "../_common/topBar/TopBar";
+import TopBar from "../_common/topbar/TopBar";
 
 const LoginMenu = () =>{
     const navigate = useNavigate();

@@ -5,7 +5,7 @@ import { http } from "../../api/http";
 // style.js & fonts
 import * as S from "./MyMenu.style";
 // componets
-import TopBar from "../_common/topBar/TopBar";
+import TopBar from "../_common/topbar/TopBar";
 
 const MyMenu = () =>{
     const navigate = useNavigate();
