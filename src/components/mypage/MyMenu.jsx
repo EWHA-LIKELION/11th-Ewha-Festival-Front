@@ -36,7 +36,7 @@ const MyMenu = () => {
   return (
     <>
       <S.Container>
-        <TopBar title="마이페이지" />
+        <TopBar title='마이페이지' />
         <S.NameContainer>
           <S.Name>{name}</S.Name>
           <S.ID>{id}</S.ID>

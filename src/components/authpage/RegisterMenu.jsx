@@ -99,10 +99,10 @@ const RegisterMenu = () => {
         <Modal
           open={openSModal}
           close={closeSModal}
-          title="비밀단어 안내"
-          subTitle="회원가입을 위해서 비밀단어를 입력해주세요."
+          title='비밀단어 안내'
+          subTitle='회원가입을 위해서 비밀단어를 입력해주세요.'
           contents={contents}
-          secret="true"
+          secret='true'
           onClick={closeSModal}
         />
       ) : null}
@@ -110,59 +110,59 @@ const RegisterMenu = () => {
         <Modal open={openModal} close={closeModal} onClick={closeModal} />
       ) : null}
       <S.Container>
-        <TopBar title="회원가입" />
+        <TopBar title='회원가입' />
         <S.LogoBox />
         <S.InputForm onSubmit={onSubmitAccount}>
-          <S.InputWrapper marginTop="15px">
+          <S.InputWrapper marginTop='15px'>
             <BiUser />
             <S.Input
-              placeholder="아이디"
+              placeholder='아이디'
               onChange={e => setID(e.target.value)}
             />
           </S.InputWrapper>
-          <S.InputWrapper marginTop="15px">
+          <S.InputWrapper marginTop='15px'>
             <BiLockOpen />
             <S.Input
-              type="password"
-              placeholder="비밀번호"
+              type='password'
+              placeholder='비밀번호'
               onChange={e => setPW(e.target.value)}
             />
           </S.InputWrapper>
           <S.CheckWrapper>
-            <S.InputWrapper width="205px">
+            <S.InputWrapper width='205px'>
               <BiLockOpen />
               <S.Input
-                type="password"
-                placeholder="비밀번호 확인"
+                type='password'
+                placeholder='비밀번호 확인'
                 onChange={e => {
                   setPW2(e.target.value);
                 }}
               />
             </S.InputWrapper>
             {checkPW() ? (
-              <BsFillCheckCircleFill color=" #029C54" />
+              <BsFillCheckCircleFill color=' #029C54' />
             ) : (
-              <BsFillCheckCircleFill color="#EAEAEA" />
+              <BsFillCheckCircleFill color='#EAEAEA' />
             )}
           </S.CheckWrapper>
-          <S.InputWrapper marginTop="15px">
+          <S.InputWrapper marginTop='15px'>
             <BsFlower2 />
             <S.Input
-              placeholder="닉네임"
+              placeholder='닉네임'
               onChange={e => setName(e.target.value)}
             />
           </S.InputWrapper>
           <S.CheckWrapper>
-            <S.InputWrapper width="205px">
+            <S.InputWrapper width='205px'>
               <MdOutlineVpnKey />
               <S.Input
-                placeholder="비밀단어"
+                placeholder='비밀단어'
                 onChange={e => setSecretNum(e.target.value)}
               />
             </S.InputWrapper>
-            <BsFillInfoCircleFill color="#FF9FC7" onClick={openSModal} />
+            <BsFillInfoCircleFill color='#FF9FC7' onClick={openSModal} />
           </S.CheckWrapper>
-          <S.Button type="submit" onClick={openModal}>
+          <S.Button type='submit' onClick={openModal}>
             회원가입
           </S.Button>
         </S.InputForm>
