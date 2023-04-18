@@ -41,26 +41,26 @@ const LoginMenu = () => {
   return (
     <>
       <S.Container>
-        <TopBar title="로그인" />
+        <TopBar title='로그인' />
         <S.LogoBox />
         <S.InputForm onSubmit={onSubmitAccount}>
-          <S.InputWrapper marginTop="15px">
+          <S.InputWrapper marginTop='15px'>
             <BiUser />
             <S.Input
-              placeholder="아이디"
+              placeholder='아이디'
               onChange={e => setID(e.target.value)}
             />
           </S.InputWrapper>
-          <S.InputWrapper marginTop="15px">
+          <S.InputWrapper marginTop='15px'>
             <BiLockOpen />
             <S.Input
-              type="password"
-              placeholder="비밀번호"
+              type='password'
+              placeholder='비밀번호'
               onChange={e => setPW(e.target.value)}
             />
           </S.InputWrapper>
-          <S.Button type="submit">로그인</S.Button>
-          <S.GoRegister href="/auth/register">회원가입</S.GoRegister>
+          <S.Button type='submit'>로그인</S.Button>
+          <S.GoRegister href='/auth/register'>회원가입</S.GoRegister>
         </S.InputForm>
       </S.Container>
     </>
