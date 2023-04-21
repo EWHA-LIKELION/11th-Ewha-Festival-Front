@@ -1,5 +1,6 @@
 // 회원 및 인증과 관련된 api
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { http } from './http';
 
 // 회원가입 (POST)
@@ -10,7 +11,7 @@ export const RequestSignin = async (id, pw, nickname) => {
     nickname: nickname,
   };
   try {
-    const response = await http.post(`/account/signup/`, userData);
+    const response = await axios.post(`/accounts/signup/`, userData);
     return Promise.resolve(response);
   } catch (error) {
     return Promise.reject(error);
@@ -25,7 +26,7 @@ export const RequestLogin = async (id, pw) => {
   };
 
   try {
-    const response = await http.post(`/account/login/`, userData);
+    const response = await http.post(`/accounts/login/`, userData);
 
     localStorage.setItem('token', response.data.data.access_token);
 
