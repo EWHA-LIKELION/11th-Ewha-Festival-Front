@@ -27,21 +27,23 @@ const BoothDetailMenu = props => {
           <COM.Wrapper>
             <M.Container>
               <PartTitle text='메뉴' />
-              <M.ImageContainer>
-                {imgArray.map((img, idx) => {
-                  return (
-                    <M.ImgRect
-                      onClick={() => {
-                        setImgIndex(idx);
-                        setGalleryOpen(true);
-                      }}
-                      key={img.index}
-                    >
-                      <M.Img src={img.src} />
-                    </M.ImgRect>
-                  );
-                })}
-              </M.ImageContainer>
+              {imgArray.length === 0 ? null : (
+                <M.ImageContainer>
+                  {imgArray.map((img, idx) => {
+                    return (
+                      <M.ImgRect
+                        onClick={() => {
+                          setImgIndex(idx);
+                          setGalleryOpen(true);
+                        }}
+                        key={img.index}
+                      >
+                        <M.Img src={img.src} />
+                      </M.ImgRect>
+                    );
+                  })}
+                </M.ImageContainer>
+              )}
               {menus &&
                 menus.map(item => {
                   let money = item.price;
@@ -80,7 +82,12 @@ const BoothDetailMenu = props => {
             </M.Container>
           </COM.Wrapper>
           {galleryOpen ? (
-            <ImageGallery array={imgArray} index={imgIndex} close={close} />
+            <ImageGallery
+              array={imgArray}
+              index={imgIndex}
+              close={close}
+              isOne={imgArray.length === 1}
+            />
           ) : null}
         </>
       )}

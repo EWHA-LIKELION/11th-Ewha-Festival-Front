@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { COM, N } from './BoothDetail.style';
 import { AiOutlineNotification } from 'react-icons/ai';
 
-const BoothDetailNotice = ({ notice }) => {
+const BoothDetailNotice = props => {
+  const [notice, setNotice] = useState({
+    text: '아직 공지사항이 없습니다.',
+    updated_at: '',
+  });
+  useEffect(() => {
+    if (props.notice) {
+      setNotice({
+        text: props.notice.text,
+        updated_at: props.notice.updated_at,
+      });
+    }
+  }, [props]);
   return (
     <COM.Wrapper>
       <N.Container>

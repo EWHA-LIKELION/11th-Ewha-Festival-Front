@@ -8,14 +8,19 @@ import BoothDetailMenu from './BoothDetailMenu';
 import BoothDetailComment from './BoothDetailComment';
 
 import { boothdetail } from '../../api/_mock/boothmock';
+import { GetBooth } from '../../api/booth';
 
 const BoothDetail = () => {
   const { id } = useParams();
   const [currentBooth, setCurrentBooth] = useState({});
   useEffect(() => {
-    //GetBoothDetail(id).then(res => {
+    GetBooth(id)
+      .then(res => {
+        console.log(res);
+        setCurrentBooth(res.data.data);
+      })
+      .catch(err => console.log(err));
     setCurrentBooth(boothdetail.data);
-    //}).catch(err => console.log(err));
   }, []);
   return (
     <>
