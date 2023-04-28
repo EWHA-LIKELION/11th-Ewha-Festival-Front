@@ -9,7 +9,7 @@ import {
 } from 'react-icons/bs';
 import { MdOutlineVpnKey } from 'react-icons/md';
 // components
-import TopBar from '../_common/topbar/TopBar';
+import TopBar from '../_common/topBar/TopBar';
 import Modal from '../_common/modal/Modal';
 //api
 import { RequestSignin, RequestAccount, RequestLogin } from '../../api/auth';
