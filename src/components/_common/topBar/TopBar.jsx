@@ -1,18 +1,27 @@
 import React from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // style.js
 import * as S from './TopBar.style';
 // icons
 import { HiMenu, HiOutlineSearch } from 'react-icons/hi';
 import { BsFillPersonFill } from 'react-icons/bs';
+import SideBar from '../sidebar/SideBar';
 
 const TopBar = props => {
   const navigate = useNavigate();
   const path = window.location.pathname;
+  // sidebar 관리
+  const [sideBar, setSideBar] = useState(false);
   return (
     <>
+      {sideBar ? <SideBar setSideBar={setSideBar} /> : null}
       <S.Wrapper>
-        <HiMenu />
+        <HiMenu
+          onClick={() => {
+            setSideBar(true);
+          }}
+        />
         {path === '/' ? (
           <S.Title style={{ visibility: 'hidden' }}>{props.title}</S.Title>
         ) : (
