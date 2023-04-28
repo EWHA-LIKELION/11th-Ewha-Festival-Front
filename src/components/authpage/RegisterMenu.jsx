@@ -12,7 +12,7 @@ import { MdOutlineVpnKey } from 'react-icons/md';
 import TopBar from '../_common/topbar/TopBar';
 import Modal from '../_common/modal/Modal';
 //api
-import { RequestSignin, RequestAccount, RequestLogin } from '../../api/auth';
+import { RequestSignin, RequestProfile, RequestLogin } from '../../api/auth';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { setUser, setUserTask } from '../../redux/userSlice';
 
@@ -92,7 +92,7 @@ const RegisterMenu = () => {
         })
         .then(() => {
           // 계정 정보 가져오기
-          RequestAccount().then(response => {
+          RequestProfile().then(response => {
             dispatch(
               setUserTask({
                 isBooth: response.data.data.is_t,

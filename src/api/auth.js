@@ -43,7 +43,7 @@ export const RequestLogout = async () => {
 };
 
 // 프로필 조회
-export const RequestAccount = async token => {
+export const RequestProfile = async () => {
   try {
     const response = await http.get('/accounts/');
     return Promise.resolve(response);

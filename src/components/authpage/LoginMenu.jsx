@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// api, 유저 정보
-import { RequestLogin } from '../../api/auth';
-import { RequestAccount } from '../../api/auth';
+// api
+import { RequestLogin, RequestProfile } from '../../api/auth';
 // redux
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { setUser, setUserTask } from '../../redux/userSlice';
@@ -38,7 +37,7 @@ const LoginMenu = () => {
       })
       .then(() => {
         // 계정 정보 가져오기
-        RequestAccount().then(response => {
+        RequestProfile().then(response => {
           dispatch(
             setUserTask({
               isBooth: response.data.data.is_t,
