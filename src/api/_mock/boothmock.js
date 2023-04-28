@@ -55,3 +55,27 @@ export const boothdetail = {
     ],
   },
 };
+
+export const boothmenu = {
+  message: '메뉴 목록 조회 성공',
+  data: [
+    {
+      id: 1,
+      menu: '순대',
+      price: 4000,
+      is_soldout: false,
+    },
+    {
+      id: 2,
+      menu: '떡볶이',
+      price: 3000,
+      is_soldout: false,
+    },
+    {
+      id: 3,
+      menu: '튀김',
+      price: 3000,
+      is_soldout: false,
+    },
+  ],
+};
