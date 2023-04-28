@@ -40,7 +40,10 @@ const BoothDetailTitle = props => {
               <T.HeartImg src={is_liked ? fillheart : strokeheart} />
             </T.HeartDiv>
           </T.TitleContainer>
-          <T.Category>{category}</T.Category>
+          {category &&
+            category.map(item => {
+              return <T.Category>{item}</T.Category>;
+            })}
           <T.Hashtag>{hashtag}</T.Hashtag>
         </T.Container>
       </COM.Wrapper>

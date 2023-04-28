@@ -11,12 +11,15 @@ export const boothdetail = {
     user: 1,
     day: ['수요일', '목요일', '금요일'],
     college: '포스코관',
-    category: '음식',
+    category: ['음식', '굿즈'],
     name: '멋쟁이 사자처럼',
     number: '08',
     thumnail: '',
-    opened: false,
-    notice: '아직 공지사항이 없습니다.',
+    opened: true,
+    notice: {
+      text: '아직 공지사항이 없습니다.',
+      updated_at: '2023-04-04 12:34',
+    },
     hashtag: '#떡꼬치 #동아리 #어쩌구',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus eget lorem vitae placerat. Curabitur ut massa gravida metus lacinia consequat. Nunc nisl lorem, pharetra eu quam sed, fringilla maximus arcu. Phasellus aliquam velit vel tempus laoreet. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed ornare varius congue. Nunc non tortor et justo blandit consequat sed quis libero. Nam eget sagittis ligula. In fermentum nulla at metus pretium placerat. Curabitur gravida id sapien et pulvinar. Cras eget rhoncus lacus. Vivamus venenatis nisi eu porta convallis. Duis velit tellus, scelerisque viverra enim pharetra, tempus tristique libero. Aliquam lorem erat, tempor sit amet sodales eu, viverra non ante. Cras nisl ligula, pharetra a purus eget, dapibus bibendum ante.\n\nNulla facilisi. Donec consectetur viverra interdum. Fusce dictum dictum commodo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam bibendum quam non risus imperdiet, vel scelerisque dolor dapibus. Aenean eu condimentum purus. Integer dictum tincidunt tortor, ac mattis arcu dapibus nec. Nulla dictum in tortor id interdum. Vestibulum vel justo elementum, lacinia leo ac, pellentesque nibh.',

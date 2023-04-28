@@ -6,6 +6,7 @@ import { FiMap } from 'react-icons/fi';
 
 const BoothDetailInfo = props => {
   const { college, number, description } = props;
+  // 운영 시간 타입 확정 후 수정 필요
   const [isOpen, setIsOpen] = useState(false);
   return (
     <COM.Wrapper>
