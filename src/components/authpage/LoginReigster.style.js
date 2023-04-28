@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import flower from '../../assets/images/authpage/flower.svg';
 
 export const Container = styled.div`
+  position: fixed;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -14,7 +15,7 @@ export const Container = styled.div`
 export const LogoBox = styled.div`
   width: 158px;
   height: 91px;
-  margin-top: 20%;
+  margin-top: 14%;
   margin-bottom: 10px;
 
   background-image: url(${flower});
@@ -70,12 +71,17 @@ export const Button = styled.button`
   background: #029c54;
   color: #ffffff;
 `;
-export const GoRegister = styled.a`
+export const GoRegister = styled.div`
   width: 100%;
-  margin-top: 10px;
+  margin-top: 20px;
 
-  text-decoration: none;
-  text-align: right;
-  font-size: 12px;
-  color: #979797;
+  display: flex;
+  justify-content: end;
+
+  a {
+    font-size: 12px;
+    color: #979797;
+    text-decoration: none;
+    padding-right: 2px;
+  }
 `;
