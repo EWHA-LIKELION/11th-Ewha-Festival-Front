@@ -6,10 +6,12 @@ const useBookmark = (isBookmarked, currentBoothID) => {
   let id = Number(currentBoothID);
   const toggle = () => {
     // toggle 함수 실행 시 trigger 값이 변경됨
-    setTrigger(Date.now());
+    setTrigger(trigger + 1);
   };
   useEffect(() => {
     if (typeof isBookmarked !== 'boolean') return;
+    // 1번째 클릭 undefined로 씹히는 현상 해결해야함
+    //console.log(state);
     if (state) {
       // if (login) {
       //   Unlike(id)
@@ -20,6 +22,7 @@ const useBookmark = (isBookmarked, currentBoothID) => {
       //     .catch(err => console.log(err));
       // } else {
       //   alert('로그인 후 북마크 기능을 사용할 수 있습니다.');
+      //   nav(to login);
       // }
       setState(!state);
     } else {
@@ -32,6 +35,7 @@ const useBookmark = (isBookmarked, currentBoothID) => {
       //     .catch(err => console.log(err));
       // } else {
       //   alert('로그인 후 북마크 기능을 사용할 수 있습니다.');
+      //   nav(to login);
       // }
       setState(!state);
     }
