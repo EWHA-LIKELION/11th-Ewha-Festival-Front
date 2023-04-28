@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 // style.js & icons
 import * as S from './LoginReigster.style';
 import { BiUser, BiLockOpen } from 'react-icons/bi';
@@ -14,16 +12,21 @@ import { MdOutlineVpnKey } from 'react-icons/md';
 import TopBar from '../_common/topbar/TopBar';
 import Modal from '../_common/modal/Modal';
 //api
-import { RequestSignin } from '../../api/auth';
+import { RequestSignin, RequestAccount, RequestLogin } from '../../api/auth';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { setUser, setUserTask } from '../../redux/userSlice';
 
 const RegisterMenu = () => {
-  const navigate = useNavigate();
   // input 상태 관리
   const [id, setID] = useState('');
   const [password, setPW] = useState('');
   const [password2, setPW2] = useState('');
   const [name, setName] = useState('');
-  const [secretNum, setSecretNum] = useState('');
+  const [secretWord, setSecretWord] = useState('');
+
+  // redux
+  const dispatch = useAppDispatch();
+  const { isBooth, isTF } = useAppSelector(state => state.booth);
 
   // modal 관리
   const contents =
@@ -44,54 +47,65 @@ const RegisterMenu = () => {
   };
   // 필수 필드 확인 함수
   const checkInput = () => {
-    var isSame;
-    if (id != '' && password != '' && name != '') {
-      password == password2 && secretNum == 486
-        ? (isSame = true)
-        : (isSame = false);
-    }
-    return isSame;
+    return (
+      checkID() === '' &&
+      checkPW() === '' &&
+      checkSecretWord() === '' &&
+      checkName() === ''
+    );
+  };
+  const checkID = () => {
+    return id !== '' ? '' : '아이디 필드가 비어있습니다.\n';
   };
   const checkPW = () => {
-    var isSame;
-    password != '' && password === password2
-      ? (isSame = true)
-      : (isSame = false);
-    return isSame;
+    return password !== '' && password === password2
+      ? ''
+      : '비밀번호가 일치하지 않습니다.\n';
+  };
+  const checkSecretWord = () => {
+    return secretWord === '비밀단어' ? '' : '비밀단어가 일치하지 않습니다.\n';
+  };
+  const checkName = () => {
+    return name.length <= 10 && name !== ''
+      ? ''
+      : '닉네임은 10자 이하로 작성해주세요.';
+  };
+  const checkSubmit = e => {
+    e.preventDefault();
+    checkInput()
+      ? openModal(true)
+      : alert(checkID() + checkPW() + checkSecretWord() + checkName());
   };
   // Submit
-  const onSubmitAccount = e => {
-    e.preventDefault();
-    try {
-      axios
-        .post('http://3.37.131.250/accounts/signup/', {
-          username: id,
-          password: password,
-          nickname: escape(name),
-        })
+  const onSubmitAccount = () => {
+    RequestSignin(id, password, name).then(() => {
+      RequestLogin(id, password)
         .then(res => {
-          if (res.data.message == '회원가입 성공') {
-            console.log(res);
-          }
+          //아이디 비밀번호 닉네임 저장
+          dispatch(
+            setUser({
+              ID: id,
+              PW: password,
+              nickname: res.data.data.nickname,
+            }),
+          );
+        })
+        .then(() => {
+          // 계정 정보 가져오기
+          RequestAccount().then(response => {
+            dispatch(
+              setUserTask({
+                isBooth: response.data.data.is_t,
+                isTF: response.data.data.is_tf,
+              }),
+            );
+          });
+        })
+        .then(() => {
+          window.location.reload();
+          window.location.replace('/');
         });
-    } catch (error) {
-      console.log(error);
-    }
-
-    // if(checkInput){
-    //     RequestSignin(id, password, name)
-    //     .then(response => {
-    //         console.log(id,password, name);
-    //         navigate("/auth/login");
-    //     })
-    //     .catch(error => {
-    //         if (error.response.status === 400) {
-    //         setID("");
-    //         alert("이미 존재하는 아이디입니다. 다시 입력해주세요");
-    //         return;
-    //         }
-    //     });
-    // }
+    });
   };
   return (
     <>
@@ -99,72 +113,70 @@ const RegisterMenu = () => {
         <Modal
           open={openSModal}
           close={closeSModal}
-          title="비밀단어 안내"
-          subTitle="회원가입을 위해서 비밀단어를 입력해주세요."
+          title='비밀단어 안내'
+          subTitle='회원가입을 위해서 비밀단어를 입력해주세요.'
           contents={contents}
-          secret="true"
+          secret='true'
           onClick={closeSModal}
         />
       ) : null}
       {modal ? (
-        <Modal open={openModal} close={closeModal} onClick={closeModal} />
+        <Modal open={openModal} close={closeModal} onClick={onSubmitAccount} />
       ) : null}
       <S.Container>
-        <TopBar title="회원가입" />
+        <TopBar title='회원가입' />
         <S.LogoBox />
-        <S.InputForm onSubmit={onSubmitAccount}>
-          <S.InputWrapper marginTop="15px">
+        <S.InputForm>
+          <S.InputWrapper marginTop='15px'>
             <BiUser />
             <S.Input
-              placeholder="아이디"
+              placeholder='아이디'
               onChange={e => setID(e.target.value)}
             />
           </S.InputWrapper>
-          <S.InputWrapper marginTop="15px">
+          <S.InputWrapper marginTop='15px'>
             <BiLockOpen />
             <S.Input
-              type="password"
-              placeholder="비밀번호"
+              type='password'
+              placeholder='비밀번호 (4자 이상)'
               onChange={e => setPW(e.target.value)}
             />
           </S.InputWrapper>
           <S.CheckWrapper>
-            <S.InputWrapper width="205px">
+            <S.InputWrapper width='205px'>
               <BiLockOpen />
               <S.Input
-                type="password"
-                placeholder="비밀번호 확인"
+                type='password'
+                placeholder='비밀번호 확인'
                 onChange={e => {
                   setPW2(e.target.value);
                 }}
               />
             </S.InputWrapper>
-            {checkPW() ? (
-              <BsFillCheckCircleFill color=" #029C54" />
+            {checkPW() === '' ? (
+              <BsFillCheckCircleFill color=' #029C54' />
             ) : (
-              <BsFillCheckCircleFill color="#EAEAEA" />
+              <BsFillCheckCircleFill color='#EAEAEA' />
             )}
           </S.CheckWrapper>
-          <S.InputWrapper marginTop="15px">
+          <S.InputWrapper marginTop='15px'>
             <BsFlower2 />
             <S.Input
-              placeholder="닉네임"
+              placeholder='닉네임'
               onChange={e => setName(e.target.value)}
             />
           </S.InputWrapper>
           <S.CheckWrapper>
-            <S.InputWrapper width="205px">
+            <S.InputWrapper width='205px'>
               <MdOutlineVpnKey />
               <S.Input
-                placeholder="비밀단어"
-                onChange={e => setSecretNum(e.target.value)}
+                placeholder='비밀단어'
+                onChange={e => setSecretWord(e.target.value)}
               />
             </S.InputWrapper>
-            <BsFillInfoCircleFill color="#FF9FC7" onClick={openSModal} />
+            <BsFillInfoCircleFill color='#FF9FC7' onClick={openSModal} />
           </S.CheckWrapper>
-          <S.Button type="submit" onClick={openModal}>
-            회원가입
-          </S.Button>
+          <S.Button onClick={checkSubmit}>회원가입</S.Button>
         </S.InputForm>
       </S.Container>
     </>
