@@ -5,7 +5,7 @@ import PartTitle from './PartTitle';
 import Modal from '../_common/modal/Modal';
 import { FaTrashAlt } from 'react-icons/fa';
 import { HiPencil } from 'react-icons/hi';
-import { boothdetail } from '../../api/_mock/boothmock';
+import { GetBooth } from '../../api/booth';
 
 const BoothDetailComment = () => {
   const { id } = useParams();
@@ -45,14 +45,13 @@ const BoothDetailComment = () => {
   const [thisBoothUserId, setThisBoothUserId] = useState();
   const [thisComments, setThisComments] = useState([]);
   const getComments = () => {
-    // GetBooth(id)
-    //   .then(res => {
-    //     setThisBoothUserId(res.data.data.user);
-    //     setThisComments(res.data.data.comments);
-    //   })
-    //   .catch();
-    setThisBoothUserId(boothdetail.data.user);
-    setThisComments(boothdetail.data.comments);
+    GetBooth(id)
+      .then(res => {
+        console.log(res);
+        setThisBoothUserId(res.data.data.user);
+        setThisComments(res.data.data.comments);
+      })
+      .catch();
   };
   useEffect(() => {
     getComments();
