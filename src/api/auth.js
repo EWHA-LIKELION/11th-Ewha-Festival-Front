@@ -46,7 +46,7 @@ export const RequestLogout = async () => {
 // 프로필 조회
 export const RequestProfile = async () => {
   try {
-    const response = await http.get(`/account/`);
+    const response = await http.get(`/accounts/`);
     return Promise.resolve(response);
   } catch (error) {
     return Promise.reject(error);
