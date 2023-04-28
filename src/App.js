@@ -8,10 +8,9 @@ import MakersPage from './pages/MakersPage';
 import EditBoothPage from './pages/mypage/EditBoothPage';
 import EditMenuPage from './pages/mypage/EditMenuPage';
 import MyPage from './pages/mypage/MyPage';
-import AddNoticePage from './pages/noticepage/AddNoticePage';
+import NoticeListPage from './pages/noticepage/NoticeListPage';
 import NoticeDetailPage from './pages/noticepage/NoticeDetailPage';
-import NoticePage from './pages/noticepage/NoticePage';
-import UpdateNoticePage from './pages/noticepage/UpdateNoticePage';
+import NoticeWritePage from './pages/noticepage/NoticeWritePage';
 import SearchPage from './pages/SearchPage';
 
 import './css/common.css';
@@ -35,10 +34,9 @@ function App() {
         <Route exact path='/booth' element={<BoothPage />} />
         <Route exact path='/booth/detail/:id' element={<BoothDetailPage />} />
         {/* 공지 게시판 */}
-        <Route exact path='/notice' element={<NoticePage />} />
+        <Route exact path='/notice' element={<NoticeListPage />} />
         <Route exact path='/notice/:id' element={<NoticeDetailPage />} />
-        <Route exact path='/notice/add' element={<AddNoticePage />} />
-        <Route exact path='/notice/update' element={<UpdateNoticePage />} />
+        <Route exact path='/notice/write' element={<NoticeWritePage />} />
         {/* 만든이들 페이지 */}
         <Route exact path='/makers' element={<MakersPage />} />
       </Routes>
