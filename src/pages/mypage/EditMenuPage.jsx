@@ -1,5 +1,11 @@
+import EditMenu from '../../components/editmenupage/EditMenu';
+
 const EditMenuPage = () => {
-  return <></>;
+  return (
+    <>
+      <EditMenu />
+    </>
+  );
 };
 
 export default EditMenuPage;
