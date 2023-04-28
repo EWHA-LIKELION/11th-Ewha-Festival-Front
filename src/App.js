@@ -7,6 +7,7 @@ import MainPage from './pages/MainPage';
 import MakersPage from './pages/MakersPage';
 import EditBoothPage from './pages/mypage/EditBoothPage';
 import EditMenuPage from './pages/mypage/EditMenuPage';
+import EditMenuDetailPage from './pages/mypage/EditMenuDetailPage';
 import MyPage from './pages/mypage/MyPage';
 import NoticeListPage from './pages/noticepage/NoticeListPage';
 import NoticeDetailPage from './pages/noticepage/NoticeDetailPage';
@@ -30,6 +31,11 @@ function App() {
         <Route exact path='/mypage' element={<MyPage />} />
         <Route exact path='/mypage/editbooth' element={<EditBoothPage />} />
         <Route exact path='/mypage/editmenu' element={<EditMenuPage />} />
+        <Route
+          exact
+          path='/mypage/editmenu/:menuId'
+          element={<EditMenuDetailPage />}
+        />
         {/* 부스 및 상세 페이지 */}
         <Route exact path='/booth' element={<BoothPage />} />
         <Route exact path='/booth/detail/:id' element={<BoothDetailPage />} />
