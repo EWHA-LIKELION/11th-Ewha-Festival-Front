@@ -7,7 +7,7 @@ import {
 } from 'react-icons/hi';
 
 const ImageGallery = props => {
-  const { array, index, close } = props;
+  const { array, index, close, isOne } = props;
   const [currentIndex, setCurrentIndex] = useState(index);
   const [isWhere, setIsWhere] = useState({ left: false, right: false });
 
@@ -46,39 +46,45 @@ const ImageGallery = props => {
               {array[currentIndex] && (
                 <img className='image-main' src={array[currentIndex].src} />
               )}
-              <ArrowContainer>
-                {!isWhere.left && (
-                  <ClickArea onClick={() => setCurrentIndex(currentIndex - 1)}>
-                    <HiOutlineChevronLeft stroke='var(--white)' size='40' />
-                  </ClickArea>
-                )}
-                {!isWhere.right && (
-                  <ClickArea
-                    onClick={() => setCurrentIndex(currentIndex + 1)}
-                    style={{ right: '0' }}
-                  >
-                    <HiOutlineChevronRight
-                      className='right'
-                      stroke='var(--white)'
-                      size='40'
-                    />
-                  </ClickArea>
-                )}
-              </ArrowContainer>
+              {isOne ? null : (
+                <ArrowContainer>
+                  {!isWhere.left && (
+                    <ClickArea
+                      onClick={() => setCurrentIndex(currentIndex - 1)}
+                    >
+                      <HiOutlineChevronLeft stroke='var(--white)' size='40' />
+                    </ClickArea>
+                  )}
+                  {!isWhere.right && (
+                    <ClickArea
+                      onClick={() => setCurrentIndex(currentIndex + 1)}
+                      style={{ right: '0' }}
+                    >
+                      <HiOutlineChevronRight
+                        className='right'
+                        stroke='var(--white)'
+                        size='40'
+                      />
+                    </ClickArea>
+                  )}
+                </ArrowContainer>
+              )}
             </div>
-            <div className='swiper-nav'>
-              {array.map((img, idx) => {
-                return (
-                  <div
-                    key={`img${idx}`}
-                    className='div-nav'
-                    onClick={() => setCurrentIndex(idx)}
-                  >
-                    <img className='image-nav' src={img.src} alt='menu-img' />
-                  </div>
-                );
-              })}
-            </div>
+            {isOne ? null : (
+              <div className='swiper-nav'>
+                {array.map((img, idx) => {
+                  return (
+                    <div
+                      key={`img${idx}`}
+                      className='div-nav'
+                      onClick={() => setCurrentIndex(idx)}
+                    >
+                      <img className='image-nav' src={img.src} alt='menu-img' />
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </ImgContainer>
         )}
         <Close onClick={() => close()}>

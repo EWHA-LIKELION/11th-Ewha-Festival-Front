@@ -199,7 +199,7 @@ I.Map = styled.img`
 I.DesContainer = styled.div`
   width: 100%;
   min-height: 44px;
-  word-break: keep-all;
+  word-break: break-all;
   overflow-x: hidden;
 `;
 I.ShortDes = styled.div`

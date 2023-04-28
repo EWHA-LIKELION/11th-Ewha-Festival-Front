@@ -5,7 +5,7 @@ import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
 
 const PartTitle = ({ text, option, isOpen, setIsOpen }) => {
   return (
-    <Wrapper onClick={() => setIsOpen(!isOpen)}>
+    <Wrapper onClick={() => (option ? setIsOpen(!isOpen) : null)}>
       <Container>
         <Title>
           <Text>{text}</Text>
