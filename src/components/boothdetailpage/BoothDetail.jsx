@@ -10,27 +10,27 @@ import BoothDetailComment from './BoothDetailComment';
 import { boothdetail } from '../../api/_mock/boothmock';
 
 const BoothDetail = () => {
-  let { id } = useParams();
+  const { id } = useParams();
   const [currentBooth, setCurrentBooth] = useState({});
   useEffect(() => {
     //GetBoothDetail(id).then(res => {
     setCurrentBooth(boothdetail.data);
-    console.log(currentBooth);
     //}).catch(err => console.log(err));
   }, []);
   return (
     <>
-      <BoothDetailTitle
-        currentBooth={currentBooth}
-        setCurrentBooth={setCurrentBooth}
-      />
-      <BoothDetailNotice {...currentBooth} />
-      <BoothDetailInfo {...currentBooth} />
-      <BoothDetailMenu {...currentBooth} />
-      <BoothDetailComment
-        currentBooth={currentBooth}
-        setCurrentBooth={setCurrentBooth}
-      />
+      {currentBooth && (
+        <>
+          <BoothDetailTitle
+            currentBooth={currentBooth}
+            setCurrentBooth={setCurrentBooth}
+          />
+          <BoothDetailNotice {...currentBooth} />
+          <BoothDetailInfo {...currentBooth} />
+          <BoothDetailMenu {...currentBooth} />
+          <BoothDetailComment />
+        </>
+      )}
     </>
   );
 };
