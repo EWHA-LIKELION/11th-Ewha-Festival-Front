@@ -8,6 +8,19 @@ const BoothDetailInfo = props => {
   const { college, number, description } = props;
   // 운영 시간 타입 확정 후 수정 필요
   const [isOpen, setIsOpen] = useState(false);
+
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  const replace = content => {
+    const convertContent = content.replace(urlRegex, function (url) {
+      return '<a href="' + url + '" target="_blank">' + url + '</a>';
+    });
+    const htmlArr = [];
+    convertContent.split('\n').forEach(function (text) {
+      const textHtml = '<p>' + text + '</p>';
+      htmlArr.push(textHtml);
+    });
+    return { __html: htmlArr.join('') };
+  };
   return (
     <COM.Wrapper>
       <I.Container>
@@ -55,7 +68,7 @@ const BoothDetailInfo = props => {
         </div>
         <I.Indent>
           <div className='inner'>
-            <I.DesContainer onClick={() => setIsOpen(!isOpen)}>
+            <I.DesContainer>
               {isOpen ? (
                 <I.LongDes>
                   {description &&
@@ -71,9 +84,9 @@ const BoothDetailInfo = props => {
                         })}
                       </>
                     ) : (
-                      <>
-                        <span>{description}</span>
-                      </>
+                      <span
+                        dangerouslySetInnerHTML={replace(description)}
+                      ></span>
                     ))}
                 </I.LongDes>
               ) : (
@@ -91,9 +104,9 @@ const BoothDetailInfo = props => {
                         })}
                       </>
                     ) : (
-                      <>
-                        <span>{description}</span>
-                      </>
+                      <span
+                        dangerouslySetInnerHTML={replace(description)}
+                      ></span>
                     ))}
                 </I.ShortDes>
               )}
