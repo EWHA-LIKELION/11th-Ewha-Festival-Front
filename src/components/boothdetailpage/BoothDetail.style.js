@@ -83,13 +83,14 @@ T.Category = styled.span`
   color: var(--red);
   font-family: var(--pre-font);
   font-weight: 600;
+  margin-right: 5px;
 `;
 T.Hashtag = styled.span`
   font-size: 1.1rem;
   color: var(--green2);
   font-family: var(--pre-font);
   font-weight: 400;
-  margin-left: 8px;
+  margin-left: 5px;
 `;
 
 const N = {};
