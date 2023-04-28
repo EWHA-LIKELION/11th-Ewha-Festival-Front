@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { GetBoothMenus } from '../../api/booth';
+// import { GetBoothMenus } from '../../api/booth';
 import EditMenuComponent from './EditMenuComponent';
 import { boothmenu } from '../../api/_mock/boothmock';
 
