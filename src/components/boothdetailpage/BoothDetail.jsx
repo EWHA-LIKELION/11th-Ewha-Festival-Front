@@ -17,7 +17,7 @@ const BoothDetail = () => {
     GetBooth(id)
       .then(res => {
         console.log(res);
-        //setCurrentBooth(res.data.data);
+        setCurrentBooth(res.data.data);
       })
       .catch(err => console.log(err));
     setCurrentBooth(boothdetail.data);

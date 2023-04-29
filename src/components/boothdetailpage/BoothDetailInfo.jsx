@@ -21,6 +21,9 @@ const BoothDetailInfo = props => {
     });
     return { __html: htmlArr.join('') };
   };
+  useEffect(() => {
+    console.log(replace(description));
+  });
   return (
     <COM.Wrapper>
       <I.Container>
@@ -77,36 +80,32 @@ const BoothDetailInfo = props => {
                         {description.split('\n').map(line => {
                           return (
                             <span key={line}>
-                              {line}
+                              <span dangerouslySetInnerHTML={replace(line)} />
                               <br />
                             </span>
                           );
                         })}
                       </>
                     ) : (
-                      <span
-                        dangerouslySetInnerHTML={replace(description)}
-                      ></span>
+                      <span dangerouslySetInnerHTML={replace(description)} />
                     ))}
                 </I.LongDes>
               ) : (
-                <I.ShortDes>
+                <I.ShortDes onClick={() => setIsOpen(true)}>
                   {description &&
                     (description.includes('\n') ? (
                       <>
                         {description.split('\n').map(line => {
                           return (
                             <span key={line}>
-                              {line}
+                              <span dangerouslySetInnerHTML={replace(line)} />
                               <br />
                             </span>
                           );
                         })}
                       </>
                     ) : (
-                      <span
-                        dangerouslySetInnerHTML={replace(description)}
-                      ></span>
+                      <span dangerouslySetInnerHTML={replace(description)} />
                     ))}
                 </I.ShortDes>
               )}
