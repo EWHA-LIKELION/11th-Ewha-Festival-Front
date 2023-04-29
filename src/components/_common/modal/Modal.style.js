@@ -27,13 +27,12 @@ export const Container = styled.div`
   z-index: 100;
   display: flex;
   justify-content: center;
+  align-items: center;
   font-family: var(--pre-font);
 `;
 export const ModalWrapper = styled.div`
   width: 80%;
   height: 213px;
-  position: absolute;
-  top: 30%;
   animation: modal-show 0.3s;
   @keyframes modal-show {
     from {

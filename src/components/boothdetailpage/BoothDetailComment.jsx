@@ -5,7 +5,8 @@ import PartTitle from './PartTitle';
 import Modal from '../_common/modal/Modal';
 import { FaTrashAlt } from 'react-icons/fa';
 import { HiPencil } from 'react-icons/hi';
-import { GetBooth } from '../../api/booth';
+import { GetBooth, SubmitComment, DeleteCommentA } from '../../api/booth';
+import { boothdetail } from '../../api/_mock/boothmock';
 
 const BoothDetailComment = () => {
   const { id } = useParams();
@@ -48,10 +49,12 @@ const BoothDetailComment = () => {
     GetBooth(id)
       .then(res => {
         console.log(res);
-        setThisBoothUserId(res.data.data.user);
-        setThisComments(res.data.data.comments);
+        //setThisBoothUserId(res.data.data.user);
+        //setThisComments(res.data.data.comments);
       })
       .catch();
+    setThisBoothUserId(boothdetail.data.user);
+    setThisComments(boothdetail.data.comments);
   };
   useEffect(() => {
     getComments();
@@ -74,31 +77,29 @@ const BoothDetailComment = () => {
   };
 
   const DeleteComment = cId => {
-    // DeleteCommentA(id, cId)
-    //   .then(res => {
-    //     getComments();
-    //   })
-    //   .catch();
-    closeDeleteModal();
+    DeleteCommentA(id, cId)
+      .then(res => {
+        console.log(res.data);
+        getComments();
+        closeDeleteModal();
+      })
+      .catch();
+    console.log(cId, '댓글 삭제');
   };
 
   const [newComment, setNewComment] = useState('');
   const [inputModal, setInputModal] = useState(false);
-  const openInputModal = () => {
-    setInputModal(true);
-  };
-  const closeInputModal = () => {
-    setInputModal(false);
-  };
+  const openInputModal = () => setInputModal(true);
+  const closeInputModal = () => setInputModal(false);
 
   const OnSubmit = e => {
     e.preventDefault();
     console.log(newComment, '제출');
-    // SubmitComment(id, newComment)
-    //   .then(res => {
-    //     getComments();
-    //   })
-    //   .catch();
+    SubmitComment(id, newComment)
+      .then(res => {
+        getComments();
+      })
+      .catch();
     setIsAdd(true);
     setNewComment('');
   };
@@ -193,7 +194,14 @@ const BoothDetailComment = () => {
         </C.CommentInputWrapper>
       </COM.Wrapper>
       {deleteModal ? (
-        <Modal title='댓글 삭제' subTitle='어쩌구' contents='저쩌구' />
+        <Modal
+          title='댓글 삭제'
+          subTitle='삭제한 댓글은 다시 불러올 수 없습니다.'
+          contents='해당 댓글을 삭제하시겠습니까?'
+          open={deleteModal}
+          close={closeDeleteModal}
+          onClick={() => DeleteComment(currentCommentId)}
+        />
       ) : null}
     </>
   );
