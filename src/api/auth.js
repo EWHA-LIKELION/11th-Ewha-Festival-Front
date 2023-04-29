@@ -1,7 +1,10 @@
 // 회원 및 인증과 관련된 api
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { http } from './http';
+import { persistor } from '../index';
 
+export const baseURL = 'http://3.37.131.250';
 // 회원가입 (POST)
 export const RequestSignin = async (id, pw, nickname) => {
   const userData = {
@@ -10,7 +13,7 @@ export const RequestSignin = async (id, pw, nickname) => {
     nickname: nickname,
   };
   try {
-    const response = await http.post(`/account/signup/`, userData);
+    const response = await axios.post(`${baseURL}/accounts/signup/`, userData);
     return Promise.resolve(response);
   } catch (error) {
     return Promise.reject(error);
@@ -23,14 +26,9 @@ export const RequestLogin = async (id, pw) => {
     username: id,
     password: pw,
   };
-
   try {
-    const response = await http.post(`/account/login/`, userData);
-
+    const response = await axios.post(`${baseURL}/accounts/login/`, userData);
     localStorage.setItem('token', response.data.data.access_token);
-
-    window.location.replace('/');
-
     return Promise.resolve(response);
   } catch (error) {
     return Promise.reject(error);
@@ -39,6 +37,7 @@ export const RequestLogin = async (id, pw) => {
 
 // 로그아웃
 export const RequestLogout = async () => {
+  persistor.purge();
   window.localStorage.removeItem('token');
   window.location.replace('/');
 };
@@ -46,7 +45,7 @@ export const RequestLogout = async () => {
 // 프로필 조회
 export const RequestProfile = async () => {
   try {
-    const response = await http.get(`/accounts/`);
+    const response = await http.get('/accounts/');
     return Promise.resolve(response);
   } catch (error) {
     return Promise.reject(error);

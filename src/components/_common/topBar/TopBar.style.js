@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  background-color: #fff9f1;
 
   border-style: none none solid none;
   border-bottom: solid 1px var(--gray2);

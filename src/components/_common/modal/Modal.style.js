@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
 export const Background = styled.div`
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
+  top: 0;
+  z-index: 100;
 
   background-color: rgba(0, 0, 0, 0.5);
   animation: modal-bg-show 0.3s;
@@ -17,10 +19,12 @@ export const Background = styled.div`
   }
 `;
 export const Container = styled.div`
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
+  top: 0;
 
+  z-index: 100;
   display: flex;
   justify-content: center;
   font-family: var(--pre-font);

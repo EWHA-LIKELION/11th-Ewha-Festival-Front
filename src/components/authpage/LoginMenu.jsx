@@ -1,43 +1,60 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+// api
+import { RequestLogin, RequestProfile } from '../../api/auth';
+// redux
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { setUser, setUserTask } from '../../redux/userSlice';
 // style.js & fonts
 import * as S from './LoginReigster.style';
 import { BiUser, BiLockOpen } from 'react-icons/bi';
 // components
-import TopBar from '../_common/topBar/TopBar';
+import TopBar from '../_common/topbar/TopBar';
 
 const LoginMenu = () => {
   const navigate = useNavigate();
-  // input 상태 관리
-  const [id, setID] = useState('');
-  const [password, setPW] = useState('');
+  // redux
+  const dispatch = useAppDispatch();
+  const { ID, PW, isBooth } = useAppSelector(state => state.user);
 
-  // 필수 필드 확인 함수
-  const checkInput = () => {
-    var isSame;
-    id != '' && password != '' ? (isSame = true) : (isSame = false);
-    return isSame;
-  };
+  // input 상태 관리
+  const [id, setID] = useState(ID);
+  const [password, setPW] = useState(PW);
+
   // Submit
   const onSubmitAccount = e => {
     e.preventDefault();
-    try {
-      axios
-        .post('http://3.37.131.250/accounts/login/', {
-          username: id,
-          password: password,
-        })
-        .then(res => {
-          if (res.data.message == '로그인 성공') {
-            console.log(res);
-            window.localStorage.setItem('token', res.data.data.access_token);
-          }
+    RequestLogin(id, password)
+      .then(res => {
+        //아이디 비밀번호 닉네임 저장
+        dispatch(
+          setUser({
+            ID: id,
+            PW: password,
+            nickname: res.data.data.nickname,
+          }),
+        );
+      })
+      .then(() => {
+        // 계정 정보 가져오기
+        RequestProfile().then(response => {
+          dispatch(
+            setUserTask({
+              isBooth: response.data.data.is_t,
+              isTF: response.data.data.is_tf,
+            }),
+          );
         });
-    } catch (error) {
-      console.log(error);
-    }
+      })
+      .then(() => {
+        window.location.reload();
+        window.location.replace('/');
+      })
+      .catch(error => {
+        alert('아이디와 비밀번호를 확인해주세요.');
+      });
   };
+
   return (
     <>
       <S.Container>
@@ -48,6 +65,7 @@ const LoginMenu = () => {
             <BiUser />
             <S.Input
               placeholder='아이디'
+              defaultValue={ID}
               onChange={e => setID(e.target.value)}
             />
           </S.InputWrapper>
@@ -56,11 +74,14 @@ const LoginMenu = () => {
             <S.Input
               type='password'
               placeholder='비밀번호'
+              defaultValue={PW}
               onChange={e => setPW(e.target.value)}
             />
           </S.InputWrapper>
           <S.Button type='submit'>로그인</S.Button>
-          <S.GoRegister href='/auth/register'>회원가입</S.GoRegister>
+          <S.GoRegister>
+            <a href='/auth/register'>회원가입</a>
+          </S.GoRegister>
         </S.InputForm>
       </S.Container>
     </>
