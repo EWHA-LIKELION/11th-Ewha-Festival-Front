@@ -17,14 +17,16 @@ const MyMenu = () => {
   // useEffect(() => {}, []);
   const navigate = useNavigate();
   // 유저 정보 redux
-  // const { ID, nickname, isBooth, isTF } = useAppSelector(state => state.user);
+  const { ID, nickname, isBooth, isTF, booth_id, booth_name } = useAppSelector(
+    state => state.user,
+  );
   // test 값
-  const ID = 'likelion11';
-  const nickname = '멋쟁이사자';
-  const isTF = false;
-  const isBooth = true;
-  const booth_id = 1;
-  const booth_name = '멋쟁이사자';
+  // const ID = 'likelion11';
+  // const nickname = '멋쟁이사자';
+  // const isTF = false;
+  // const isBooth = true;
+  // const booth_id = 1;
+  // const booth_name = '멋쟁이사자';
 
   return (
     <>

@@ -5,12 +5,13 @@ import { RequestLogin, RequestProfile } from '../../api/auth';
 // redux
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { setUser, setUserTask } from '../../redux/userSlice';
-import { setBooth_id } from '../../redux/boothSlice';
+import { setBooth_id, setBooth_name } from '../../redux/boothSlice';
 // style.js & fonts
 import * as S from './LoginReigster.style';
 import { BiUser, BiLockOpen } from 'react-icons/bi';
 // components
 import TopBar from '../_common/topbar/TopBar';
+import { GetBooth } from '../../api/booth';
 
 const LoginMenu = () => {
   const navigate = useNavigate();
@@ -45,13 +46,20 @@ const LoginMenu = () => {
               isTF: response.data.data.is_tf,
             }),
           );
-          // 부스 유저인경우 부스 아이디 저장
+          // 부스 유저인경우 부스 아이디 & 부스 이름 저장
           if (response.data.data.is_booth) {
             dispatch(
               setBooth_id({
                 booth_id: response.data.data.booth_id,
               }),
             );
+            GetBooth(response.data.data.booth_id).then(response => {
+              dispatch(
+                setBooth_name({
+                  booth_name: response.data.data.name,
+                }),
+              );
+            });
           }
         });
       })

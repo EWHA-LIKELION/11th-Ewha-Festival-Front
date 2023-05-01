@@ -13,9 +13,10 @@ import TopBar from '../_common/topbar/TopBar';
 import Modal from '../_common/modal/Modal';
 //api
 import { RequestSignin, RequestProfile, RequestLogin } from '../../api/auth';
+import { GetBooth } from '../../api/booth';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { setUser, setUserTask } from '../../redux/userSlice';
-import { setBooth_id } from '../../redux/boothSlice';
+import { setBooth_id, setBooth_name } from '../../redux/boothSlice';
 
 const RegisterMenu = () => {
   // input 상태 관리
@@ -106,6 +107,13 @@ const RegisterMenu = () => {
                   booth_id: response.data.data.booth_id,
                 }),
               );
+              GetBooth(response.data.data.booth_id).then(response => {
+                dispatch(
+                  setBooth_name({
+                    booth_name: response.data.data.name,
+                  }),
+                );
+              });
             }
           });
         })
