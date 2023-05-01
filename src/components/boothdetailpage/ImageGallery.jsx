@@ -23,6 +23,7 @@ const ImageGallery = props => {
       window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
     };
   }, []);
+
   useEffect(() => {
     if (array.length === 0) {
       setIsWhere({ left: false, right: false });
@@ -36,6 +37,7 @@ const ImageGallery = props => {
       }
     }
   }, [currentIndex]);
+
   return (
     <Container>
       <Background onClick={() => close()} />

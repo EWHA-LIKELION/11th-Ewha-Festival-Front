@@ -15,9 +15,7 @@ const Makers = () => {
       <TopBar title='만든이들' />
       <COM.Container>
         <COM.Title>
-          <object type='image/svg+xml' data={titlebackground}>
-            <COM.TitleImg src={titlebackground} />
-          </object>
+          <COM.TitleImg src={titlebackground} />
           <div className='text'>
             이화여대 멋쟁이사자처럼 &nbsp;&nbsp; × &nbsp;&nbsp;대동제 TF
           </div>

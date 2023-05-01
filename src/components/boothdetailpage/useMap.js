@@ -16,5 +16,7 @@ export const useMap = college => {
   else if (college === '포스코관') return posco;
   else if (college === '신세계관') return shinsegae;
   else if (college === '학문관') return studentunion;
-  else console.log('올바르지 않은 구역 정보');
+  else {
+    // console.log('올바르지 않은 구역 정보');
+  }
 };
