@@ -151,7 +151,7 @@ export const makerslist = {
     },
     {
       team: '아카이빙 팀',
-      description: '아카이빙',
+      description: '대동제 프로그램 사진 및 영상 아카이빙',
       lead: { name: '아카이빙', major: '화학신소재 20' },
       member: [
         { name: '이누구', major: '국제사무 23' },
