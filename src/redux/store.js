@@ -8,12 +8,12 @@ import { persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
 import userReducer from './userSlice';
 import boothReducer from './boothSlice';
-import mypageReducer from './mypageSlice';
+import mypageReducer from './pageSlice';
 
 const reducers = combineReducers({
   user: userReducer,
   booth: boothReducer,
-  mypage: mypageReducer,
+  page: mypageReducer,
 });
 
 const persistConfig = {
