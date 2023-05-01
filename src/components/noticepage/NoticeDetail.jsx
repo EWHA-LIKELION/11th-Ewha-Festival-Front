@@ -11,7 +11,7 @@ const NoticeDetail = () => {
   const { id } = useParams();
   const nav = useNavigate();
   const textarea = useRef();
-  const [isTF, setIsTF] = useState(true);
+  const [isTF, setIsTF] = useState(false);
   const [notice, setNotice] = useState({});
   const getNotice = () => {
     GetNotice(id)
@@ -35,10 +35,9 @@ const NoticeDetail = () => {
   useEffect(() => {
     RequestProfile()
       .then(res => {
-        //setIsTF(res.data.data.is_tf);
+        setIsTF(res.data.data.is_tf);
       })
       .catch(err => console.log(err));
-    console.log('is tf? ', isTF);
     getNotice();
   }, []);
 

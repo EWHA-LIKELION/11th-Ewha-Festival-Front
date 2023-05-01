@@ -5,20 +5,21 @@ import PartTitle from './PartTitle';
 import Modal from '../_common/modal/Modal';
 import { FaTrashAlt } from 'react-icons/fa';
 import { HiPencil } from 'react-icons/hi';
-import { GetBooth, SubmitComment, DeleteCommentA } from '../../api/booth';
+import { RequestProfile } from '../../api/auth';
+import { GetBooth, SubmitComment, DeleteComment } from '../../api/booth';
 import { boothdetail } from '../../api/_mock/boothmock';
 
 const BoothDetailComment = () => {
   const { id } = useParams();
-  const [isLogin, setIsLogin] = useState(true);
-  // const token = localStorage.getItem("token");
+  const [isLogin, setIsLogin] = useState(false);
+  const token = localStorage.getItem('token');
   useEffect(() => {
-    // if (token === null) {
-    //   setIsLogin(false);
-    // }
-    // if (token !== null) {
-    //   setIsLogin(true);
-    // }
+    if (token === null) {
+      setIsLogin(false);
+    }
+    if (token !== null) {
+      setIsLogin(true);
+    }
   }, []);
   useEffect(() => {
     if (isLogin === true) {
@@ -29,55 +30,43 @@ const BoothDetailComment = () => {
     }
   }, [isLogin]);
 
-  const [deleteModal, setDeleteModal] = useState(false);
-  const openDeleteModal = () => {
-    setDeleteModal(true);
-  };
-  const closeDeleteModal = () => {
-    setDeleteModal(false);
-  };
-  const [currentCommentId, setCurrentCommentId] = useState('');
-  const PreDeleteComment = cId => {
-    openDeleteModal();
-    setCurrentCommentId(cId);
-  };
-
-  const [thisUser, setThisUser] = useState({ id: 2 });
-  const [thisBoothUserId, setThisBoothUserId] = useState();
+  const [thisUser, setThisUser] = useState(0);
+  const [thisBoothUserId, setThisBoothUserId] = useState(0);
   const [thisComments, setThisComments] = useState([]);
   const getComments = () => {
     GetBooth(id)
       .then(res => {
         console.log(res);
-        //setThisBoothUserId(res.data.data.user);
-        //setThisComments(res.data.data.comments);
+        setThisBoothUserId(res.data.data.user);
+        setThisComments(res.data.data.comments);
       })
       .catch();
-    setThisBoothUserId(boothdetail.data.user);
-    setThisComments(boothdetail.data.comments);
   };
   useEffect(() => {
     getComments();
-    // http
-    //   .get('/accounts/')
-    //   .then(res => {
-    //     setThisUser(res.data.data);
-    //   })
-    //   .catch();
-    setDeleteModal(false);
-    setInputModal(false);
+    RequestProfile()
+      .then(res => setThisUser(res.data.data.id))
+      .catch(err => console.log(err));
   }, []);
-
   const IsBoothUser = cUserId => {
-    if (thisUser.id === cUserId) {
+    if (thisBoothUserId === cUserId) {
       return true;
     } else {
       return false;
     }
   };
 
-  const DeleteComment = cId => {
-    DeleteCommentA(id, cId)
+  const [deleteModal, setDeleteModal] = useState(false);
+  const openDeleteModal = () => setDeleteModal(true);
+  const closeDeleteModal = () => setDeleteModal(false);
+
+  const [currentCommentId, setCurrentCommentId] = useState('');
+  const PreDeleteComment = cId => {
+    openDeleteModal();
+    setCurrentCommentId(cId);
+  };
+  const OnDelete = cId => {
+    DeleteComment(id, cId)
       .then(res => {
         console.log(res.data);
         getComments();
@@ -88,20 +77,16 @@ const BoothDetailComment = () => {
   };
 
   const [newComment, setNewComment] = useState('');
-  const [inputModal, setInputModal] = useState(false);
-  const openInputModal = () => setInputModal(true);
-  const closeInputModal = () => setInputModal(false);
-
   const OnSubmit = e => {
     e.preventDefault();
     console.log(newComment, '제출');
     SubmitComment(id, newComment)
       .then(res => {
         getComments();
+        setNewComment('');
+        setIsAdd(true);
       })
-      .catch();
-    setIsAdd(true);
-    setNewComment('');
+      .catch(err => console.log(err));
   };
 
   const endRef = useRef(null);
@@ -117,6 +102,7 @@ const BoothDetailComment = () => {
       setIsAdd(false);
     }
   }, [thisComments]);
+
   return (
     <>
       <COM.Wrapper>
@@ -200,7 +186,7 @@ const BoothDetailComment = () => {
           contents='해당 댓글을 삭제하시겠습니까?'
           open={deleteModal}
           close={closeDeleteModal}
-          onClick={() => DeleteComment(currentCommentId)}
+          onClick={() => OnDelete(currentCommentId)}
         />
       ) : null}
     </>

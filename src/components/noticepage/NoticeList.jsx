@@ -15,7 +15,6 @@ const NoticeList = () => {
     RequestProfile()
       .then(res => {
         setIsTF(res.data.data.is_tf);
-        console.log('is tf? ', isTF);
       })
       .catch(err => console.log(err));
     GetAllNotice()

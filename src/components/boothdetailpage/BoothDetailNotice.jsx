@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from 'react';
-
+import { useParams } from 'react-router-dom';
+import { GetBooth } from '../../api/booth';
 import { COM, N } from './BoothDetail.style';
 import { AiOutlineNotification } from 'react-icons/ai';
 
-const BoothDetailNotice = props => {
-  const [notice, setNotice] = useState({
-    text: '아직 공지사항이 없습니다.',
-    updated_at: '',
-  });
+const BoothDetailNotice = () => {
+  const { id } = useParams();
+  const [notice, setNotice] = useState([]);
   useEffect(() => {
-    if (props.notice) {
-      setNotice({
-        text: props.notice.text,
-        updated_at: props.notice.updated_at,
-      });
-    }
-  }, [props]);
+    GetBooth(id)
+      .then(res => setNotice(res.data.data.notices[0]))
+      .catch(err => console.log(err));
+  }, []);
   return (
     <COM.Wrapper>
       <N.Container>
@@ -23,8 +19,12 @@ const BoothDetailNotice = props => {
           <AiOutlineNotification fill='var(--green1)' size='25' />
           <N.TextContainer>
             <N.Title>실시간 공지사항</N.Title>
-            <N.Text>{notice.text}</N.Text>
-            <N.Time>update {notice.updated_at}</N.Time>
+            {notice && (
+              <>
+                <N.Text>{notice.content}</N.Text>
+                <N.Time>update {notice.updated_at}</N.Time>
+              </>
+            )}
           </N.TextContainer>
         </N.Box>
       </N.Container>

@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { COM, T } from './BoothDetail.style';
 import useBookmark from '../_common/useBookmark';
 import ImageGallery from './ImageGallery';
+import SideBar from '../_common/sidebar/SideBar';
 
 import { HiMenu } from 'react-icons/hi';
 import circle from '../../assets/images/boothdetailpage/circle.svg';
@@ -23,10 +24,15 @@ const BoothDetailTitle = props => {
     });
   }, [state]);
   const [imgModal, setImgModal] = useState(false);
+  const [sideBar, setSideBar] = useState(false);
   return (
     <>
       <COM.Wrapper>
-        <T.CircleRect>
+        <T.CircleRect
+          onClick={() => {
+            setSideBar(true);
+          }}
+        >
           <img src={circle} className='circle' />
           <HiMenu size='30' fill='var(--green1)' />
         </T.CircleRect>
@@ -42,11 +48,12 @@ const BoothDetailTitle = props => {
               <T.HeartImg src={is_liked ? fillheart : strokeheart} />
             </T.HeartDiv>
           </T.TitleContainer>
-          {/* {category &&
-            category.map(item => {
-              return <T.Category key={item}>{item}</T.Category>;
-            })} */}
-          <T.Category>{category}</T.Category>
+          <T.CategoryWrapper>
+            {category &&
+              category.map(item => {
+                return <T.Category key={item}>{item}</T.Category>;
+              })}
+          </T.CategoryWrapper>
           <T.Hashtag>{hashtag}</T.Hashtag>
         </T.Container>
       </COM.Wrapper>
@@ -62,6 +69,7 @@ const BoothDetailTitle = props => {
           isOne={true}
         />
       ) : null}
+      {sideBar ? <SideBar setSideBar={setSideBar} /> : null}
     </>
   );
 };

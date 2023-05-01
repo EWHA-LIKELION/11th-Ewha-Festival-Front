@@ -78,7 +78,11 @@ T.Click = styled.div`
   left: 0;
   z-index: 10;
 `;
-T.Category = styled.span`
+T.CategoryWrapper = styled.div`
+  display: flex;
+  height: 27px;
+`;
+T.Category = styled.div`
   font-size: 1.1rem;
   color: var(--red);
   font-family: var(--pre-font);
@@ -86,11 +90,10 @@ T.Category = styled.span`
   margin-right: 5px;
 `;
 T.Hashtag = styled.span`
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--green2);
   font-family: var(--pre-font);
   font-weight: 400;
-  margin-left: 5px;
 `;
 
 const N = {};
