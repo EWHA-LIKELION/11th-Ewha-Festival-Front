@@ -34,7 +34,7 @@ COM.GreenBtn = styled.button`
 const L = {};
 L.NoticeWrapper = styled.div`
   width: 100%;
-  min-height: calc(100vh - 262px);
+  min-height: calc(100vh - 265px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,7 +91,7 @@ L.Bottom = styled.div`
 const D = {};
 D.Container = styled.div`
   width: 88%;
-  min-height: calc(100vh - 240px);
+  min-height: calc(100vh - 250px);
   margin: 0 auto;
   margin-top: 30px;
   display: flex;

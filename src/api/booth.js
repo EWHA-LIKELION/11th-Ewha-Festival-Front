@@ -117,7 +117,7 @@ export const SubmitComment = async (boothId, newComment) => {
   }
 };
 
-export const DeleteCommentA = async (boothId, cId) => {
+export const DeleteComment = async (boothId, cId) => {
   try {
     const response = await BoothService.deleteComment(boothId, cId);
     return Promise.resolve(response);

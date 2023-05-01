@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import PartTitle from './PartTitle';
+import ImageGallery from './ImageGallery';
+import { useMap } from './useMap';
+
 import { COM, I } from './BoothDetail.style';
 import titlestar from '../../assets/images/boothdetailpage/titlestar.svg';
-import PartTitle from './PartTitle';
-import { useMap } from './useMap';
 import { FiMap } from 'react-icons/fi';
 
 const BoothDetailInfo = props => {
-  const { college, number, description } = props;
+  const { college, number, description, times } = props;
   const mapSrc = useMap(college);
   const [isOpen, setIsOpen] = useState(false);
+  const [mapModal, setMapModal] = useState(false);
   const urlRegex = /(https?:\/\/[^\s]+)/g;
   const replace = content => {
     const convertContent = content.replace(urlRegex, function (url) {
@@ -16,7 +19,7 @@ const BoothDetailInfo = props => {
     });
     const htmlArr = [];
     convertContent.split('\n').forEach(function (text) {
-      const textHtml = '<p>' + text + '</p>';
+      const textHtml = '<span>' + text + '</span>';
       htmlArr.push(textHtml);
     });
     return { __html: htmlArr.join('') };
@@ -43,7 +46,9 @@ const BoothDetailInfo = props => {
             <I.Text
               style={{ marginBottom: '15px' }}
             >{`${college} ${number}`}</I.Text>
-            {isOpen ? <I.Map src={mapSrc} /> : null}
+            {isOpen ? (
+              <I.Map src={mapSrc} onClick={() => setMapModal(true)} />
+            ) : null}
           </div>
         </I.Indent>
         <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -52,8 +57,17 @@ const BoothDetailInfo = props => {
         </div>
         <I.Indent>
           <div className='inner'>
-            <I.Text>10일 수요일 - AM 10:00 ~ PM 5:00</I.Text>
-            <I.Text>11일 목요일 - AM 10:00 ~ PM 5:00</I.Text>
+            {times &&
+              times.map((item, idx) => {
+                if (item.time === '') return;
+                else
+                  return (
+                    <I.Text key={item.id}>
+                      {idx === 0 ? '수요일' : idx === 1 ? '목요일' : '금요일'}
+                      &nbsp;-&nbsp;{item.time}
+                    </I.Text>
+                  );
+              })}
           </div>
         </I.Indent>
         <div
@@ -74,9 +88,9 @@ const BoothDetailInfo = props => {
                   {description &&
                     (description.includes('\n') ? (
                       <>
-                        {description.split('\n').map(line => {
+                        {description.split('\n').map((line, idx) => {
                           return (
-                            <span key={line}>
+                            <span key={idx}>
                               <span dangerouslySetInnerHTML={replace(line)} />
                               <br />
                             </span>
@@ -92,9 +106,9 @@ const BoothDetailInfo = props => {
                   {description &&
                     (description.includes('\n') ? (
                       <>
-                        {description.split('\n').map(line => {
+                        {description.split('\n').map((line, idx) => {
                           return (
-                            <span key={line}>
+                            <span key={idx}>
                               <span dangerouslySetInnerHTML={replace(line)} />
                               <br />
                             </span>
@@ -110,6 +124,14 @@ const BoothDetailInfo = props => {
           </div>
         </I.Indent>
       </I.Container>
+      {mapModal ? (
+        <ImageGallery
+          array={[{ index: 0, src: mapSrc }]}
+          index={0}
+          close={() => setMapModal(false)}
+          isOne={true}
+        />
+      ) : null}
     </COM.Wrapper>
   );
 };

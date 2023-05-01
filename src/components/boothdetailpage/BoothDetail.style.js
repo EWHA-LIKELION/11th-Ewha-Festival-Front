@@ -32,9 +32,7 @@ T.CircleRect = styled.div`
 `;
 T.ImgDiv = styled.div`
   width: 100%;
-  height: 30vh;
   overflow: hidden;
-  background-color: gray;
 `;
 T.Img = styled.img`
   width: 100%;
@@ -78,7 +76,11 @@ T.Click = styled.div`
   left: 0;
   z-index: 10;
 `;
-T.Category = styled.span`
+T.CategoryWrapper = styled.div`
+  display: flex;
+  height: 27px;
+`;
+T.Category = styled.div`
   font-size: 1.1rem;
   color: var(--red);
   font-family: var(--pre-font);
@@ -86,11 +88,10 @@ T.Category = styled.span`
   margin-right: 5px;
 `;
 T.Hashtag = styled.span`
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--green2);
   font-family: var(--pre-font);
   font-weight: 400;
-  margin-left: 5px;
 `;
 
 const N = {};
@@ -322,7 +323,7 @@ C.CommentInputWrapper = styled.div`
   justify-content: center;
   align-items: center;
   background-color: var(--beige);
-  border-top: 1px solid var(--gray3);
+  box-shadow: 0px -2px 6px rgba(165, 165, 165, 0.2);
   z-index: 90;
 `;
 C.CommentInputContainer = styled.div`

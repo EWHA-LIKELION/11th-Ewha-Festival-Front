@@ -14,13 +14,11 @@ const NoticeWrite = () => {
   const handleTitle = e => setNewTitle(e.target.value);
   const handleContent = e => setNewContent(e.target.value);
   const OnSubmit = () => {
-    console.log(newTitle, newContent, '작성');
     SubmitNotice(newTitle, newContent)
       .then(res => {
-        console.log(res.data);
         nav(`/notice/${res.data.data.id}`);
       })
-      .catch(err => console.log(err));
+      .catch();
   };
   const [cancelModal, setCancelModal] = useState(false);
   return (

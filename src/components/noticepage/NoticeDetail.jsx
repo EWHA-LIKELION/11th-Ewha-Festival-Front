@@ -11,44 +11,32 @@ const NoticeDetail = () => {
   const { id } = useParams();
   const nav = useNavigate();
   const textarea = useRef();
-  const [isTF, setIsTF] = useState(true);
+  const [isTF, setIsTF] = useState(false);
   const [notice, setNotice] = useState({});
   const getNotice = () => {
     GetNotice(id)
       .then(res => {
         setNotice(res.data.data);
       })
-      .catch(err => console.log(err));
-    setNotice({
-      id: 1,
-      user: 1,
-      title:
-        '[공지] 제목1입니다~! 제목 232443545553 d어어ㅏㅓ쩌구어어자ㅓ껃굳저아ㅓㅓㅓ',
-      content:
-        'Lorem ipsum dolor sit amet, http://www.instagram.com/likelion_ewha consectetur adipiscing elit. Vestibulum luctus eget lorem vitae placerat. Curabitur ut massa gravida metus lacinia consequat. \n  \n Nunc nisl lorem, pharetra eu quam sed, fringilla maximus arcu. Phasellus aliquam velit vel tempus laoreet. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. \n \n Sed ornare varius congue. Nunc non tortor et justo blandit consequat sed quis libero. \n\n\n\nNam eget sagittis ligula. In fermentum nulla at metus pretium placerat. Curabitur gravida id sapien et pulvinar. Cras eget rhoncus lacus. Vivamus venenatis nisi eu porta convallis. Duis velit tellus, scelerisque viverra enim pharetra, tempus tristique libero. Aliquam lorem erat, tempor sit amet sodales eu, viverra non ante. Cras nisl ligula, pharetra a purus eget, dapibus bibendum ante.\n\nNulla facilisi. Donec consectetur viverra interdum. Fusce dictum dictum commodo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam bibendum quam non risus imperdiet, vel scelerisque dolor dapibus. Aenean eu condimentum purus. Integer dictum tincidunt tortor, ac mattis arcu dapibus nec. Nulla dictum in tortor id interdum. Vestibulum vel justo elementum, lacinia leo ac, pellentesque nibh.',
-      created_at: '2023-08-26 17:53',
-      updated_at: '2023-08-26 19:53',
-    });
+      .catch();
     setNewTitle(notice.title);
     setNewContent(notice.content);
   };
   useEffect(() => {
     RequestProfile()
       .then(res => {
-        //setIsTF(res.data.data.is_tf);
+        setIsTF(res.data.data.is_tf);
       })
-      .catch(err => console.log(err));
-    console.log('is tf? ', isTF);
+      .catch();
     getNotice();
   }, []);
 
   const OnDelete = () => {
     DeleteNotice(id)
       .then(res => {
-        console.log(res.data);
         nav('/notice');
       })
-      .catch(err => console.log(err));
+      .catch();
   };
   const [newTitle, setNewTitle] = useState('');
   const [newContent, setNewContent] = useState('');
@@ -57,11 +45,10 @@ const NoticeDetail = () => {
   const OnPatch = () => {
     PatchNotice(id, newTitle, newContent)
       .then(res => {
-        console.log(res.data);
         setIsEditing(false);
         getNotice();
       })
-      .catch(err => console.log(err));
+      .catch();
   };
   const [deleteModal, setDeleteModal] = useState(false);
   const [isEditing, setIsEditing] = useState(false);

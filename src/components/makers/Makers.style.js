@@ -31,6 +31,8 @@ COM.Title = styled.div`
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--green1);
+    text-align: center;
+    word-break: keep-all;
   }
 `;
 COM.TitleImg = styled.img`
@@ -49,7 +51,7 @@ COM.SubTitle = styled.div`
   }
   .text {
     font-family: var(--pre-font);
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 700;
     color: var(--red);
   }
