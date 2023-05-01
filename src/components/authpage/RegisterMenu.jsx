@@ -15,6 +15,7 @@ import Modal from '../_common/modal/Modal';
 import { RequestSignin, RequestProfile, RequestLogin } from '../../api/auth';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { setUser, setUserTask } from '../../redux/userSlice';
+import { setBooth_id } from '../../redux/boothSlice';
 
 const RegisterMenu = () => {
   // input 상태 관리
@@ -26,7 +27,6 @@ const RegisterMenu = () => {
 
   // redux
   const dispatch = useAppDispatch();
-  const { isBooth, isTF } = useAppSelector(state => state.booth);
 
   // modal 관리
   const contents =
@@ -95,10 +95,18 @@ const RegisterMenu = () => {
           RequestProfile().then(response => {
             dispatch(
               setUserTask({
-                isBooth: response.data.data.is_t,
+                isBooth: response.data.data.is_booth,
                 isTF: response.data.data.is_tf,
               }),
             );
+            // 부스 유저인경우 부스 아이디 저장
+            if (response.data.data.is_booth) {
+              dispatch(
+                setBooth_id({
+                  booth_id: response.data.data.booth_id,
+                }),
+              );
+            }
           });
         })
         .then(() => {
@@ -162,7 +170,7 @@ const RegisterMenu = () => {
           <S.InputWrapper marginTop='15px'>
             <BsFlower2 />
             <S.Input
-              placeholder='닉네임'
+              placeholder='닉네임 (10자 이하)'
               onChange={e => setName(e.target.value)}
             />
           </S.InputWrapper>
