@@ -1,33 +1,14 @@
 import BoothService from './service/boothservice';
+import { http } from './http';
 import { RequestLogout } from './auth';
 
-export const GetSearchBooth = async keyword => {
+export const GetLikes = async (keyword, detail) => {
   try {
-    const response = await BoothService.getSearchBooth(keyword);
+    const response = await http.get(`/accoundts/likes/?${keyword}q=${detail}`);
     return Promise.resolve(response);
   } catch (error) {
-    if (
-      error.response.data.detail ==
-      '이 토큰은 모든 타입의 토큰에 대해 유효하지 않습니다'
-    ) {
-      RequestLogout();
-    }
-    return Promise.reject(error, '부스 검색 실패');
-  }
-};
-
-export const GetKeywordBooth = async (day, college, page) => {
-  try {
-    const response = await BoothService.getKeywordBooth(day, college, page);
-    return Promise.resolve(response);
-  } catch (error) {
-    if (
-      error.response.data.detail ==
-      '이 토큰은 모든 타입의 토큰에 대해 유효하지 않습니다'
-    ) {
-      RequestLogout();
-    }
-    return Promise.reject(error, '키워드 부스 조회 실패');
+    RequestLogout();
+    return Promise.reject(error, '좋아요한 부스 조회 실패');
   }
 };
 
@@ -58,6 +39,36 @@ export const UnLikeBooth = async boothId => {
       RequestLogout();
     }
     return Promise.reject(error, '부스 좋아요 취소 실패');
+  }
+};
+
+export const GetSearchBooth = async keyword => {
+  try {
+    const response = await BoothService.getSearchBooth(keyword);
+    return Promise.resolve(response);
+  } catch (error) {
+    if (
+      error.response.data.detail ==
+      '이 토큰은 모든 타입의 토큰에 대해 유효하지 않습니다'
+    ) {
+      RequestLogout();
+    }
+    return Promise.reject(error, '부스 검색 실패');
+  }
+};
+
+export const GetKeywordBooth = async (day, college, page) => {
+  try {
+    const response = await BoothService.getKeywordBooth(day, college, page);
+    return Promise.resolve(response);
+  } catch (error) {
+    if (
+      error.response.data.detail ==
+      '이 토큰은 모든 타입의 토큰에 대해 유효하지 않습니다'
+    ) {
+      RequestLogout();
+    }
+    return Promise.reject(error, '키워드 부스 조회 실패');
   }
 };
 
@@ -118,21 +129,6 @@ export const DeleteComment = async (boothId, cId) => {
       RequestLogout();
     }
     return Promise.reject(error, '부스 댓글 삭제 실패');
-  }
-};
-
-export const GetLikes = async boothId => {
-  try {
-    const response = await BoothService.getLikes();
-    return Promise.resolve(response);
-  } catch (error) {
-    if (
-      error.response.data.detail ==
-      '이 토큰은 모든 타입의 토큰에 대해 유효하지 않습니다'
-    ) {
-      RequestLogout();
-    }
-    return Promise.reject(error, '좋아요한 부스 조회 실패');
   }
 };
 

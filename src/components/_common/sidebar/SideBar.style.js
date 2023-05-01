@@ -6,17 +6,20 @@ import side from '../../../assets/images/sidebar/side.svg';
 export const BarWrapper = styled.div`
   width: 100%;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   z-index: 9;
   top: 0;
   left: 0;
 `;
 
 export const Bar = styled.div`
-  width: 80%;
+  width: 75%;
   height: 95vh;
-  position: absolute;
 
+  max-width: 310px;
+  min-width: 210px;
+
+  position: absolute;
   display: flex;
   flex-direction: column;
   padding-bottom: 10px;
