@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { COM, I } from './BoothDetail.style';
 import titlestar from '../../assets/images/boothdetailpage/titlestar.svg';
 import PartTitle from './PartTitle';
+import { useMap } from './useMap';
 import { FiMap } from 'react-icons/fi';
 
 const BoothDetailInfo = props => {
   const { college, number, description } = props;
-  // 운영 시간 타입 확정 후 수정 필요
+  const mapSrc = useMap(college);
   const [isOpen, setIsOpen] = useState(false);
-
   const urlRegex = /(https?:\/\/[^\s]+)/g;
   const replace = content => {
     const convertContent = content.replace(urlRegex, function (url) {
@@ -21,9 +21,6 @@ const BoothDetailInfo = props => {
     });
     return { __html: htmlArr.join('') };
   };
-  useEffect(() => {
-    console.log(replace(description));
-  });
   return (
     <COM.Wrapper>
       <I.Container>
@@ -46,7 +43,7 @@ const BoothDetailInfo = props => {
             <I.Text
               style={{ marginBottom: '15px' }}
             >{`${college} ${number}`}</I.Text>
-            {isOpen ? <I.Map src={null} /> : null}
+            {isOpen ? <I.Map src={mapSrc} /> : null}
           </div>
         </I.Indent>
         <div style={{ display: 'flex', alignItems: 'center' }}>

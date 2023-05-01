@@ -12,13 +12,13 @@ const EditMenuComponent = props => {
 
   return (
     <>
-      <C.Wrapper onClick={() => onClick(props.id)}>
-        <div>
+      <C.ComponentWrapper onClick={() => onClick(props.id)}>
+        <C.ContentWrapper>
           <C.Menu>{props.menu}</C.Menu>
-          <C.Price>{props.price}</C.Price>
-        </div>
+          <C.Price>{props.price}원</C.Price>
+        </C.ContentWrapper>
         <MdOutlineArrowForwardIos className='arrowIcons' />
-      </C.Wrapper>
+      </C.ComponentWrapper>
     </>
   );
 };

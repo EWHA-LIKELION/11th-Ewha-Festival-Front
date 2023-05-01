@@ -1,5 +1,11 @@
+import EditBooth from '../../components/editboothpage/EditBooth';
+
 const EditBoothPage = () => {
-  return <></>;
+  return (
+    <>
+      <EditBooth />
+    </>
+  );
 };
 
 export default EditBoothPage;

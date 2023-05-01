@@ -192,8 +192,6 @@ I.MapButton = styled.div`
 `;
 I.Map = styled.img`
   width: 99%;
-  height: 250px;
-  border: 1px solid #000;
   margin-bottom: 15px;
 `;
 I.DesContainer = styled.div`
