@@ -17,9 +17,8 @@ const MyMenu = () => {
   // useEffect(() => {}, []);
   const navigate = useNavigate();
   // 유저 정보 redux
-  const { ID, nickname, isBooth, isTF, booth_id, booth_name } = useAppSelector(
-    state => state.user,
-  );
+  const { ID, nickname, isBooth, isTF } = useAppSelector(state => state.user);
+  const { booth_id, booth_name } = useAppSelector(state => state.booth);
   // test 값
   // const ID = 'likelion11';
   // const nickname = '멋쟁이사자';
