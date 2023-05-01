@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // redux
 import { useAppDispatch, useAppSelector } from '../../redux/store';
-import { setFilter, setFilterDetail } from '../../redux/mypageSlice';
 // style.js, component
 import * as S from './MyMenu.style';
 import MyFilterBar from './MyFilterBar';
