@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import Switch from 'react-switch';
+
+// api
 import { boothmenu } from '../../api/_mock/boothmock';
-import { C } from './EditMenu.style';
+
+// component
+import TopBar from '../_common/topBar/TopBar';
+
+// style
+import Switch from 'react-switch';
+import { D } from './EditMenu.style';
 
 const EditMenuDetail = () => {
   const { menuId } = useParams();
@@ -27,41 +34,59 @@ const EditMenuDetail = () => {
       alert('메뉴와 가격을 입력해주세요');
     }
   };
+
+  const onInput = e => {
+    if (e.target.value.length > e.target.maxLength)
+      e.target.value = e.target.value.slice(0, e.target.maxLength);
+  };
   return (
     <>
-      <input
-        type='text'
-        value={menu}
-        maxLength='15'
-        onChange={e => setMenu(e.target.value)}
-      />
-      <input
-        type='text'
-        value={price}
-        pattern='\d*'
-        maxLength='7'
-        onChange={e => setPrice(e.target.value)}
-      />
-      <div>
-        <span>Sold out</span>
-        <Switch
-          onChange={e => setIsSoldout(!isSoldout)}
-          checked={isSoldout}
-          offHandleColor='#ffffff'
-          onHandleColor='#ffffff'
-          uncheckedIcon={false}
-          checkedIcon={false}
-          handleDiameter={24}
-          width={48}
-          height={24}
-        />
-      </div>
-      <C.Button type='cancel' onClick={() => navigate(-1)}>
-        취소
-      </C.Button>
-      <C.Button type='submit' onClick={() => onSubmit()}>
-        완료
-      </C.Button>
+      <D.Wrapper>
+        <TopBar title='메뉴 정보 수정' />
+        <D.ComponentContainer>
+          <D.Title>메뉴 이름</D.Title>
+
+          <D.Input
+            type='text'
+            value={menu}
+            maxLength='15'
+            onChange={e => setMenu(e.target.value)}
+          />
+          <D.Title>가격</D.Title>
+          <D.PriceContainer>
+            <D.Input
+              type='number'
+              width='200px'
+              value={price}
+              maxLength='7'
+              onInput={onInput}
+              onChange={e => setPrice(e.target.value)}
+            />
+            <D.SoldoutContainer>
+              <div style={{ marginRight: '8px' }}>Sold Out</div>
+              <Switch
+                onChange={e => setIsSoldout(!isSoldout)}
+                checked={isSoldout}
+                offHandleColor='#ffffff'
+                onHandleColor='#ffffff'
+                uncheckedIcon={false}
+                checkedIcon={false}
+                handleDiameter={24}
+                width={40}
+                height={24}
+              />
+            </D.SoldoutContainer>
+          </D.PriceContainer>
+          <D.ButtonWrapper>
+            <D.Button type='cancel' onClick={() => navigate(-1)}>
+              취소
+            </D.Button>
+            <D.Button type='submit' onClick={() => onSubmit()}>
+              완료
+            </D.Button>
+          </D.ButtonWrapper>
+        </D.ComponentContainer>
+      </D.Wrapper>
     </>
   );
 };
