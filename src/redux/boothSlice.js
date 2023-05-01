@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { PURGE } from 'redux-persist';
 
-const name = 'UserSlice';
+const name = 'BoothSlice';
 
 const initialState = {
   booth_id: 0,
@@ -14,7 +14,7 @@ export const boothSlice = createSlice({
     initBooth: state => {
       state.booth_id = initialState.booth_id;
     },
-    setBooth: (state, action) => {
+    setBooth_id: (state, action) => {
       state.booth_id = action.payload.booth_id;
     },
   },
@@ -23,6 +23,6 @@ export const boothSlice = createSlice({
   },
 });
 
-export const { setBooth, initBooth } = boothSlice.actions;
+export const { setBooth_id, initBooth } = boothSlice.actions;
 
 export default boothSlice.reducer;
