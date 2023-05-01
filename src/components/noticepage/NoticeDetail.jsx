@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { RequestProfile } from '../../api/auth';
 import { GetNotice, PatchNotice, DeleteNotice } from '../../api/tf';
 import { COM, D } from './Notice.style';
-import TopBar from '../_common/topBar/TopBar';
+import TopBar from '../_common/topbar/TopBar';
 import Footer from '../_common/footer/Footer';
 import Modal from '../_common/modal/Modal';
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { RequestProfile } from '../../api/auth';
 import { GetAllNotice } from '../../api/tf';
-import TopBar from '../_common/topBar/TopBar';
+import TopBar from '../_common/topbar/TopBar';
 import Footer from '../_common/footer/Footer';
 import { COM, L } from './Notice.style';
 

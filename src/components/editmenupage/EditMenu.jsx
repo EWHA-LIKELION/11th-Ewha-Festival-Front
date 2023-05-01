@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { boothmenu } from '../../api/_mock/boothmock';
 
 // component
-import TopBar from '../_common/topBar/TopBar';
+import TopBar from '../_common/topbar/TopBar';
 import EditMenuComponent from './EditMenuComponent';
 
 // style

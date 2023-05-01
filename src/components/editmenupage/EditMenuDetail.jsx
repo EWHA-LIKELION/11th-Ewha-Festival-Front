@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { boothmenu } from '../../api/_mock/boothmock';
 
 // component
-import TopBar from '../_common/topBar/TopBar';
+import TopBar from '../_common/topbar/TopBar';
 
 // style
 import Switch from 'react-switch';

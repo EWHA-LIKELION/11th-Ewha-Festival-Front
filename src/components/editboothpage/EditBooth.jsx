@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { B } from './EditBooth.style';
 import { boothdetail } from '../../api/_mock/boothmock';
-import TopBar from '../_common/topBar/TopBar';
+import TopBar from '../_common/topbar/TopBar';
 import { useNavigate } from 'react-router-dom';
 
 const EditBooth = () => {
