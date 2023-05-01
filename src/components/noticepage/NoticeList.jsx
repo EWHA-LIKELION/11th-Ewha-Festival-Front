@@ -5,6 +5,7 @@ import { GetAllNotice } from '../../api/tf';
 import TopBar from '../_common/topbar/TopBar';
 import Footer from '../_common/footer/Footer';
 import { COM, L } from './Notice.style';
+import { HiOutlinePencilAlt } from 'react-icons/hi';
 
 const NoticeList = () => {
   const nav = useNavigate();
@@ -59,7 +60,12 @@ const NoticeList = () => {
       <COM.Wrapper>
         <TopBar title='공지사항' />
         <L.NoticeWrapper>
-          <div onClick={() => nav('/notice/write')}>작성</div>
+          {isTF ? (
+            <L.WriteBtn onClick={() => nav('/notice/write')}>
+              <HiOutlinePencilAlt stroke='var(--green2)' size='20' />
+              <div>공지 작성하기</div>
+            </L.WriteBtn>
+          ) : null}
           {notices.map(notice => {
             return (
               <L.NoticeContainer
