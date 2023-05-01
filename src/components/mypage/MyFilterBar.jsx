@@ -6,7 +6,7 @@ import {
   setFilterDay,
   setFilterLocation,
   setFilterCategory,
-} from '../../redux/mypageSlice';
+} from '../../redux/pageSlice';
 // style.js
 import * as S from './MyMenu.style';
 // data
@@ -22,7 +22,7 @@ const MyFilterBar = () => {
   // redux
   const dispatch = useAppDispatch();
   const { filter, filter_day, filter_location, filter_category } =
-    useAppSelector(state => state.mypage);
+    useAppSelector(state => state.page);
 
   const saveFilter = option => {
     dispatch(setFilter({ filter: option }));

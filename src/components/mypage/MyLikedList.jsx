@@ -13,7 +13,7 @@ const MyLikedList = () => {
   const [list, setList] = useState([]);
   // page redux
   const { filter, filter_day, filter_location, filter_category } =
-    useAppSelector(state => state.mypage);
+    useAppSelector(state => state.page);
   // 첫 get api
   useEffect(() => {
     switch (filter) {
