@@ -17,70 +17,67 @@ const BoothDetailMenu = props => {
       );
     }
   }, [images]);
-
   const [galleryOpen, setGalleryOpen] = useState(false);
   const close = () => setGalleryOpen(false);
   return (
     <>
       {imgArray && (
-        <>
-          <COM.Wrapper>
-            <M.Container>
-              <PartTitle text='메뉴' />
-              {imgArray.length === 0 ? null : (
-                <M.ImageContainer>
-                  {imgArray.map((img, idx) => {
-                    return (
-                      <M.ImgRect
-                        onClick={() => {
-                          setImgIndex(idx);
-                          setGalleryOpen(true);
-                        }}
-                        key={img.index}
-                      >
-                        <M.Img src={img.src} />
-                      </M.ImgRect>
-                    );
-                  })}
-                </M.ImageContainer>
-              )}
-              {menus &&
-                menus.map(item => {
-                  let money = item.price;
-                  let commaMoney = money
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        <COM.Wrapper>
+          <M.Container>
+            <PartTitle text='메뉴' />
+            {imgArray.length === 0 ? null : (
+              <M.ImageContainer>
+                {imgArray.map((img, idx) => {
                   return (
-                    <M.MenuContainer key={item.id}>
-                      <M.MenuTextWrapper>
-                        <div style={{ width: '72%', wordBreak: 'keep-all' }}>
-                          <M.MenuText
-                            style={{
-                              color: item.is_soldout
-                                ? 'var(--gray2)'
-                                : 'var(--green1)',
-                              fontWeight: '500',
-                            }}
-                          >
-                            {item.menu}
-                          </M.MenuText>
-                        </div>
+                    <M.ImgRect
+                      onClick={() => {
+                        setImgIndex(idx);
+                        setGalleryOpen(true);
+                      }}
+                      key={img.index}
+                    >
+                      <M.Img src={img.src} />
+                    </M.ImgRect>
+                  );
+                })}
+              </M.ImageContainer>
+            )}
+            {menus &&
+              menus.map(item => {
+                let money = item.price;
+                let commaMoney = money
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                return (
+                  <M.MenuContainer key={item.id}>
+                    <M.MenuTextWrapper>
+                      <div style={{ width: '72%', wordBreak: 'keep-all' }}>
                         <M.MenuText
                           style={{
                             color: item.is_soldout
-                              ? 'var(--red)'
+                              ? 'var(--gray2)'
                               : 'var(--green1)',
-                            fontWeight: item.is_soldout ? '500' : '300',
+                            fontWeight: '500',
                           }}
                         >
-                          {item.is_soldout ? 'sold out' : `${commaMoney}원`}
+                          {item.menu}
                         </M.MenuText>
-                      </M.MenuTextWrapper>
-                    </M.MenuContainer>
-                  );
-                })}
-            </M.Container>
-          </COM.Wrapper>
+                      </div>
+                      <M.MenuText
+                        style={{
+                          color: item.is_soldout
+                            ? 'var(--red)'
+                            : 'var(--green1)',
+                          fontWeight: item.is_soldout ? '500' : '300',
+                        }}
+                      >
+                        {item.is_soldout ? 'sold out' : `${commaMoney}원`}
+                      </M.MenuText>
+                    </M.MenuTextWrapper>
+                  </M.MenuContainer>
+                );
+              })}
+          </M.Container>
           {galleryOpen ? (
             <ImageGallery
               array={imgArray}
@@ -89,7 +86,7 @@ const BoothDetailMenu = props => {
               isOne={imgArray.length === 1}
             />
           ) : null}
-        </>
+        </COM.Wrapper>
       )}
     </>
   );

@@ -10,7 +10,7 @@ const BoothDetailNotice = () => {
   useEffect(() => {
     GetBooth(id)
       .then(res => setNotice(res.data.data.notices[0]))
-      .catch(err => console.log(err));
+      .catch();
   }, []);
   return (
     <COM.Wrapper>
@@ -21,7 +21,25 @@ const BoothDetailNotice = () => {
             <N.Title>실시간 공지사항</N.Title>
             {notice && (
               <>
-                <N.Text>{notice.content}</N.Text>
+                <N.Text>
+                  {notice.content &&
+                    (notice.content.includes('\n') ? (
+                      <>
+                        {notice.content.split('\n').map((line, idx) => {
+                          return (
+                            <span key={idx}>
+                              {line}
+                              <br />
+                            </span>
+                          );
+                        })}
+                      </>
+                    ) : (
+                      <>
+                        <span>{notice.content}</span>
+                      </>
+                    ))}
+                </N.Text>
                 <N.Time>update {notice.updated_at}</N.Time>
               </>
             )}

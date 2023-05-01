@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { COM, T } from './BoothDetail.style';
 import useBookmark from '../_common/useBookmark';
 import ImageGallery from './ImageGallery';
 import SideBar from '../_common/sidebar/SideBar';
 
 import { HiMenu } from 'react-icons/hi';
+import { COM, T } from './BoothDetail.style';
 import circle from '../../assets/images/boothdetailpage/circle.svg';
 import defaultthumbnail from '../../assets/images/boothdetailpage/defaultthumbnail.svg';
 import strokeheart from '../../assets/images/strokeheart.svg';
@@ -26,37 +26,35 @@ const BoothDetailTitle = props => {
   const [imgModal, setImgModal] = useState(false);
   const [sideBar, setSideBar] = useState(false);
   return (
-    <>
-      <COM.Wrapper>
-        <T.CircleRect
-          onClick={() => {
-            setSideBar(true);
-          }}
-        >
-          <img src={circle} className='circle' />
-          <HiMenu size='30' fill='var(--green1)' />
-        </T.CircleRect>
-        <T.ImgDiv onClick={() => setImgModal(true)}>
-          <T.Img src={thumnail ? thumnail : defaultthumbnail} />
-        </T.ImgDiv>
-        <T.Container>
-          <T.TitleContainer>
-            <T.Title>
-              <p>{name}</p>
-            </T.Title>
-            <T.HeartDiv onClick={toggle}>
-              <T.HeartImg src={is_liked ? fillheart : strokeheart} />
-            </T.HeartDiv>
-          </T.TitleContainer>
-          <T.CategoryWrapper>
-            {category &&
-              category.map(item => {
-                return <T.Category key={item}>{item}</T.Category>;
-              })}
-          </T.CategoryWrapper>
-          <T.Hashtag>{hashtag}</T.Hashtag>
-        </T.Container>
-      </COM.Wrapper>
+    <COM.Wrapper>
+      <T.CircleRect
+        onClick={() => {
+          setSideBar(true);
+        }}
+      >
+        <img src={circle} className='circle' />
+        <HiMenu size='30' fill='var(--green1)' />
+      </T.CircleRect>
+      <T.ImgDiv onClick={() => setImgModal(true)}>
+        <T.Img src={thumnail ? thumnail : defaultthumbnail} />
+      </T.ImgDiv>
+      <T.Container>
+        <T.TitleContainer>
+          <T.Title>
+            <p>{name}</p>
+          </T.Title>
+          <T.HeartDiv onClick={toggle}>
+            <T.HeartImg src={is_liked ? fillheart : strokeheart} />
+          </T.HeartDiv>
+        </T.TitleContainer>
+        <T.CategoryWrapper>
+          {category &&
+            category.map(item => {
+              return <T.Category key={item}>{item}</T.Category>;
+            })}
+        </T.CategoryWrapper>
+        <T.Hashtag>{hashtag}</T.Hashtag>
+      </T.Container>
       {imgModal ? (
         <ImageGallery
           array={
@@ -70,7 +68,7 @@ const BoothDetailTitle = props => {
         />
       ) : null}
       {sideBar ? <SideBar setSideBar={setSideBar} /> : null}
-    </>
+    </COM.Wrapper>
   );
 };
 

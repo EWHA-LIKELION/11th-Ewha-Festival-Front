@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { GetBooth } from '../../api/booth';
 
 import BoothDetailTitle from './BoothDetailTitle';
 import BoothDetailNotice from './BoothDetailNotice';
 import BoothDetailInfo from './BoothDetailInfo';
 import BoothDetailMenu from './BoothDetailMenu';
 import BoothDetailComment from './BoothDetailComment';
-
-import { boothdetail } from '../../api/_mock/boothmock';
-import { GetBooth } from '../../api/booth';
 
 const BoothDetail = () => {
   const { id } = useParams();
@@ -19,14 +17,11 @@ const BoothDetail = () => {
   useEffect(() => {
     GetBooth(id)
       .then(res => {
-        console.log(res);
         setCurrentBooth(res.data.data);
       })
       .catch(err => {
-        console.log(err);
         if (err.response.data.detail === '찾을 수 없습니다.') setIsNone(true);
       });
-    //setCurrentBooth(boothdetail.data);
   }, []);
   return (
     <>

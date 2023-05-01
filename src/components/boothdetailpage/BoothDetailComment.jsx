@@ -36,7 +36,6 @@ const BoothDetailComment = () => {
   const getComments = () => {
     GetBooth(id)
       .then(res => {
-        console.log(res);
         setThisBoothUserId(res.data.data.user);
         setThisComments(res.data.data.comments);
       })
@@ -46,7 +45,7 @@ const BoothDetailComment = () => {
     getComments();
     RequestProfile()
       .then(res => setThisUser(res.data.data.id))
-      .catch(err => console.log(err));
+      .catch();
   }, []);
   const IsBoothUser = cUserId => {
     if (thisBoothUserId === cUserId) {
@@ -68,25 +67,22 @@ const BoothDetailComment = () => {
   const OnDelete = cId => {
     DeleteComment(id, cId)
       .then(res => {
-        console.log(res.data);
         getComments();
         closeDeleteModal();
       })
       .catch();
-    console.log(cId, '댓글 삭제');
   };
 
   const [newComment, setNewComment] = useState('');
   const OnSubmit = e => {
     e.preventDefault();
-    console.log(newComment, '제출');
     SubmitComment(id, newComment)
       .then(res => {
         getComments();
         setNewComment('');
         setIsAdd(true);
       })
-      .catch(err => console.log(err));
+      .catch();
   };
 
   const endRef = useRef(null);
@@ -104,81 +100,79 @@ const BoothDetailComment = () => {
   }, [thisComments]);
 
   return (
-    <>
-      <COM.Wrapper>
-        <C.Container>
-          <PartTitle text='댓글' />
-          {thisComments &&
-            thisComments.map(comment => {
-              const time = comment.created_at.toString();
-              return (
-                <C.CommentContainer key={comment.id}>
-                  <div className='inner'>
-                    <C.CommentTop>
-                      <C.CommentText
-                        style={{
-                          color: IsBoothUser(comment.user.id)
-                            ? 'var(--red)'
-                            : 'var(--green2)',
-                          fontWeight: '600',
-                        }}
-                      >
-                        {comment.user.nickname}
-                      </C.CommentText>
-                      <C.CommentTimeText>{time}</C.CommentTimeText>
-                      {comment.user.id === thisUser.id ? (
-                        <C.Delete onClick={() => PreDeleteComment(comment.id)}>
-                          <FaTrashAlt size='13' fill='var(--gray2)' />
-                        </C.Delete>
-                      ) : null}
-                    </C.CommentTop>
-                    <C.CommentText>
-                      {comment.content &&
-                        (comment.content.includes('\n') ? (
-                          <>
-                            {comment.content.split('\n').map(line => {
-                              return (
-                                <span key={line}>
-                                  {line}
-                                  <br />
-                                </span>
-                              );
-                            })}
-                          </>
-                        ) : (
-                          <>
-                            <span>{comment.content}</span>
-                          </>
-                        ))}
+    <COM.Wrapper>
+      <C.Container>
+        <PartTitle text='댓글' />
+        {thisComments &&
+          thisComments.map(comment => {
+            const time = comment.created_at.toString();
+            return (
+              <C.CommentContainer key={comment.id}>
+                <div className='inner'>
+                  <C.CommentTop>
+                    <C.CommentText
+                      style={{
+                        color: IsBoothUser(comment.user.id)
+                          ? 'var(--red)'
+                          : 'var(--green2)',
+                        fontWeight: '600',
+                      }}
+                    >
+                      {comment.user.nickname}
                     </C.CommentText>
-                  </div>
-                </C.CommentContainer>
-              );
-            })}
-        </C.Container>
-        <C.Bottom />
-        <div ref={endRef} />
-        <C.CommentInputWrapper>
-          <C.CommentInputContainer>
-            <C.CommentInput
-              placeholder={
-                isLogin ? '댓글을 입력하세요' : '로그인 후 댓글을 입력해보세요'
-              }
-              value={newComment}
-              onChange={e => setNewComment(e.target.value)}
-              autoComplete='off'
-              id='input'
-            />
-            {isLogin ? (
-              <C.WriteRect
-                onClick={e => (newComment === '' ? null : OnSubmit(e))}
-              >
-                <HiPencil size='20' fill='var(--green1)' />
-              </C.WriteRect>
-            ) : null}
-          </C.CommentInputContainer>
-        </C.CommentInputWrapper>
-      </COM.Wrapper>
+                    <C.CommentTimeText>{time}</C.CommentTimeText>
+                    {comment.user.id === thisUser ? (
+                      <C.Delete onClick={() => PreDeleteComment(comment.id)}>
+                        <FaTrashAlt size='13' fill='var(--gray2)' />
+                      </C.Delete>
+                    ) : null}
+                  </C.CommentTop>
+                  <C.CommentText>
+                    {comment.content &&
+                      (comment.content.includes('\n') ? (
+                        <>
+                          {comment.content.split('\n').map((line, idx) => {
+                            return (
+                              <span key={idx}>
+                                {line}
+                                <br />
+                              </span>
+                            );
+                          })}
+                        </>
+                      ) : (
+                        <>
+                          <span>{comment.content}</span>
+                        </>
+                      ))}
+                  </C.CommentText>
+                </div>
+              </C.CommentContainer>
+            );
+          })}
+      </C.Container>
+      <C.Bottom />
+      <div ref={endRef} />
+      <C.CommentInputWrapper>
+        <C.CommentInputContainer>
+          <C.CommentInput
+            placeholder={
+              isLogin ? '댓글을 입력하세요' : '로그인 후 댓글을 입력해보세요'
+            }
+            value={newComment}
+            onChange={e => setNewComment(e.target.value)}
+            autoComplete='off'
+            id='input'
+          />
+          {isLogin ? (
+            <C.WriteRect
+              onClick={e => (newComment === '' ? null : OnSubmit(e))}
+            >
+              <HiPencil size='20' fill='var(--green1)' />
+            </C.WriteRect>
+          ) : null}
+        </C.CommentInputContainer>
+      </C.CommentInputWrapper>
       {deleteModal ? (
         <Modal
           title='댓글 삭제'
@@ -189,7 +183,7 @@ const BoothDetailComment = () => {
           onClick={() => OnDelete(currentCommentId)}
         />
       ) : null}
-    </>
+    </COM.Wrapper>
   );
 };
 
