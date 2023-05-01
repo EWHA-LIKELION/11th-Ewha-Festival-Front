@@ -38,7 +38,23 @@ L.NoticeWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 20px;
+`;
+L.WriteBtn = styled.div`
+  width: 88%;
+  height: 30px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  div {
+    font-family: var(--pre-font);
+    font-size: 1em;
+    font-weight: 500;
+    text-decoration: underline;
+    color: var(--green2);
+    margin-left: 3px;
+  }
 `;
 L.NoticeContainer = styled.div`
   width: 88%;

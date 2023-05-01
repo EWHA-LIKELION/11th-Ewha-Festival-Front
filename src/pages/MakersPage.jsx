@@ -1,5 +1,7 @@
+import Makers from '../components/makers/Makers';
+
 const MakersPage = () => {
-  return <></>;
+  return <Makers />;
 };
 
 export default MakersPage;
