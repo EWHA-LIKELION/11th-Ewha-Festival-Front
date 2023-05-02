@@ -41,7 +41,6 @@ const LoginMenu = () => {
         const token = window.localStorage.getItem('token');
         // 계정 정보 가져오기
         RequestProfile(token).then(response => {
-          console.log(response);
           dispatch(
             setUserTask({
               isBooth: response.data.data.is_booth,
@@ -50,7 +49,6 @@ const LoginMenu = () => {
           );
           // 부스 유저인경우 부스 아이디 & 부스 이름 저장
           if (response.data.data.is_booth) {
-            console.log(response);
             dispatch(
               setBooth_id({
                 booth_id: response.data.data.booth_id,
@@ -67,8 +65,8 @@ const LoginMenu = () => {
         });
       })
       .then(() => {
-        // window.location.reload();
-        // window.location.replace('/');
+        window.location.reload();
+        window.location.replace('/');
       })
       .catch(error => {
         alert('아이디와 비밀번호를 확인해주세요.');
