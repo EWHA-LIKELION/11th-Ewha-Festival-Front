@@ -36,6 +36,7 @@ const BoothDetailComment = () => {
   const getComments = () => {
     GetBooth(id)
       .then(res => {
+        console.log(res.data.data);
         setThisBoothUserId(res.data.data.user);
         setThisComments(res.data.data.comments);
       })
@@ -43,7 +44,7 @@ const BoothDetailComment = () => {
   };
   useEffect(() => {
     getComments();
-    RequestProfile()
+    RequestProfile(token)
       .then(res => setThisUser(res.data.data.id))
       .catch();
   }, []);

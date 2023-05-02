@@ -6,11 +6,13 @@ import { COM, D } from './Notice.style';
 import TopBar from '../_common/topbar/TopBar';
 import Footer from '../_common/footer/Footer';
 import Modal from '../_common/modal/Modal';
+import { T } from '../boothdetailpage/BoothDetail.style';
 
 const NoticeDetail = () => {
   const { id } = useParams();
   const nav = useNavigate();
   const textarea = useRef();
+  const token = localStorage.getItem('token');
   const [isTF, setIsTF] = useState(false);
   const [notice, setNotice] = useState({});
   const getNotice = () => {
@@ -23,7 +25,7 @@ const NoticeDetail = () => {
     setNewContent(notice.content);
   };
   useEffect(() => {
-    RequestProfile()
+    RequestProfile(token)
       .then(res => {
         setIsTF(res.data.data.is_tf);
       })

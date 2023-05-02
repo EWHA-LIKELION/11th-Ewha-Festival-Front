@@ -36,7 +36,7 @@ const BoothDetailTitle = props => {
         <HiMenu size='30' fill='var(--green1)' />
       </T.CircleRect>
       <T.ImgDiv onClick={() => setImgModal(true)}>
-        <T.Img src={thumnail === '' ? defaultthumbnail : thumnail} />
+        <T.Img src={thumnail ? thumnail : defaultthumbnail} />
       </T.ImgDiv>
       <T.Container>
         <T.TitleContainer>

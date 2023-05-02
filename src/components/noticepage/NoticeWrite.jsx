@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { RequestProfile } from '../../api/auth';
 import { SubmitNotice } from '../../api/tf';
 import { COM, D, W } from './Notice.style';
 import TopBar from '../_common/topbar/TopBar';
