@@ -10,16 +10,17 @@ import EditMenuComponent from './EditMenuComponent';
 
 // style
 import { M } from './EditMenu.style';
+import { useAppSelector } from '../../redux/store';
+import { GetMenu } from '../../api/booth';
 
 const EditMenu = () => {
+  const { booth_id } = useAppSelector(state => state.booth);
+  console.log(booth_id);
   const [getmenus, setGetmenus] = useState([]);
-  const [boothId, setBoothId] = useState(0);
   useEffect(() => {
-    // if (boothid) {
-    //   GetBoothMenus(boothid).then(response => setMenus(response.data));
-    // }
-    setGetmenus(boothmenu.data);
-    // GetBoothMenus(boothid).then(response => setGetmenus(response.data));
+    if (booth_id !== null) {
+      GetMenu(booth_id).then(res => console.log(res.data));
+    }
   }, []);
 
   return (
