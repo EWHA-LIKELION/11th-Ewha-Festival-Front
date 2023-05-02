@@ -15,7 +15,7 @@ import NoticeWritePage from './pages/noticepage/NoticeWritePage';
 import SearchPage from './pages/SearchPage';
 
 import './css/common.css';
-import TrashCanPage from './pages/TrashCanPage';
+import TrashBinPage from './pages/TrashBinPage';
 
 function App() {
   return (
@@ -47,7 +47,7 @@ function App() {
         {/* 만든이들 페이지 */}
         <Route exact path='/makers' element={<MakersPage />} />
         {/* 쓰레기통 페이지 */}
-        <Route exact path='/trashbin' element={<TrashCanPage />} />
+        <Route exact path='/trashbin' element={<TrashBinPage />} />
       </Routes>
     </BrowserRouter>
   );
