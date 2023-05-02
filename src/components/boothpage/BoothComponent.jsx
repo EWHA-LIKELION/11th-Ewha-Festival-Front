@@ -42,7 +42,7 @@ const BoothComponent = props => {
   return (
     <>
       <C.ComponentContainer>
-        <C.ImageWrapper onClick={() => navigate(`/booth/detail/:${id}`)}>
+        <C.ImageWrapper onClick={() => navigate(`/booth/detail/${id}`)}>
           {thumnail ? (
             <img className={opened ? 'open' : 'closed'} src={thumnail} />
           ) : (

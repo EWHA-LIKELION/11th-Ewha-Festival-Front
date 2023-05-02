@@ -144,7 +144,7 @@ export const AboutContainer = styled.div`
   margin: 0 auto;
 `;
 
-export const Text = styled.p`
+export const Text = styled.div`
   display: flex;
   align-items: center;
   text-align: center;
@@ -155,7 +155,7 @@ export const Text = styled.p`
   margin: 20px 0 20px 0;
 `;
 
-export const P = styled.p`
+export const P = styled.div`
   font-size: 11px;
   line-height: 15px;
   font-weight: 400;
@@ -189,6 +189,7 @@ export const TFButton = styled.button`
   background-color: var(--green2);
   color: var(--white);
   margin-bottom: 30px;
+  border: none;
 `;
 
 export const LionButton = styled.a`

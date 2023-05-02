@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import * as S from './Main.style';
 
 // image
-import tobooth from '../../assets/images/mainpage/tobooth.png';
+import tobooth from '../../assets/images/mainpage/toboothback.svg';
 import title from '../../assets/images/mainpage/title.svg';
 import v1 from '../../assets/images/mainpage/v1.svg';
 import v2 from '../../assets/images/mainpage/v2.svg';
