@@ -13,7 +13,7 @@ const ComponentContainer = styled.div`
 
   .closed {
     filter: grayscale(80%);
-    color: var(--gray1);
+    color: var(--gray2);
   }
 `;
 
