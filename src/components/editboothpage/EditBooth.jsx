@@ -3,24 +3,68 @@ import { B } from './EditBooth.style';
 import { boothdetail } from '../../api/_mock/boothmock';
 import TopBar from '../_common/topbar/TopBar';
 import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../redux/store';
+import {
+  GetBooth,
+  PatchBooth,
+  PatchBoothNotice,
+  PatchBoothTime,
+} from '../../api/booth';
 
 const EditBooth = () => {
   const navigate = useNavigate();
+  const { booth_id } = useAppSelector(state => state.booth);
 
   const [name, setName] = useState('');
   const [notice, setNotice] = useState('');
-  const [content, setContent] = useState('');
-  const [time, setTime] = useState('');
-  const [open, setOpen] = useState(true);
+  const [description, setDescription] = useState('');
+  const [time0, setTime0] = useState('');
+  const [time1, setTime1] = useState('');
+  const [time2, setTime2] = useState('');
+  const [opened, setOpened] = useState(true);
 
-  // 리덕스로 부스 아이디 받아오기 + 서버로부터 부스 아이디에 따른 부스 정보 받아오기
-  // useEffect
+  const [day1, setDay1] = useState('');
+  const [day2, setDay2] = useState('');
+  const [day3, setDay3] = useState('');
+
+  useEffect(() => {
+    if (booth_id !== null)
+      GetBooth(booth_id).then(res => {
+        setName(res.data.data.name);
+        setNotice(res.data.data.notices[0].content);
+        setDescription(res.data.data.description);
+        setTime0(res.data.data.times[0].time);
+        setTime1(res.data.data.times[1].time);
+        setTime2(res.data.data.times[2].time);
+        setDay1(res.data.data.times[0].time);
+        setDay2(res.data.data.times[1].time);
+        setDay3(res.data.data.times[2].time);
+        setOpened(res.data.data.opened);
+      });
+  }, []);
 
   const onSubmit = () => {
     if (!name) alert('부스 이름은 필수 정보입니다');
-    else {
-      console.log('ok');
-      // 제출 + navigate
+    else if (day1 && time0 == '') {
+      alert('운영 시간은 필수 정보입니다');
+    } else if (day2 && time1 == '') {
+      alert('운영 시간은 필수 정보입니다');
+    } else if (day3 && time2 == '') {
+      alert('운영 시간은 필수 정보입니다');
+    } else {
+      PatchBooth(booth_id, name, opened, description).then(res =>
+        console.log(res),
+      );
+      PatchBoothNotice(booth_id, notice).then(res => console.log(res));
+      if (day1) {
+        PatchBoothTime(booth_id, 1, time0).then(res => console.log(res));
+      }
+      if (day2) {
+        PatchBoothTime(booth_id, 2, time1).then(res => console.log(res));
+      }
+      if (day3) {
+        PatchBoothTime(booth_id, 3, time2).then(res => console.log(res));
+      }
     }
   };
 
@@ -44,35 +88,70 @@ const EditBooth = () => {
           <B.Title>부스 소개</B.Title>
           <B.TextArea
             placeholder='부스 소개'
-            value={content}
-            onChange={e => setContent(e.target.value)}
+            value={description}
+            onChange={e => setDescription(e.target.value)}
           />
           <B.Title>부스 운영시간</B.Title>
-          <B.TextArea
-            placeholder='부스 운영시간'
-            height='50px'
-            value={time}
-            onChange={e => setTime(e.target.value)}
-          />
+          {day1 ? (
+            <>
+              <B.TimeWrapper>
+                <B.Day>수</B.Day>
+                <B.TimeArea
+                  placeholder='수요일 운영시간'
+                  value={time0}
+                  onChange={e => setTime0(e.target.value)}
+                />
+              </B.TimeWrapper>
+            </>
+          ) : (
+            ''
+          )}
+          {day2 ? (
+            <>
+              <B.TimeWrapper>
+                <B.Day>목</B.Day>
+                <B.TimeArea
+                  placeholder='목요일 운영시간'
+                  value={time1}
+                  onChange={e => setTime1(e.target.value)}
+                />
+              </B.TimeWrapper>
+            </>
+          ) : (
+            ''
+          )}
+          {day3 ? (
+            <>
+              <B.TimeWrapper>
+                <B.Day>금</B.Day>
+                <B.TimeArea
+                  placeholder='금요일 운영시간'
+                  value={time2}
+                  onChange={e => setTime2(e.target.value)}
+                />
+              </B.TimeWrapper>
+            </>
+          ) : (
+            ''
+          )}
           <B.Title>운영 여부</B.Title>
           <B.OpenWrapper>
             <input
               type='radio'
               id='open'
-              onChange={() => setOpen(!open)}
-              checked={open}
+              onChange={() => setOpened(!opened)}
+              checked={opened}
             />
             <B.Label htmlFor='open'>운영 중</B.Label>
             <input
               type='radio'
               id='closed'
               value={false}
-              onChange={() => setOpen(!open)}
-              checked={!open}
+              onChange={() => setOpened(!opened)}
+              checked={!opened}
             />
             <B.Label htmlFor='closed'>운영 종료</B.Label>
           </B.OpenWrapper>
-
           <B.ButtonWrapper>
             <B.Button type='cancel' onClick={() => navigate(-1)}>
               취소

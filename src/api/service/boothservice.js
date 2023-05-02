@@ -22,11 +22,21 @@ const BoothService = {
   deleteComment: (boothId, cId) =>
     http.delete(`/booths/${boothId}/comments/${cId}/`), //댓글 삭제
   // 부스 수정
-  patchBooth: (boothId, name, notice, description) =>
+  patchBooth: (boothId, name, opened, description) =>
     http.patch(`/booths/${boothId}/`, {
       name: name,
-      notice: notice,
       description: description,
+      opened: opened,
+    }),
+  // 부스 공지사항 수정
+  patchBoothNotice: (boothId, notice) =>
+    http.patch(`/booths/${boothId}/notices/1/`, {
+      content: notice,
+    }),
+  // 부스 운영시간 수정
+  patchBoothTime: (boothId, index, time) =>
+    http.patch(`/booths/${boothId}/times/${index}/`, {
+      time: time,
     }),
   // 메뉴 조회
   getMenu: boothId => http.get(`/booths/${boothId}/menus/`),
