@@ -12,6 +12,7 @@ import Switch from 'react-switch';
 import { D } from './EditMenu.style';
 import { GetMenu, PatchMenu } from '../../api/booth';
 import { useAppSelector } from '../../redux/store';
+import Footer from '../_common/footer/Footer';
 
 const EditMenuDetail = () => {
   const { menuId } = useParams();
@@ -21,30 +22,6 @@ const EditMenuDetail = () => {
   const [menu, setMenu] = useState('');
   const [price, setPrice] = useState(0);
   const [isSoldout, setIsSoldout] = useState(false);
-
-  const menus = {
-    message: '메뉴 목록 조회 성공',
-    data: [
-      {
-        id: 1,
-        menu: '순대',
-        price: 4000,
-        is_soldout: false,
-      },
-      {
-        id: 3,
-        menu: '떡볶이',
-        price: 3000,
-        is_soldout: false,
-      },
-      {
-        id: 4,
-        menu: '튀김',
-        price: 3000,
-        is_soldout: false,
-      },
-    ],
-  };
 
   useEffect(() => {
     if (menuId) {
@@ -85,16 +62,19 @@ const EditMenuDetail = () => {
           />
           <D.Title>가격</D.Title>
           <D.PriceContainer>
-            <D.Input
-              type='text'
-              width='200px'
-              value={price}
-              pattern='\d*'
-              maxLength='7'
-              onChange={e => setPrice(e.target.value)}
-            />
+            <div className='price'>
+              <D.Input
+                type='text'
+                width='150px'
+                value={price}
+                pattern='\d*'
+                maxLength='7'
+                onChange={e => setPrice(e.target.value)}
+              />
+              <div className='text'>원</div>
+            </div>
             <D.SoldoutContainer>
-              <div style={{ marginRight: '8px' }}>Sold Out</div>
+              <div className='text'>Sold Out</div>
               <Switch
                 onChange={e => setIsSoldout(!isSoldout)}
                 checked={isSoldout}
@@ -102,9 +82,9 @@ const EditMenuDetail = () => {
                 onHandleColor='#ffffff'
                 uncheckedIcon={false}
                 checkedIcon={false}
-                handleDiameter={24}
-                width={40}
-                height={24}
+                handleDiameter={20}
+                width={36}
+                height={20}
               />
             </D.SoldoutContainer>
           </D.PriceContainer>
@@ -118,6 +98,7 @@ const EditMenuDetail = () => {
           </D.ButtonWrapper>
         </D.ComponentContainer>
       </D.Wrapper>
+      <Footer />
     </>
   );
 };

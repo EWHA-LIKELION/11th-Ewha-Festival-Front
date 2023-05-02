@@ -3,10 +3,8 @@ import styled from 'styled-components';
 // Menu Components
 const ComponentWrapper = styled.button`
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 350px;
   height: 90px;
   border-radius: 4px;
   border: solid 0.4px var(--green1);
@@ -47,7 +45,7 @@ export const C = { ComponentWrapper, ContentWrapper, Menu, Price };
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   background-color: var(--beige);
@@ -100,12 +98,25 @@ const Input = styled.input`
   border-radius: 4px;
   border: solid 0.4px var(--green1);
   padding: 10px;
+  outline: none;
 `;
 
 const PriceContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  .price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .text {
+    margin-left: 6px;
+    font-size: 16px;
+    font-weight: 500;
+  }
 `;
 
 const SoldoutContainer = styled.div`
@@ -114,9 +125,15 @@ const SoldoutContainer = styled.div`
   justify-content: space-between;
   padding: 4px;
   color: var(--red);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 16px;
   line-height: 16px;
+  height: 30px;
+
+  .text {
+    overflow: hidden;
+    margin-right: 4px;
+  }
 `;
 
 const ButtonWrapper = styled.div`
