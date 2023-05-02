@@ -65,6 +65,8 @@ const EditBooth = () => {
       if (day3) {
         PatchBoothTime(booth_id, 3, time2).then(res => console.log(res));
       }
+      alert('부스 수정 완료');
+      navigate(-1);
     }
   };
 
