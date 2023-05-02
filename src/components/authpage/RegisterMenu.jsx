@@ -26,10 +26,7 @@ const RegisterMenu = () => {
   const [name, setName] = useState('');
   const [secretWord, setSecretWord] = useState('');
 
-  const SECRETWORD = process.env.SECRETWORD;
-
-  console.log(SECRETWORD);
-
+  const SECRETWORD = process.env.REACT_APP_SECRETWORD;
   // redux
   const dispatch = useAppDispatch();
 
