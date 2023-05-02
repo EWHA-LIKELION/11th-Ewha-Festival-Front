@@ -28,7 +28,11 @@ const TopBar = props => {
           <S.Title>{props.title}</S.Title>
         )}
         {path === '/' ? (
-          <BsFillPersonFill />
+          <BsFillPersonFill
+            onClick={() => {
+              navigate('/mypage');
+            }}
+          />
         ) : path.includes('booth') ? (
           <HiOutlineSearch
             onClick={() => {
