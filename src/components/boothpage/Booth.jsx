@@ -20,6 +20,7 @@ import BoothFilterBar from './BoothFilterBar';
 
 // style
 import { B } from './Booth.style';
+import useBookmark from '../_common/useBookmark';
 
 const Booth = () => {
   const booths = getbooths.data;
@@ -45,11 +46,12 @@ const Booth = () => {
     else return 4;
   };
 
-  // get first api
+  //get first api
   // useEffect(() => {
   //   GetAllBooth().then(res => {
   //     console.log(res.data.data);
   //     setBooth(res.data.data);
+  //     setLength(res.data.data);
   //   });
   // }, []);
 
@@ -60,8 +62,13 @@ const Booth = () => {
         setBooth(res.data.data);
         setLength(res.data.data.length);
       });
-    } else {
+    } else if (filter_viewer === 'category') {
       GetCategoryBooth(getDay(), getCategory()).then(res => {
+        setBooth(res.data.data);
+        setLength(res.data.data.length);
+      });
+    } else {
+      GetAllBooth().then(res => {
         setBooth(res.data.data);
         setLength(res.data.data.length);
       });
@@ -76,7 +83,12 @@ const Booth = () => {
         <B.BoothLength>총 {length} 개의 부스</B.BoothLength>
         <B.ComponentGrid>
           {booth.map(props => (
-            <BoothComponent key={props.id} {...props} />
+            <BoothComponent
+              key={props.id}
+              {...props}
+              booth={booth}
+              setBooth={setBooth}
+            />
           ))}
         </B.ComponentGrid>
       </B.Wrapper>

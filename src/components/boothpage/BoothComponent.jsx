@@ -10,11 +10,8 @@ import { C } from './Booth.style';
 import fillheart from '../../assets/images/fillheart.svg';
 import strokeheart from '../../assets/images/strokeheart.svg';
 import defaultthumbnail from '../../assets/images/boothdetailpage/defaultthumbnail.svg';
-import { useAppSelector } from '../../redux/store';
-import { LikeBooth } from '../../api/booth';
 
-// hooks
-import useBookmark from '../_common/useBookmark';
+import { LikeBooth, UnLikeBooth } from '../../api/booth';
 
 const BoothComponent = props => {
   const {
@@ -29,40 +26,61 @@ const BoothComponent = props => {
     opened,
   } = props;
 
+  const { booth, setBooth } = props;
+
   const navigate = useNavigate();
 
-  const { booth_id } = useAppSelector(state => state.booth);
-  const { state, toggle } = useBookmark(is_liked, id);
+  const Like = id => {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      // 하트 ui 수정
+      setBooth(
+        booth.map(props =>
+          props.id === id ? { ...props, is_liked: true } : { ...props },
+        ),
+      );
+      // 좋아요 api 요청 보내기
+      LikeBooth(id)
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+    } else {
+      alert('로그인이 필요합니다.');
+    }
+  };
+
+  const unLike = id => {
+    // 하트 ui 수정
+    setBooth(
+      booth.map(props =>
+        props.id === id ? { ...props, is_liked: false } : { ...props },
+      ),
+    );
+    // 좋아요 삭제 api
+    UnLikeBooth(id)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  };
 
   return (
     <>
       <C.ComponentContainer>
         <C.ImageWrapper onClick={() => navigate(`/booth/detail/${id}`)}>
-          <img
-            className={opened ? 'open' : 'closed'}
-            src={thumnail ? thumnail : defaultthumbnail}
-          />
+          <img src={thumnail ? thumnail : defaultthumbnail} />
           {opened ? '' : <div className='closed'>운영 종료</div>}
         </C.ImageWrapper>
         <C.LocationContainer>
-          <div className={opened ? 'open' : 'closed'}>
+          <div>
             {college}
             {number}•{category}
           </div>
-          <div onClick={() => toggle()}>
+          <div onClick={() => (is_liked ? unLike(id) : Like(id))}>
             <img width='16px' src={is_liked ? fillheart : strokeheart} />
           </div>
         </C.LocationContainer>
         <C.TitleWrapper>
-          <C.BoothTitle
-            className={opened ? 'open' : 'closed'}
-            length={name.length}
-          >
-            {name}
-          </C.BoothTitle>
-          <C.Hashtag className={opened ? 'open' : 'closed'}>
-            {hashtag}
-          </C.Hashtag>
+          <C.BoothTitle>{name}</C.BoothTitle>
+          <C.Hashtag>{hashtag}</C.Hashtag>
         </C.TitleWrapper>
       </C.ComponentContainer>
     </>

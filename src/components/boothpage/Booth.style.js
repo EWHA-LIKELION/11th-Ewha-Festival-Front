@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 // image
 import daychecked from '../../assets/images/boothpage/daychecked.png';
-import viewerchecked from '../../assets/images/boothpage/viewerchecked.svg';
+import viewerchecked from '../../assets/images/boothpage/viewerchecked2.svg';
 
 // booth component
 const ComponentContainer = styled.div`
@@ -10,11 +10,6 @@ const ComponentContainer = styled.div`
   align-items: center;
   padding: 4px;
   height: 60vmin;
-
-  .closed {
-    filter: grayscale(80%);
-    color: var(--gray2);
-  }
 `;
 
 const ImageWrapper = styled.div`
@@ -148,9 +143,7 @@ const ViewerFilterContainer = styled.div`
 
 const ViewerContainer = styled.div`
   color: ${props => (props.checked ? 'var(--white)' : 'var(--gray2)')};
-  background-image: ${props =>
-    props.checked ? `url(${viewerchecked})` : 'none'};
-  /* background-size: 100%; */
+  background-size: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -159,8 +152,19 @@ const ViewerContainer = styled.div`
   font-weight: ${props => (props.checked ? '600' : '400')};
   font-size: 13px;
   line-height: 13px;
+  position: relative;
 
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  .check {
+    position: absolute;
+    z-index: 0;
+    display: ${props => (props.checked ? 'inline' : 'none')};
+  }
+
+  .text {
+    position: absolute;
+    z-index: 1;
+    overflow: hidden;
+  }
 `;
 
 const DataGrid = styled.div`
