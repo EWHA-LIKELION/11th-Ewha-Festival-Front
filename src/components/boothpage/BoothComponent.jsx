@@ -14,7 +14,7 @@ import { useAppSelector } from '../../redux/store';
 import { LikeBooth } from '../../api/booth';
 
 // hooks
-// import useBookmark from '../_common/useBookmark';
+import useBookmark from '../_common/useBookmark';
 
 const BoothComponent = props => {
   const {
@@ -32,7 +32,7 @@ const BoothComponent = props => {
   const navigate = useNavigate();
 
   const { booth_id } = useAppSelector(state => state.booth);
-  // const { state, toggle } = useBookmark(is_liked, id);
+  const { state, toggle } = useBookmark(is_liked, id);
 
   return (
     <>
@@ -49,7 +49,7 @@ const BoothComponent = props => {
             {college}
             {number}•{category}
           </div>
-          <div onClick={() => console.log('토글자리')}>
+          <div onClick={() => toggle()}>
             <img width='16px' src={is_liked ? fillheart : strokeheart} />
           </div>
         </C.LocationContainer>
