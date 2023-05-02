@@ -43,7 +43,7 @@ const SideBar = props => {
               <p>마이 페이지</p>
             </div>
             <div>
-              <AiFillHome onClick={() => navigate('/main')} />
+              <AiFillHome onClick={() => navigate('/')} />
               <p>메인 페이지</p>
             </div>
             <div>
