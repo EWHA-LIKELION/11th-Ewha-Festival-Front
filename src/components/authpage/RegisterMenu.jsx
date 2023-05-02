@@ -26,6 +26,10 @@ const RegisterMenu = () => {
   const [name, setName] = useState('');
   const [secretWord, setSecretWord] = useState('');
 
+  const SECRETWORD = process.env.SECRETWORD;
+
+  console.log(SECRETWORD);
+
   // redux
   const dispatch = useAppDispatch();
 
@@ -64,7 +68,7 @@ const RegisterMenu = () => {
       : '비밀번호가 일치하지 않습니다.\n';
   };
   const checkSecretWord = () => {
-    return secretWord === '비밀단어' ? '' : '비밀단어가 일치하지 않습니다.\n';
+    return secretWord === SECRETWORD ? '' : '비밀단어가 일치하지 않습니다.\n';
   };
   const checkName = () => {
     return name.length <= 10 && name !== ''
