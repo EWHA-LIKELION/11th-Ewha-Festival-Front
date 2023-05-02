@@ -170,9 +170,11 @@ const ViewerContainer = styled.div`
 const DataGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
 `;
 const DataContainer = styled.div`
-  width: 72px;
+  width: 20vmin;
   height: 30px;
   display: flex;
   align-items: center;
@@ -183,7 +185,8 @@ const DataContainer = styled.div`
   border: solid 1px var(--green2);
   border-radius: 104px;
   font-size: 14px;
-  margin: 3px 4px 3px 4px;
+
+  margin: 1vmin;
 `;
 
 export const F = {
@@ -199,12 +202,11 @@ export const F = {
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: var(--beige);
-  overflow: auto;
 `;
 
 const ComponentGrid = styled.div`
@@ -213,7 +215,7 @@ const ComponentGrid = styled.div`
 `;
 
 const BoothLength = styled.div`
-  width: 85%;
+  width: 88vmin;
   font-weight: 500;
   font-size: 13px;
   line-height: 15px;
@@ -221,8 +223,25 @@ const BoothLength = styled.div`
   margin: 8px 0 4px 0;
 `;
 
+const MapContainer = styled.div`
+  width: 88vmin;
+  height: 88vmin;
+  position: relative;
+
+  margin: 12px 0 12px 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+`;
+
 export const B = {
   Wrapper,
   ComponentGrid,
   BoothLength,
+  MapContainer,
 };

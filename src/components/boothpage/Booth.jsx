@@ -21,6 +21,7 @@ import BoothFilterBar from './BoothFilterBar';
 // style
 import { B } from './Booth.style';
 import useBookmark from '../_common/useBookmark';
+import { useMap } from '../boothdetailpage/useMap';
 
 const Booth = () => {
   const booths = getbooths.data;
@@ -75,11 +76,20 @@ const Booth = () => {
     }
   }, [filter_day, filter_location, filter_category, filter_viewer]);
 
+  const mapSrc = useMap(filter_location);
   return (
     <>
       <B.Wrapper>
         <TopBar title='부스 목록' />
         <BoothFilterBar />
+        {filter_viewer === 'location' ? (
+          <B.MapContainer>
+            <img src={mapSrc} />
+          </B.MapContainer>
+        ) : (
+          ''
+        )}
+
         <B.BoothLength>총 {length} 개의 부스</B.BoothLength>
         <B.ComponentGrid>
           {booth.map(props => (
