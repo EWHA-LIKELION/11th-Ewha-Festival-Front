@@ -8,6 +8,13 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+@media (min-width: 576px) {
+  .wrapper {
+    width: 390px;
+    margin: 0 auto;
+  }
+}
+
 :root {
   /* color */
   --black: #1f2225;
