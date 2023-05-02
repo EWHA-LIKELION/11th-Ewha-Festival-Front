@@ -57,9 +57,9 @@ export const GetSearchBooth = async keyword => {
   }
 };
 
-export const GetKeywordBooth = async (day, college, page) => {
+export const GetLocationBooth = async (day, college) => {
   try {
-    const response = await BoothService.getKeywordBooth(day, college, page);
+    const response = await BoothService.getLocationBooth(day, college);
     return Promise.resolve(response);
   } catch (error) {
     if (
@@ -68,7 +68,22 @@ export const GetKeywordBooth = async (day, college, page) => {
     ) {
       RequestLogout();
     }
-    return Promise.reject(error, '키워드 부스 조회 실패');
+    return Promise.reject(error, '장소 부스 조회 실패');
+  }
+};
+
+export const GetCategoryBooth = async (day, category) => {
+  try {
+    const response = await BoothService.getCategoryBooth(day, category);
+    return Promise.resolve(response);
+  } catch (error) {
+    if (
+      error.response.data.detail ==
+      '이 토큰은 모든 타입의 토큰에 대해 유효하지 않습니다'
+    ) {
+      RequestLogout();
+    }
+    return Promise.reject(error, '카테고리 부스 조회 실패');
   }
 };
 
