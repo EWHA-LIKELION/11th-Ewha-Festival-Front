@@ -19,6 +19,21 @@ export const Wrapper = styled.div`
     color: var(--green1);
   }
 `;
+export const Wrapper2 = styled.div`
+  width: 100%;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #fff9f1;
+
+  svg {
+    width: 30px;
+    height: 30px;
+    color: var(--green1);
+  }
+`;
 export const Title = styled.div`
   width: 165px;
   height: 52px;
