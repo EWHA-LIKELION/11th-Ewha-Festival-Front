@@ -12,8 +12,8 @@ const ComponentContainer = styled.div`
   height: 60vmin;
 
   .closed {
-    filter: grayscale(70%);
-    color: var(--gray2);
+    filter: grayscale(80%);
+    color: var(--gray1);
   }
 `;
 
@@ -195,9 +195,9 @@ export const F = {
 
 const Wrapper = styled.div`
   width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   background-color: var(--beige);
   overflow: auto;

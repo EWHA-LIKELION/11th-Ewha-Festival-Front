@@ -4,7 +4,11 @@ import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 // api
 import { getbooths } from '../../api/_mock/boothmock';
-import { GetLocationBooth, GetCategoryBooth } from '../../api/booth';
+import {
+  GetLocationBooth,
+  GetCategoryBooth,
+  GetAllBooth,
+} from '../../api/booth';
 // import { dayData } from './mock';
 // import { locationData } from './mock';
 // import { categoryData } from './mock';
@@ -41,6 +45,14 @@ const Booth = () => {
     else return 4;
   };
 
+  // get first api
+  // useEffect(() => {
+  //   GetAllBooth().then(res => {
+  //     console.log(res.data.data);
+  //     setBooth(res.data.data);
+  //   });
+  // }, []);
+
   // get api
   useEffect(() => {
     if (filter_viewer === 'location') {
@@ -63,7 +75,7 @@ const Booth = () => {
         <BoothFilterBar />
         <B.BoothLength>총 {length} 개의 부스</B.BoothLength>
         <B.ComponentGrid>
-          {booths.map(props => (
+          {booth.map(props => (
             <BoothComponent key={props.id} {...props} />
           ))}
         </B.ComponentGrid>

@@ -15,14 +15,14 @@ import { GetMenu } from '../../api/booth';
 
 const EditMenu = () => {
   const { booth_id } = useAppSelector(state => state.booth);
-  console.log(booth_id);
   const [getmenus, setGetmenus] = useState([]);
   useEffect(() => {
     if (booth_id !== null) {
-      GetMenu(booth_id).then(res => console.log(res.data));
+      GetMenu(booth_id).then(res => {
+        setGetmenus(res.data.data);
+      });
     }
   }, []);
-
   return (
     <>
       <M.Wrapper>
@@ -34,7 +34,9 @@ const EditMenu = () => {
               key={props.id}
               id={props.id}
               menu={props.menu}
-              price={props.price}
+              price={props.price
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
               is_soldout={props.is_soldout}
             />
           ))}
