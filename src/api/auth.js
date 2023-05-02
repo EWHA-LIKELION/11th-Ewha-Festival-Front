@@ -43,9 +43,13 @@ export const RequestLogout = async () => {
 };
 
 // 프로필 조회
-export const RequestProfile = async () => {
+export const RequestProfile = async token => {
   try {
-    const response = await http.get('/accounts/');
+    const response = await axios.get(`${baseURL}/accounts/`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return Promise.resolve(response);
   } catch (error) {
     return Promise.reject(error);

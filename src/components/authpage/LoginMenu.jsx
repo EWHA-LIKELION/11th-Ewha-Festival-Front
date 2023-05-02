@@ -38,8 +38,10 @@ const LoginMenu = () => {
         );
       })
       .then(() => {
+        const token = window.localStorage.getItem('token');
         // 계정 정보 가져오기
-        RequestProfile().then(response => {
+        RequestProfile(token).then(response => {
+          console.log(response);
           dispatch(
             setUserTask({
               isBooth: response.data.data.is_booth,
@@ -48,15 +50,16 @@ const LoginMenu = () => {
           );
           // 부스 유저인경우 부스 아이디 & 부스 이름 저장
           if (response.data.data.is_booth) {
+            console.log(response);
             dispatch(
               setBooth_id({
                 booth_id: response.data.data.booth_id,
               }),
             );
-            GetBooth(response.data.data.booth_id).then(response => {
+            GetBooth(response.data.data.booth_id).then(res => {
               dispatch(
                 setBooth_name({
-                  booth_name: response.data.data.name,
+                  booth_name: res.data.data.name,
                 }),
               );
             });
@@ -64,8 +67,8 @@ const LoginMenu = () => {
         });
       })
       .then(() => {
-        window.location.reload();
-        window.location.replace('/');
+        // window.location.reload();
+        // window.location.replace('/');
       })
       .catch(error => {
         alert('아이디와 비밀번호를 확인해주세요.');
