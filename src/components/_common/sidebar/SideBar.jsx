@@ -40,10 +40,10 @@ const SideBar = props => {
           <S.IconWrapper>
             <div>
               <HiUser onClick={() => navigate('/mypage')} />
-              <p>마이 페이지</p>
+              <p>마이페이지</p>
             </div>
             <div>
-              <AiFillHome onClick={() => navigate('/main')} />
+              <AiFillHome onClick={() => navigate('/')} />
               <p>메인 페이지</p>
             </div>
             <div>
@@ -52,7 +52,7 @@ const SideBar = props => {
             </div>
             <div>
               <AiFillNotification onClick={() => navigate('/notice')} />
-              <p>공지 사항</p>
+              <p>공지사항</p>
             </div>
             <div>
               <AiOutlineSearch onClick={() => navigate('/search')} />
