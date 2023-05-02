@@ -92,25 +92,26 @@ const RegisterMenu = () => {
           );
         })
         .then(() => {
+          const token = window.localStorage.getItem('token');
           // 계정 정보 가져오기
-          RequestProfile().then(response => {
+          RequestProfile(token).then(response => {
             dispatch(
               setUserTask({
                 isBooth: response.data.data.is_booth,
                 isTF: response.data.data.is_tf,
               }),
             );
-            // 부스 유저인경우 부스 아이디 저장
+            // 부스 유저인경우 부스 아이디 & 부스 이름 저장
             if (response.data.data.is_booth) {
               dispatch(
                 setBooth_id({
                   booth_id: response.data.data.booth_id,
                 }),
               );
-              GetBooth(response.data.data.booth_id).then(response => {
+              GetBooth(response.data.data.booth_id).then(res => {
                 dispatch(
                   setBooth_name({
-                    booth_name: response.data.data.name,
+                    booth_name: res.data.data.name,
                   }),
                 );
               });
