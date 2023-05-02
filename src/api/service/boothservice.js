@@ -4,8 +4,11 @@ const BoothService = {
   // 부스 검색
   getSearchBooth: keyword => http.get(`/booths/search/?keyword=${keyword}`),
   // 요일, 장소에 따른 부스 조회
-  getKeywordBooth: (day, college, page) =>
-    http.get(`/booths?day=${day}&college=${college}&page=${page}`),
+  getLocationBooth: (day, college) =>
+    http.get(`/booths/?day=${day}&college=${college}`),
+  // 요일, 카테고리에 따른 부스 조회
+  getCategoryBooth: (day, category) =>
+    http.get(`/booths/?day=${day}&category=${category}`),
   likeBooth: boothId =>
     http.post(`/booths/${boothId}/likes/
 `),

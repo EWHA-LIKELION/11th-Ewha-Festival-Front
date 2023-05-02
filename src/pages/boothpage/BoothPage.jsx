@@ -1,5 +1,11 @@
+import Booth from '../../components/boothpage/Booth';
+
 const BoothPage = () => {
-  return <></>;
+  return (
+    <>
+      <Booth />
+    </>
+  );
 };
 
 export default BoothPage;
