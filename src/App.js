@@ -29,13 +29,25 @@ function App() {
         <Route exact path='/auth/login' element={<LoginPage />} />
         <Route exact path='/auth/register' element={<RegisterPage />} />
         {/* 마이페이지 및 수정 */}
-        <Route exact path='/mypage' element={<MyPage />} />
-        <Route exact path='/mypage/editbooth' element={<EditBoothPage />} />
-        <Route exact path='/mypage/editmenu' element={<EditMenuPage />} />
+        <Route
+          exact
+          path='/mypage'
+          element={<AuthRoute component={<MyPage />} />}
+        />
+        <Route
+          exact
+          path='/mypage/editbooth'
+          element={<AuthRoute component={<EditBoothPage />} />}
+        />
+        <Route
+          exact
+          path='/mypage/editmenu'
+          element={<AuthRoute component={<EditMenuPage />} />}
+        />
         <Route
           exact
           path='/mypage/editmenu/:menuId'
-          element={<EditMenuDetailPage />}
+          element={<AuthRoute component={<EditMenuDetailPage />} />}
         />
         {/* 부스 및 상세 페이지 */}
         <Route exact path='/booth' element={<BoothPage />} />
