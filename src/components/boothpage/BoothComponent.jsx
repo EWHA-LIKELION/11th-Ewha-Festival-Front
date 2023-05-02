@@ -79,7 +79,7 @@ const BoothComponent = props => {
           </div>
         </C.LocationContainer>
         <C.TitleWrapper>
-          <C.BoothTitle>{name}</C.BoothTitle>
+          <C.BoothTitle length={name.length}>{name}</C.BoothTitle>
           <C.Hashtag>{hashtag}</C.Hashtag>
         </C.TitleWrapper>
       </C.ComponentContainer>
