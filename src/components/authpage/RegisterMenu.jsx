@@ -26,6 +26,7 @@ const RegisterMenu = () => {
   const [name, setName] = useState('');
   const [secretWord, setSecretWord] = useState('');
 
+  const SECRETWORD = process.env.REACT_APP_SECRETWORD;
   // redux
   const dispatch = useAppDispatch();
 
@@ -64,7 +65,7 @@ const RegisterMenu = () => {
       : '비밀번호가 일치하지 않습니다.\n';
   };
   const checkSecretWord = () => {
-    return secretWord === '비밀단어' ? '' : '비밀단어가 일치하지 않습니다.\n';
+    return secretWord === SECRETWORD ? '' : '비밀단어가 일치하지 않습니다.\n';
   };
   const checkName = () => {
     return name.length <= 10 && name !== ''
@@ -79,9 +80,9 @@ const RegisterMenu = () => {
   };
   // Submit
   const onSubmitAccount = () => {
-    RequestSignin(id, password, name).then(() => {
-      RequestLogin(id, password)
-        .then(res => {
+    RequestSignin(id, password, name)
+      .then(() => {
+        RequestLogin(id, password).then(res => {
           //아이디 비밀번호 닉네임 저장
           dispatch(
             setUser({
@@ -90,39 +91,20 @@ const RegisterMenu = () => {
               nickname: res.data.data.nickname,
             }),
           );
-        })
-        .then(() => {
-          const token = window.localStorage.getItem('token');
-          // 계정 정보 가져오기
-          RequestProfile(token).then(response => {
-            dispatch(
-              setUserTask({
-                isBooth: response.data.data.is_booth,
-                isTF: response.data.data.is_tf,
-              }),
-            );
-            // 부스 유저인경우 부스 아이디 & 부스 이름 저장
-            if (response.data.data.is_booth) {
-              dispatch(
-                setBooth_id({
-                  booth_id: response.data.data.booth_id,
-                }),
-              );
-              GetBooth(response.data.data.booth_id).then(res => {
-                dispatch(
-                  setBooth_name({
-                    booth_name: res.data.data.name,
-                  }),
-                );
-              });
-            }
-          });
-        })
-        .then(() => {
-          window.location.reload();
-          window.location.replace('/');
         });
-    });
+      })
+      .then(() => {
+        window.location.reload();
+        window.location.replace('/');
+      })
+      .catch(error => {
+        if (
+          error.response.data.data.username ==
+          '해당 사용자 이름은 이미 존재합니다.'
+        ) {
+          alert('해당 아이디는 이미 존재합니다.');
+        }
+      });
   };
   return (
     <>
