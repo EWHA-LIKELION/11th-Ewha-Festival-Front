@@ -50,23 +50,20 @@ const Booth = () => {
   // get api
   useEffect(() => {
     if (filter_viewer === 'location') {
-      setBooth(getbooths.data);
-      // GetLocationBooth(getDay(), filter_location).then(res => {
-      //   setBooth(res.data.data);
-      //   setLength(res.data.data.length);
-      // });
+      GetLocationBooth(getDay(), filter_location).then(res => {
+        setBooth(res.data.data);
+        setLength(res.data.data.length);
+      });
     } else if (filter_viewer === 'category') {
-      setBooth(getbooths.data);
-      // GetCategoryBooth(getDay(), getCategory()).then(res => {
-      //   setBooth(res.data.data);
-      //   setLength(res.data.data.length);
-      // });
+      GetCategoryBooth(getDay(), getCategory()).then(res => {
+        setBooth(res.data.data);
+        setLength(res.data.data.length);
+      });
     } else {
-      setBooth(getbooths.data);
-      // GetAllBooth().then(res => {
-      //   setBooth(res.data.data);
-      //   setLength(res.data.data.length);
-      // });
+      GetAllBooth().then(res => {
+        setBooth(res.data.data);
+        setLength(res.data.data.length);
+      });
     }
   }, [filter_day, filter_location, filter_category, filter_viewer]);
 
