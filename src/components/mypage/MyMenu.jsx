@@ -15,9 +15,7 @@ import TopBar from '../_common/topbar/TopBar';
 import MyLikedContainer from './MyLikedContainer';
 
 const MyMenu = () => {
-  // useEffect(() => {
-
-  // }, []);
+  useEffect(() => {}, []);
   const navigate = useNavigate();
   // 유저 정보 redux
   const { ID, nickname, isBooth, isTF } = useAppSelector(state => state.user);
