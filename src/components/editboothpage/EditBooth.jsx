@@ -10,6 +10,7 @@ import {
   PatchBoothNotice,
   PatchBoothTime,
 } from '../../api/booth';
+import Footer from '../_common/footer/Footer';
 
 const EditBooth = () => {
   const navigate = useNavigate();
@@ -164,6 +165,7 @@ const EditBooth = () => {
           </B.ButtonWrapper>
         </B.ComponentContainer>
       </B.Wrapper>
+      <Footer />
     </>
   );
 };

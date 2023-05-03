@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 // image
 import daychecked from '../../assets/images/boothpage/daychecked.png';
-import viewerchecked from '../../assets/images/boothpage/viewerchecked.svg';
 
 // booth component
 const ComponentContainer = styled.div`
@@ -10,11 +9,6 @@ const ComponentContainer = styled.div`
   align-items: center;
   padding: 4px;
   height: 60vmin;
-
-  .closed {
-    filter: grayscale(80%);
-    color: var(--gray1);
-  }
 `;
 
 const ImageWrapper = styled.div`
@@ -32,6 +26,7 @@ const ImageWrapper = styled.div`
     top: 0;
     left: 0;
     object-fit: cover;
+    filter: ${props => (props.closed ? 'blur(5px)' : '')};
   }
 
   .closed {
@@ -56,12 +51,8 @@ const LocationContainer = styled.div`
   align-items: center;
   font-weight: 500;
   font-size: 12px;
-  color: var(--red);
+  color: ${props => (props.closed ? 'var(--gray2)' : 'var(--red)')};
   margin: 4px 0 4px 0;
-
-  .close {
-    color: var(--gray2);
-  }
 `;
 
 const TitleWrapper = styled.div`
@@ -77,7 +68,7 @@ const BoothTitle = styled.div`
   font-weight: 700;
   font-size: ${props => (props.length > 15 ? '13px' : '14px')};
   line-height: 15px;
-  color: var(--green1);
+  color: ${props => (props.closed ? 'var(--gray2)' : 'var(--green1)')};
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -87,7 +78,7 @@ const BoothTitle = styled.div`
 const Hashtag = styled.div`
   font-weight: 400;
   font-size: 10px;
-  color: var(--green2);
+  color: ${props => (props.closed ? 'var(--gray2)' : 'var(--green2)')};
 `;
 
 export const C = {
@@ -148,9 +139,7 @@ const ViewerFilterContainer = styled.div`
 
 const ViewerContainer = styled.div`
   color: ${props => (props.checked ? 'var(--white)' : 'var(--gray2)')};
-  background-image: ${props =>
-    props.checked ? `url(${viewerchecked})` : 'none'};
-  /* background-size: 100%; */
+  background-size: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -159,16 +148,29 @@ const ViewerContainer = styled.div`
   font-weight: ${props => (props.checked ? '600' : '400')};
   font-size: 13px;
   line-height: 13px;
+  position: relative;
 
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  .check {
+    position: absolute;
+    z-index: 0;
+    display: ${props => (props.checked ? 'inline' : 'none')};
+  }
+
+  .text {
+    position: absolute;
+    z-index: 1;
+    overflow: hidden;
+  }
 `;
 
 const DataGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
 `;
 const DataContainer = styled.div`
-  width: 72px;
+  width: 20vmin;
   height: 30px;
   display: flex;
   align-items: center;
@@ -179,7 +181,8 @@ const DataContainer = styled.div`
   border: solid 1px var(--green2);
   border-radius: 104px;
   font-size: 14px;
-  margin: 3px 4px 3px 4px;
+
+  margin: 1vmin;
 `;
 
 export const F = {
@@ -195,12 +198,11 @@ export const F = {
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: var(--beige);
-  overflow: auto;
 `;
 
 const ComponentGrid = styled.div`
@@ -209,7 +211,7 @@ const ComponentGrid = styled.div`
 `;
 
 const BoothLength = styled.div`
-  width: 85%;
+  width: 88vmin;
   font-weight: 500;
   font-size: 13px;
   line-height: 15px;
@@ -217,8 +219,25 @@ const BoothLength = styled.div`
   margin: 8px 0 4px 0;
 `;
 
+const MapContainer = styled.div`
+  width: 88vmin;
+  height: 88vmin;
+  position: relative;
+
+  margin: 12px 0 12px 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+`;
+
 export const B = {
   Wrapper,
   ComponentGrid,
   BoothLength,
+  MapContainer,
 };

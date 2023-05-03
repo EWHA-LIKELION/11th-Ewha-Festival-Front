@@ -20,6 +20,8 @@ import BoothFilterBar from './BoothFilterBar';
 
 // style
 import { B } from './Booth.style';
+import { useMap } from '../boothdetailpage/useMap';
+import Footer from '../_common/footer/Footer';
 
 const Booth = () => {
   const booths = getbooths.data;
@@ -45,14 +47,6 @@ const Booth = () => {
     else return 4;
   };
 
-  // get first api
-  // useEffect(() => {
-  //   GetAllBooth().then(res => {
-  //     console.log(res.data.data);
-  //     setBooth(res.data.data);
-  //   });
-  // }, []);
-
   // get api
   useEffect(() => {
     if (filter_viewer === 'location') {
@@ -60,25 +54,45 @@ const Booth = () => {
         setBooth(res.data.data);
         setLength(res.data.data.length);
       });
-    } else {
+    } else if (filter_viewer === 'category') {
       GetCategoryBooth(getDay(), getCategory()).then(res => {
+        setBooth(res.data.data);
+        setLength(res.data.data.length);
+      });
+    } else {
+      GetAllBooth().then(res => {
         setBooth(res.data.data);
         setLength(res.data.data.length);
       });
     }
   }, [filter_day, filter_location, filter_category, filter_viewer]);
 
+  const mapSrc = useMap(filter_location);
   return (
     <>
       <B.Wrapper>
         <TopBar title='부스 목록' />
         <BoothFilterBar />
+        {filter_viewer === 'location' ? (
+          <B.MapContainer>
+            <img src={mapSrc} />
+          </B.MapContainer>
+        ) : (
+          ''
+        )}
+
         <B.BoothLength>총 {length} 개의 부스</B.BoothLength>
         <B.ComponentGrid>
           {booth.map(props => (
-            <BoothComponent key={props.id} {...props} />
+            <BoothComponent
+              key={props.id}
+              {...props}
+              booth={booth}
+              setBooth={setBooth}
+            />
           ))}
         </B.ComponentGrid>
+        <Footer />
       </B.Wrapper>
     </>
   );
