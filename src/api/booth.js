@@ -4,7 +4,7 @@ import { RequestLogout } from './auth';
 
 export const GetLikes = async (keyword, detail) => {
   try {
-    const response = await http.get(`/accoundts/likes/?${keyword}q=${detail}`);
+    const response = await http.get(`/accoundts/likes/?${keyword}=${detail}`);
     return Promise.resolve(response);
   } catch (error) {
     RequestLogout();
