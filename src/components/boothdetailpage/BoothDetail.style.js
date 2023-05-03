@@ -12,15 +12,22 @@ COM.Wrapper = styled.div`
 `;
 
 const T = {};
-T.CircleRect = styled.div`
+T.CircleWrapper = styled.div`
+  width: 100%;
   position: fixed;
-  top: 0;
-  left: 0;
+  display: flex;
+  justify-content: flex-start;
+  z-index: 100;
+  @media (min-width: 576px) {
+    width: 390px;
+  }
+`;
+T.CircleRect = styled.div`
+  position: relative;
   padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100;
   .circle {
     width: 45px;
     filter: drop-shadow(0px 1px 4px rgb(150 150 150 / 0.2));
@@ -325,6 +332,9 @@ C.CommentInputWrapper = styled.div`
   background-color: var(--beige);
   box-shadow: 0px -2px 6px rgba(165, 165, 165, 0.2);
   z-index: 90;
+  @media (min-width: 576px) {
+    width: 390px;
+  }
 `;
 C.CommentInputContainer = styled.div`
   width: 90%;

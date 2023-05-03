@@ -3,13 +3,25 @@ import flower from '../../../assets/images/sidebar/sidebar_flower.svg';
 import title from '../../../assets/images/sidebar/sidebar_title.svg';
 import side from '../../../assets/images/sidebar/side.svg';
 
+export const Wrapper = styled.div`
+  @media (min-width: 576px) {
+    width: 390px;
+  }
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const BarWrapper = styled.div`
   width: 100%;
   height: 100vh;
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  left: 0;
+  position: relative;
 `;
 
 export const Bar = styled.div`
@@ -21,12 +33,10 @@ export const Bar = styled.div`
 
   z-index: 10001;
 
-  position: fixed;
+  position: relative;
   display: flex;
   flex-direction: column;
   padding-bottom: 10px;
-  top: 0;
-  left: 0;
 
   color: var(--white);
   background-image: url(${side});
@@ -36,7 +46,7 @@ export const Bar = styled.div`
   background-repeat: no-repeat;
   background-color: var(--beige);
   border-radius: 0 50px 50px 0px;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
 
   animation: LeftToRight 0.8s;
   @keyframes LeftToRight {

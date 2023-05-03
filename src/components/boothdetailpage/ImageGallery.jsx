@@ -108,6 +108,7 @@ const Container = styled.div`
   left: 0;
   overflow: hidden;
   display: flex;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -131,6 +132,10 @@ const Block = styled.div`
   z-index: 200;
   width: 100%;
   height: auto;
+  @media (min-width: 576px) {
+    width: 390px;
+    margin-right: 15px;
+  }
   animation: modal-show 0.3s;
   @keyframes modal-show {
     from {
