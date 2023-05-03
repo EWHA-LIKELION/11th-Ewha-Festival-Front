@@ -205,7 +205,13 @@ export const LikedBooth = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export const BoothImg = styled.img``;
+export const BoothImg = styled.div`
+  background-image: url(${props => props.url});
+  width: 90%;
+  aspect-ratio: 1/1;
+  margin-bottom: 10px;
+  border: solid;
+`;
 export const BoothLocation = styled.div`
   color: var(--red);
   font-size: 12px;
@@ -216,3 +222,8 @@ export const BoothName = styled.div`
   font-size: 14px;
   font-weight: 700;
 `;
+export const BoothHashTag = styled.div`
+  color: var(--green2);
+  font-size: 10px;
+`;
+export const Heart = styled.div``;
