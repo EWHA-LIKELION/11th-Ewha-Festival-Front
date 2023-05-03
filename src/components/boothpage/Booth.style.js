@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 // image
 import daychecked from '../../assets/images/boothpage/daychecked.png';
-import viewerchecked from '../../assets/images/boothpage/viewerchecked2.svg';
 
 // booth component
 const ComponentContainer = styled.div`
@@ -27,6 +26,7 @@ const ImageWrapper = styled.div`
     top: 0;
     left: 0;
     object-fit: cover;
+    filter: ${props => (props.closed ? 'blur(5px)' : '')};
   }
 
   .closed {
@@ -51,12 +51,8 @@ const LocationContainer = styled.div`
   align-items: center;
   font-weight: 500;
   font-size: 12px;
-  color: var(--red);
+  color: ${props => (props.closed ? 'var(--gray2)' : 'var(--red)')};
   margin: 4px 0 4px 0;
-
-  .close {
-    color: var(--gray2);
-  }
 `;
 
 const TitleWrapper = styled.div`
@@ -72,7 +68,7 @@ const BoothTitle = styled.div`
   font-weight: 700;
   font-size: ${props => (props.length > 15 ? '13px' : '14px')};
   line-height: 15px;
-  color: var(--green1);
+  color: ${props => (props.closed ? 'var(--gray2)' : 'var(--green1)')};
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -82,7 +78,7 @@ const BoothTitle = styled.div`
 const Hashtag = styled.div`
   font-weight: 400;
   font-size: 10px;
-  color: var(--green2);
+  color: ${props => (props.closed ? 'var(--gray2)' : 'var(--green2)')};
 `;
 
 export const C = {
