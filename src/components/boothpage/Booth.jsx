@@ -20,8 +20,8 @@ import BoothFilterBar from './BoothFilterBar';
 
 // style
 import { B } from './Booth.style';
-import useBookmark from '../_common/useBookmark';
 import { useMap } from '../boothdetailpage/useMap';
+import Footer from '../_common/footer/Footer';
 
 const Booth = () => {
   const booths = getbooths.data;
@@ -46,15 +46,6 @@ const Booth = () => {
     else if (filter_category === '체험') return 3;
     else return 4;
   };
-
-  //get first api
-  // useEffect(() => {
-  //   GetAllBooth().then(res => {
-  //     console.log(res.data.data);
-  //     setBooth(res.data.data);
-  //     setLength(res.data.data);
-  //   });
-  // }, []);
 
   // get api
   useEffect(() => {
@@ -101,6 +92,7 @@ const Booth = () => {
             />
           ))}
         </B.ComponentGrid>
+        <Footer />
       </B.Wrapper>
     </>
   );

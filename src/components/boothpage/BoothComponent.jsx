@@ -40,13 +40,21 @@ const BoothComponent = props => {
           props.id === id ? { ...props, is_liked: true } : { ...props },
         ),
       );
-      // 좋아요 api 요청 보내기
-      LikeBooth(id)
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
-    } else {
-      alert('로그인이 필요합니다.');
     }
+    // 좋아요 api 요청 보내기
+    LikeBooth(id)
+      .then(res => {
+        console.log(res);
+        alert('북마크 설정 완료되었습니다.');
+      })
+      .catch(err => {
+        console.log(err);
+        if (err.response.status === 401) {
+          if (window.confirm('로그인 후 북마크 기능을 사용하실 수 있습니다.'))
+            navigate('/auth/login');
+          else return;
+        }
+      });
   };
 
   const unLike = id => {
@@ -65,11 +73,14 @@ const BoothComponent = props => {
   return (
     <>
       <C.ComponentContainer>
-        <C.ImageWrapper onClick={() => navigate(`/booth/detail/${id}`)}>
+        <C.ImageWrapper
+          closed={opened ? false : true}
+          onClick={() => navigate(`/booth/detail/${id}`)}
+        >
           <img src={thumnail ? thumnail : defaultthumbnail} />
           {opened ? '' : <div className='closed'>운영 종료</div>}
         </C.ImageWrapper>
-        <C.LocationContainer>
+        <C.LocationContainer closed={opened ? false : true}>
           <div>
             {college}
             {number}•{category}
@@ -79,8 +90,10 @@ const BoothComponent = props => {
           </div>
         </C.LocationContainer>
         <C.TitleWrapper>
-          <C.BoothTitle length={name.length}>{name}</C.BoothTitle>
-          <C.Hashtag>{hashtag}</C.Hashtag>
+          <C.BoothTitle closed={opened ? false : true} length={name.length}>
+            {name}
+          </C.BoothTitle>
+          <C.Hashtag closed={opened ? false : true}>{hashtag}</C.Hashtag>
         </C.TitleWrapper>
       </C.ComponentContainer>
     </>
