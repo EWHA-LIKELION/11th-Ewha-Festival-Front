@@ -66,6 +66,10 @@ const Location = styled.div`
   font-size: 12px;
   color: ${props => (props.closed ? 'var(--gray2)' : 'var(--red)')};
   margin: 7px 0 5px 0;
+
+  span {
+    margin-right: 3px;
+  }
 `;
 
 const BoothTitle = styled.div`
