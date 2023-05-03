@@ -52,3 +52,5 @@ const TopBar = props => {
     </>
   );
 };
+
+export default TopBar;
