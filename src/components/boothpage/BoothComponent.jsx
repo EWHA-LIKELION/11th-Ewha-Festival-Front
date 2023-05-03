@@ -80,16 +80,14 @@ const BoothComponent = props => {
           <img src={thumnail ? thumnail : defaultthumbnail} />
           {opened ? '' : <div className='closed'>운영 종료</div>}
         </C.ImageWrapper>
-        <C.LocationContainer closed={opened ? false : true}>
-          <div>
+        <C.TitleWrapper>
+          <C.Bookmark onClick={() => (is_liked ? unLike(id) : Like(id))}>
+            <img width='16px' src={is_liked ? fillheart : strokeheart} />
+          </C.Bookmark>
+          <C.Location closed={opened ? false : true}>
             {college}
             {number}•{category}
-          </div>
-          <div onClick={() => (is_liked ? unLike(id) : Like(id))}>
-            <img width='16px' src={is_liked ? fillheart : strokeheart} />
-          </div>
-        </C.LocationContainer>
-        <C.TitleWrapper>
+          </C.Location>
           <C.BoothTitle closed={opened ? false : true} length={name.length}>
             {name}
           </C.BoothTitle>

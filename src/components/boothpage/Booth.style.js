@@ -4,23 +4,23 @@ import daychecked from '../../assets/images/boothpage/daychecked.png';
 
 // booth component
 const ComponentContainer = styled.div`
+  width: 46%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 4px;
-  height: 60vmin;
+  padding: 2%;
+  position: relative;
 `;
 
 const ImageWrapper = styled.div`
   position: relative;
-  border: solid 1px black;
   border-radius: 8px;
 
-  width: 43vmin;
-  height: 43vmin;
+  width: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
 
   img {
-    position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
@@ -31,10 +31,12 @@ const ImageWrapper = styled.div`
 
   .closed {
     position: absolute;
+    top: 0;
     z-index: 1;
     font-size: 20px;
     font-weight: 600;
     color: var(--white);
+    text-shadow: 0px 0px 3px rgba(165, 165, 165, 0.8);
     width: 100%;
     height: 100%;
     display: flex;
@@ -43,25 +45,27 @@ const ImageWrapper = styled.div`
   }
 `;
 
-const LocationContainer = styled.div`
-  display: flex;
-  width: 43vmin;
-  height: 24px;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: 500;
-  font-size: 12px;
-  color: ${props => (props.closed ? 'var(--gray2)' : 'var(--red)')};
-  margin: 4px 0 4px 0;
-`;
-
 const TitleWrapper = styled.div`
-  width: 43vmin;
-  height: 46px;
+  width: 100%;
+  min-height: 46px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  position: relative;
+`;
+
+const Bookmark = styled.div`
+  position: absolute;
+  top: 6px;
+  right: 6px;
+`;
+
+const Location = styled.div`
+  font-weight: 500;
+  font-size: 12px;
+  color: ${props => (props.closed ? 'var(--gray2)' : 'var(--red)')};
+  margin: 7px 0 5px 0;
 `;
 
 const BoothTitle = styled.div`
@@ -79,13 +83,15 @@ const Hashtag = styled.div`
   font-weight: 400;
   font-size: 10px;
   color: ${props => (props.closed ? 'var(--gray2)' : 'var(--green2)')};
+  margin-top: 5px;
 `;
 
 export const C = {
   ComponentContainer,
   ImageWrapper,
-  LocationContainer,
+  Bookmark,
   TitleWrapper,
+  Location,
   BoothTitle,
   Hashtag,
 };
@@ -206,12 +212,14 @@ const Wrapper = styled.div`
 `;
 
 const ComponentGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  padding-bottom: 30px;
 `;
 
 const BoothLength = styled.div`
-  width: 88vmin;
+  width: 86%;
   font-weight: 500;
   font-size: 13px;
   line-height: 15px;
@@ -220,18 +228,13 @@ const BoothLength = styled.div`
 `;
 
 const MapContainer = styled.div`
-  width: 88vmin;
-  height: 88vmin;
+  width: 86%;
   position: relative;
 
   margin: 12px 0 12px 0;
 
   img {
     width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
   }
 `;
 
