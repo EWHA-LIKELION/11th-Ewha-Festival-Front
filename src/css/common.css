@@ -1,7 +1,35 @@
 /* html 기본 적용 */
 * {
-	margin: 0;
-	padding: 0;
-	overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Pretendard-Regular';
+
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+@media (min-width: 576px) {
+  .wrapper {
+    width: 390px;
+    margin: 0 auto;
   }
-  
+}
+
+:root {
+  /* color */
+  --black: #1f2225;
+  --gray1: #2d2d2d;
+  --gray2: #9b9b9b;
+  --gray3: #efefef;
+  --white: #ffffff;
+  --green1: #004628;
+  --green2: #029c54;
+  --green3: #d3f44b;
+  --yellow: #fff258;
+  --red: #f55b1d;
+  --pink: #fa8aa7;
+  --beige: #fff9f1;
+
+  /* font */
+  --pre-font: 'Pretendard-Regular';
+}
