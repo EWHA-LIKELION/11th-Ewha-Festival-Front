@@ -44,22 +44,14 @@ const LoginMenu = () => {
               isTF: res.data.data.is_tf,
             }),
           );
-          // 부스 유저인경우 부스 아이디 & 부스 이름 저장
+          // 부스 유저인경우 부스 아이디 저장
           if (res.data.data.is_booth) {
-            console.log(res.data);
             // test
             dispatch(
               setBooth_id({
                 booth_id: res.data.data.booth_id,
               }),
             );
-            GetBooth(res.data.data.booth_id).then(res => {
-              dispatch(
-                setBooth_name({
-                  booth_name: res.data.data.name,
-                }),
-              );
-            });
           }
         });
       })
