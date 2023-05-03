@@ -11,8 +11,6 @@ import * as S from './LoginReigster.style';
 import { BiUser, BiLockOpen } from 'react-icons/bi';
 // components
 import TopBar from '../_common/topbar/TopBar';
-import { GetBooth } from '../../api/booth';
-
 const LoginMenu = () => {
   const navigate = useNavigate();
   // redux
