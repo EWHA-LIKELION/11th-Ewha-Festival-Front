@@ -24,7 +24,7 @@ const Search = () => {
   return (
     <>
       <S.Wrapper>
-        <TopBar title='부스 정보 검색'></TopBar>
+        <TopBar title='부스 검색'></TopBar>
         <S.InputContainer>
           <S.Input
             placeholder='부스나 메뉴 이름을 검색하세요'
