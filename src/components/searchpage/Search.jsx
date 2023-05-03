@@ -4,6 +4,7 @@ import TopBar from '../_common/topbar/TopBar';
 import Footer from '../_common/footer/Footer';
 import searchicon from '../../assets/images/searchpage/searchicon.png';
 import { GetSearchBooth } from '../../api/booth';
+import BoothComponent from '../boothpage/BoothComponent';
 
 // import { getbooths } from '../../api/_mock/boothmock';
 
@@ -13,14 +14,13 @@ const Search = () => {
   const [booth, setBooth] = useState([]);
 
   const onSubmit = () => {
-    setKeyword("'" + inputText + "'");
+    setKeyword("'" + inputText + "'에 대한 검색 결과");
     GetSearchBooth(inputText)
       .then(res => {
         setBooth(res.data.data);
       })
       .catch(err => console.log(err));
   };
-  console.log(booth);
   return (
     <>
       <S.Wrapper>
@@ -41,9 +41,19 @@ const Search = () => {
         </S.InputContainer>
 
         <S.TextContainer>
-          <div>{keyword}에 대한 검색결과</div>
-          <div>총 {booth.length ? booth.length : 0}개의 부스</div>
+          <div>{keyword}</div>
+          <div>총 {booth.length}개의 부스</div>
         </S.TextContainer>
+        <S.ComponentGrid>
+          {booth.map(props => (
+            <BoothComponent
+              key={props.id}
+              {...props}
+              booth={booth}
+              setBooth={setBooth}
+            />
+          ))}
+        </S.ComponentGrid>
       </S.Wrapper>
       <Footer />
     </>

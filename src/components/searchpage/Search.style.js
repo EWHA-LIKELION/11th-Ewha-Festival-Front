@@ -52,3 +52,10 @@ export const TextContainer = styled.div`
   justify-content: space-between;
   margin-top: 16px;
 `;
+
+export const ComponentGrid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  padding-bottom: 30px;
+`;
