@@ -14,7 +14,7 @@ const ComponentContainer = styled.div`
 
 const ImageWrapper = styled.div`
   position: relative;
-  border-radius: 8px;
+  border-radius: 6px;
 
   width: 100%;
   aspect-ratio: 1/1;
@@ -174,9 +174,9 @@ const DataGrid = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-content: center;
   align-items: center;
+  width: 88%;
 `;
 const DataContainer = styled.div`
-  width: 20vmin;
   height: 30px;
   display: flex;
   align-items: center;
@@ -188,7 +188,7 @@ const DataContainer = styled.div`
   border-radius: 104px;
   font-size: 14px;
 
-  margin: 1vmin;
+  margin: 2%;
 `;
 
 export const F = {
@@ -204,7 +204,7 @@ export const F = {
 
 const Wrapper = styled.div`
   width: 100%;
-  /* height: 100vh; */
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;

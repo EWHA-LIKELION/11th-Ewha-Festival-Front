@@ -92,8 +92,8 @@ const Booth = () => {
             />
           ))}
         </B.ComponentGrid>
-        <Footer />
       </B.Wrapper>
+      <Footer />
     </>
   );
 };
