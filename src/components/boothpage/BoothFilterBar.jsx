@@ -17,6 +17,7 @@ import {
 
 // style
 import { F } from './Booth.style';
+import viewerchecked from '../../assets/images/boothpage/viewerchecked2.svg';
 
 const BoothFilterBar = () => {
   // redux
@@ -38,11 +39,10 @@ const BoothFilterBar = () => {
   const saveFilterDetail = option => {
     if (filter_viewer === 'location') {
       dispatch(setFilterLocation({ filter_location: option }));
-    } else {
+    } else if (filter_viewer === 'category') {
       dispatch(setFilterCategory({ filter_category: option }));
-    }
+    } else return;
   };
-
   // 상세 필터 함수형 컴포넌트
   const UnderBar = () => {
     return (
@@ -58,7 +58,8 @@ const BoothFilterBar = () => {
                   {props}
                 </F.DataContainer>
               ))
-            : categoryData.map(props => (
+            : filter_viewer === 'category'
+            ? categoryData.map(props => (
                 <F.DataContainer
                   key={props}
                   checked={filter_category === props}
@@ -66,7 +67,8 @@ const BoothFilterBar = () => {
                 >
                   {props}
                 </F.DataContainer>
-              ))}
+              ))
+            : ''}
         </F.DataGrid>
       </>
     );
@@ -90,13 +92,34 @@ const BoothFilterBar = () => {
           checked={filter_viewer === 'location'}
           onClick={() => saveFilterViewer('location')}
         >
-          장소별 보기
+          <img
+            className='check'
+            src={viewerchecked}
+            checked={filter_viewer === 'location'}
+          />
+          <div className='text'>장소별 보기</div>
         </F.ViewerContainer>
         <F.ViewerContainer
           checked={filter_viewer === 'category'}
           onClick={() => saveFilterViewer('category')}
         >
-          카테고리별 보기
+          <img
+            className='check'
+            src={viewerchecked}
+            checked={filter_viewer === 'location'}
+          />
+          <div className='text'>카테고리별 보기</div>
+        </F.ViewerContainer>
+        <F.ViewerContainer
+          checked={filter_viewer === 'all'}
+          onClick={() => saveFilterViewer('all')}
+        >
+          <img
+            className='check'
+            src={viewerchecked}
+            checked={filter_viewer === 'location'}
+          />
+          <div className='text'>전체 보기</div>
         </F.ViewerContainer>
       </F.ViewerFilterContainer>
       <UnderBar />

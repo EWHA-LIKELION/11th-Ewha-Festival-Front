@@ -147,14 +147,44 @@ export const DeleteComment = async (boothId, cId) => {
   }
 };
 
-export const PatchBooth = async (boothId, name, notice, description) => {
+export const PatchBooth = async (boothId, name, opened, description) => {
   try {
     const response = await BoothService.patchBooth(
       boothId,
       name,
-      notice,
+      opened,
       description,
     );
+    return Promise.resolve(response);
+  } catch (error) {
+    if (
+      error.response.data.detail ==
+      '이 토큰은 모든 타입의 토큰에 대해 유효하지 않습니다'
+    ) {
+      RequestLogout();
+    }
+    return Promise.reject(error, '부스 수정 실패');
+  }
+};
+
+export const PatchBoothNotice = async (boothId, notice) => {
+  try {
+    const response = await BoothService.patchBoothNotice(boothId, notice);
+    return Promise.resolve(response);
+  } catch (error) {
+    if (
+      error.response.data.detail ==
+      '이 토큰은 모든 타입의 토큰에 대해 유효하지 않습니다'
+    ) {
+      RequestLogout();
+    }
+    return Promise.reject(error, '부스 수정 실패');
+  }
+};
+
+export const PatchBoothTime = async (boothId, index, time) => {
+  try {
+    const response = await BoothService.patchBoothTime(boothId, index, time);
     return Promise.resolve(response);
   } catch (error) {
     if (

@@ -27,14 +27,12 @@ const BoothDetailTitle = props => {
   const [sideBar, setSideBar] = useState(false);
   return (
     <COM.Wrapper>
-      <T.CircleRect
-        onClick={() => {
-          setSideBar(true);
-        }}
-      >
-        <img src={circle} className='circle' />
-        <HiMenu size='30' fill='var(--green1)' />
-      </T.CircleRect>
+      <T.CircleWrapper>
+        <T.CircleRect onClick={() => setSideBar(true)}>
+          <img src={circle} className='circle' />
+          <HiMenu size='30' fill='var(--green1)' />
+        </T.CircleRect>
+      </T.CircleWrapper>
       <T.ImgDiv onClick={() => setImgModal(true)}>
         <T.Img src={thumnail ? thumnail : defaultthumbnail} />
       </T.ImgDiv>

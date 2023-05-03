@@ -6,7 +6,6 @@ import { MdOutlineArrowForwardIos } from 'react-icons/md';
 const EditMenuComponent = props => {
   const navigate = useNavigate();
   const onClick = id => {
-    console.log(id);
     navigate(`/mypage/editmenu/${id}`);
   };
 

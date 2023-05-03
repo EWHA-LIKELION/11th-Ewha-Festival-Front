@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // api
@@ -9,8 +9,9 @@ import { C } from './Booth.style';
 // image
 import fillheart from '../../assets/images/fillheart.svg';
 import strokeheart from '../../assets/images/strokeheart.svg';
-import { useAppSelector } from '../../redux/store';
-import { LikeBooth } from '../../api/booth';
+import defaultthumbnail from '../../assets/images/boothdetailpage/defaultthumbnail.svg';
+
+import { LikeBooth, UnLikeBooth } from '../../api/booth';
 
 const BoothComponent = props => {
   const {
@@ -25,54 +26,72 @@ const BoothComponent = props => {
     opened,
   } = props;
 
-  const booth_id = useAppSelector(state => state.user);
+  const { booth, setBooth } = props;
+
   const navigate = useNavigate();
 
-  const [isLiked, setIsLiked] = useState(is_liked);
-
-  const changeLiked = () => {
-    // 서버에 제출
+  const Like = id => {
     const token = localStorage.getItem('token');
+
     if (token) {
-      setIsLiked(!isLiked);
-    } else {
-      alert('로그인이 필요한 서비스입니다');
+      // 하트 ui 수정
+      setBooth(
+        booth.map(props =>
+          props.id === id ? { ...props, is_liked: true } : { ...props },
+        ),
+      );
     }
+    // 좋아요 api 요청 보내기
+    LikeBooth(id)
+      .then(res => {
+        console.log(res);
+        alert('북마크 설정 완료되었습니다.');
+      })
+      .catch(err => {
+        console.log(err);
+        if (err.response.status === 401) {
+          if (window.confirm('로그인 후 북마크 기능을 사용하실 수 있습니다.'))
+            navigate('/auth/login');
+          else return;
+        }
+      });
   };
+
+  const unLike = id => {
+    // 하트 ui 수정
+    setBooth(
+      booth.map(props =>
+        props.id === id ? { ...props, is_liked: false } : { ...props },
+      ),
+    );
+    // 좋아요 삭제 api
+    UnLikeBooth(id)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  };
+
   return (
     <>
       <C.ComponentContainer>
-        <C.ImageWrapper onClick={() => navigate(`/booth/detail/:${id}`)}>
-          {thumnail ? (
-            <img className={opened ? 'open' : 'closed'} src={thumnail} />
-          ) : (
-            ''
-          )}
+        <C.ImageWrapper
+          closed={opened ? false : true}
+          onClick={() => navigate(`/booth/detail/${id}`)}
+        >
+          <img src={thumnail ? thumnail : defaultthumbnail} />
           {opened ? '' : <div className='closed'>운영 종료</div>}
         </C.ImageWrapper>
-        <C.LocationContainer>
-          <div className={opened ? 'open' : 'closed'}>
+        <C.TitleWrapper>
+          <C.Bookmark onClick={() => (is_liked ? unLike(id) : Like(id))}>
+            <img width='16px' src={is_liked ? fillheart : strokeheart} />
+          </C.Bookmark>
+          <C.Location closed={opened ? false : true}>
             {college}
             {number}•{category}
-          </div>
-          <div onClick={() => changeLiked(id)}>
-            {isLiked ? (
-              <img src={fillheart} width='18px' />
-            ) : (
-              <img src={strokeheart} width='18px' />
-            )}
-          </div>
-        </C.LocationContainer>
-        <C.TitleWrapper>
-          <C.BoothTitle
-            className={opened ? 'open' : 'closed'}
-            length={name.length}
-          >
+          </C.Location>
+          <C.BoothTitle closed={opened ? false : true} length={name.length}>
             {name}
           </C.BoothTitle>
-          <C.Hashtag className={opened ? 'open' : 'closed'}>
-            {hashtag}
-          </C.Hashtag>
+          <C.Hashtag closed={opened ? false : true}>{hashtag}</C.Hashtag>
         </C.TitleWrapper>
       </C.ComponentContainer>
     </>

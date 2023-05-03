@@ -12,17 +12,21 @@ import EditMenuComponent from './EditMenuComponent';
 import { M } from './EditMenu.style';
 import { useAppSelector } from '../../redux/store';
 import { GetMenu } from '../../api/booth';
+import Footer from '../_common/footer/Footer';
 
 const EditMenu = () => {
   const { booth_id } = useAppSelector(state => state.booth);
-  console.log(booth_id);
   const [getmenus, setGetmenus] = useState([]);
+
   useEffect(() => {
     if (booth_id !== null) {
-      GetMenu(booth_id).then(res => console.log(res.data));
+      // booth_id 잘 들어오면 정상 작동할 것
+      GetMenu(booth_id).then(res => {
+        console.log(res);
+        setGetmenus(res.data.data);
+      });
     }
   }, []);
-
   return (
     <>
       <M.Wrapper>
@@ -34,12 +38,15 @@ const EditMenu = () => {
               key={props.id}
               id={props.id}
               menu={props.menu}
-              price={props.price}
+              price={props.price
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
               is_soldout={props.is_soldout}
             />
           ))}
         </M.ComponentContainer>
       </M.Wrapper>
+      <Footer />
     </>
   );
 };

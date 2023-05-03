@@ -128,7 +128,7 @@ export const getbooths = {
       day: ['수요일'],
       time: '5~',
       college: '교육관',
-      category: '굿즈',
+      category: ['굿즈', '음식', '체험'],
       name: '멋쟁이사자처럼멋쟁이사자처럼멋재adf멋쟁이사자처럼',
       number: '12',
       thumnail: menu1,
