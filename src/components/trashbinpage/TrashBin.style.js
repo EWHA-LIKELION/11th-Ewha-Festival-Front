@@ -1,24 +1,24 @@
 import styled from 'styled-components';
 import { css } from 'styled-components';
 import pinbtn from '../../assets/images/trashbinpage/pin.svg';
-import map from '../../assets/images/trashbinpage/trashbinMap.svg';
+import map from '../../assets/images/trashbinpage/trashbinMap.png';
 
 export const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: calc(100vh - 130px);
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  overflow: scroll;
+  background-color: var(--beige);
   font-family: var(--pre-font);
-  background-color: #fff9f1;
   overflow: scroll;
 `;
 export const MapBox = styled.div`
   width: 90%;
   aspect-ratio: 1/1.1;
+  position: relative;
 
   max-width: 450px;
 
@@ -29,20 +29,21 @@ export const MapBox = styled.div`
 export const Pin = styled.object`
   background-image: url(${pinbtn});
   background-repeat: no-repeat;
-  background-size: 17px;
+  background-size: 20px;
   position: absolute;
-  width: 17px;
+  /* position: relative; */
+  width: 20px;
   height: 24px;
-  top: ${({ top }) => top + 'px'};
-  left: ${({ left }) => left + 'px'};
+  margin-top: ${({ top }) => top + '%'};
+  margin-left: ${({ left }) => left + '%'};
   ${props =>
     props.selected
       ? css`
           background-image: url(${pinbtn});
           background-repeat: no-repeat;
           background-size: 34px;
-          top: ${({ top }) => top - 25 + 'px'};
-          left: ${({ left }) => left - 8 + 'px'};
+          margin-top: ${({ top }) => top - 6 + '%'};
+          margin-left: ${({ left }) => left - 2 + '%'};
           height: 55px;
           width: 34px;
           animation-duration: 1s;
@@ -58,7 +59,7 @@ export const LocationBox = styled.div`
   aspect-ratio: 2.8/1;
   max-width: 400px;
   display: flex;
-  margin: 20px auto;
+  margin: 20px 0 30px 0;
 
   background: var(--white);
   box-shadow: 0px 2px 6px rgba(165, 165, 165, 0.2);

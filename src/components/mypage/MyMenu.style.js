@@ -2,28 +2,17 @@ import styled from 'styled-components';
 //images
 import nameWrapper from '../../assets/images/mypage/nameContainer.svg';
 
-export const Background = styled.div`
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  z-index: 0;
-
-  background-color: #fff9f1;
-`;
 export const Container = styled.div`
-  width: 100vw;
-  height: auto;
-  position: absolute;
-  top: 0;
+  width: 100%;
+  min-height: calc(100vh - 130px);
 
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  overflow: scroll;
+  background-color: var(--beige);
   font-family: var(--pre-font);
-  background-color: #fff9f1;
-  overflow: scroll;
 `;
 
 export const NameContainer = styled.div`
@@ -192,38 +181,22 @@ export const SelectFilter_Detail = styled.div`
     }
   }
 `;
-export const LikedList = styled.div`
-  width: 100%;
-  height: auto;
-
-  margin-top: 15px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-`;
-
-export const LikedBooth = styled.div`
+export const LikedContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
-export const BoothImg = styled.div`
-  background-image: url(${props => props.url});
-  width: 90%;
-  aspect-ratio: 1/1;
-  margin-bottom: 10px;
-  border: solid;
+
+export const LikedGrid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-bottom: 30px;
 `;
-export const BoothLocation = styled.div`
-  color: var(--red);
-  font-size: 12px;
-  text-align: left;
+export const FooterWrapper = styled.div`
+  width: 100%;
+  /* height: 100%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 `;
-export const BoothName = styled.div`
-  color: var(--green1);
-  font-size: 14px;
-  font-weight: 700;
-`;
-export const BoothHashTag = styled.div`
-  color: var(--green2);
-  font-size: 10px;
-`;
-export const Heart = styled.div``;
