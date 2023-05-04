@@ -18,8 +18,8 @@ export const locationData = [
     info: '포스코관 건물 옆',
     // top: '145',
     // left: '192',
-    top: '38',
-    left: '49',
+    top: '42',
+    left: '52',
     selected: false,
   },
   {
@@ -28,8 +28,8 @@ export const locationData = [
     info: '학생문화관 7~14번 부스 건너편 공간',
     // top: '165',
     // left: '163',
-    top: '43',
-    left: '42',
+    top: '46',
+    left: '45',
     selected: false,
   },
   {
@@ -38,8 +38,8 @@ export const locationData = [
     info: '생활환경관 입구',
     // top: '195',
     // left: '140',
-    top: '50',
-    left: '36',
+    top: '57',
+    left: '40',
     selected: false,
   },
   {
@@ -48,8 +48,8 @@ export const locationData = [
     info: '생활환경관 20번 부스 옆',
     // top: '220',
     // left: '120',
-    top: '56',
-    left: '30',
+    top: '62',
+    left: '32',
     selected: false,
   },
   {

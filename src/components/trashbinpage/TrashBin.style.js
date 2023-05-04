@@ -18,6 +18,7 @@ export const Container = styled.div`
 export const MapBox = styled.div`
   width: 90%;
   aspect-ratio: 1/1.1;
+  position: relative;
 
   max-width: 450px;
 
@@ -28,9 +29,10 @@ export const MapBox = styled.div`
 export const Pin = styled.object`
   background-image: url(${pinbtn});
   background-repeat: no-repeat;
-  background-size: 17px;
+  background-size: 20px;
   position: absolute;
-  width: 17px;
+  /* position: relative; */
+  width: 20px;
   height: 24px;
   margin-top: ${({ top }) => top + '%'};
   margin-left: ${({ left }) => left + '%'};
