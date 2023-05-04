@@ -18,6 +18,7 @@ export const Wrapper = styled.div`
     height: 30px;
     color: var(--green1);
   }
+  overflow: hidden;
 `;
 export const Wrapper2 = styled.div`
   width: 100%;

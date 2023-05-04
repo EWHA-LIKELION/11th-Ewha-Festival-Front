@@ -4,7 +4,16 @@ import { RequestLogout } from './auth';
 
 export const GetLikes = async (keyword, detail) => {
   try {
-    const response = await http.get(`/accoundts/likes/?${keyword}=${detail}`);
+    const response = await http.get(`/accounts/likes/?${keyword}=${detail}`);
+    return Promise.resolve(response);
+  } catch (error) {
+    RequestLogout();
+    return Promise.reject(error, '좋아요한 부스 조회 실패');
+  }
+};
+export const GetLikesAll = async () => {
+  try {
+    const response = await http.get(`/accounts/likes/`);
     return Promise.resolve(response);
   } catch (error) {
     RequestLogout();

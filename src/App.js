@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AuthRoute from './AuthRoute';
+import './css/common.css';
 
 import LoginPage from './pages/authpage/LoginPage';
 import RegisterPage from './pages/authpage/RegisterPage';
@@ -15,8 +16,6 @@ import NoticeListPage from './pages/noticepage/NoticeListPage';
 import NoticeDetailPage from './pages/noticepage/NoticeDetailPage';
 import NoticeWritePage from './pages/noticepage/NoticeWritePage';
 import SearchPage from './pages/SearchPage';
-
-import './css/common.css';
 import TrashBinPage from './pages/TrashBinPage';
 
 function App() {
