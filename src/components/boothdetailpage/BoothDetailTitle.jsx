@@ -38,19 +38,21 @@ const BoothDetailTitle = props => {
       </T.ImgDiv>
       <T.Container>
         <T.TitleContainer>
-          <T.Title>
-            <p>{name}</p>
-          </T.Title>
+          <div className='inner'>
+            <T.CategoryWrapper>
+              {category &&
+                category.map(item => {
+                  return <T.Category key={item}>{item}</T.Category>;
+                })}
+            </T.CategoryWrapper>
+            <T.Title>
+              <div className='text'>{name}</div>
+            </T.Title>
+          </div>
           <T.HeartDiv onClick={toggle}>
             <T.HeartImg src={is_liked ? fillheart : strokeheart} />
           </T.HeartDiv>
         </T.TitleContainer>
-        <T.CategoryWrapper>
-          {category &&
-            category.map(item => {
-              return <T.Category key={item}>{item}</T.Category>;
-            })}
-        </T.CategoryWrapper>
         <T.Hashtag>{hashtag}</T.Hashtag>
       </T.Container>
       {imgModal ? (
