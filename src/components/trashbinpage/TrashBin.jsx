@@ -1,8 +1,6 @@
 import { useState } from 'react';
 // style.js
 import * as S from './TrashBin.style';
-// images
-import Map from '../../assets/images/trashbinpage/trashbinMap.svg';
 //component
 import TopBar from '../_common/topbar/TopBar';
 import Footer from '../_common/footer/Footer';
@@ -67,6 +65,7 @@ const TrashBin = () => {
           </S.LocationInfo>
         </S.LocationBox>
       </S.Container>
+      <Footer />
     </>
   );
 };
