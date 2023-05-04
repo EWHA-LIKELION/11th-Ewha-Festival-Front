@@ -13,17 +13,23 @@ import { AiOutlineSound, AiOutlineShop } from 'react-icons/ai';
 // componets
 import TopBar from '../_common/topbar/TopBar';
 import MyLikedContainer from './MyLikedContainer';
+import Footer from '../_common/footer/Footer';
 
 const MyMenu = () => {
-  useEffect(() => {}, []);
+  useEffect(() => {
+    GetBooth(booth_id).then(res => {
+      setBoothName(res.data.data.name);
+    });
+  }, []);
   const navigate = useNavigate();
   // 유저 정보 redux
   const { ID, nickname, isBooth, isTF } = useAppSelector(state => state.user);
-  const { booth_id, booth_name } = useAppSelector(state => state.booth);
+  const { booth_id } = useAppSelector(state => state.booth);
+  // 부스 정보
+  const [boothName, setBoothName] = useState('');
   // test 값
   return (
     <>
-      <S.Background />
       <S.Container>
         <TopBar title='마이페이지' />
         <S.NameContainer>
@@ -41,7 +47,7 @@ const MyMenu = () => {
         {isBooth ? (
           <S.BoothContainer>
             <S.ManageTitle>부스 관리</S.ManageTitle>
-            <S.BoothTitle>{booth_name}</S.BoothTitle>
+            <S.BoothTitle>{boothName}</S.BoothTitle>
             <S.GoManageBtn
               onClick={() => navigate(`/booth/detail/${booth_id}`)}
             >
@@ -84,6 +90,7 @@ const MyMenu = () => {
         ) : null}
         <MyLikedContainer />
       </S.Container>
+      <Footer />
     </>
   );
 };
