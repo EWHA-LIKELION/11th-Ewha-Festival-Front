@@ -22,8 +22,8 @@ const Modal = props => {
   console.log(secret || path.includes('notice') || path.includes('detail'));
   return (
     <>
-      <S.Background className='modal-back' />
       <S.Container>
+        <S.Background className='modal-back' />
         {open ? (
           secret || path.includes('notice') || path.includes('detail') ? (
             <S.ModalWrapper>
