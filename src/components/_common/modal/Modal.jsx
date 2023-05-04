@@ -19,7 +19,6 @@ const Modal = props => {
       window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
     };
   }, []);
-  console.log(secret || path.includes('notice') || path.includes('detail'));
   return (
     <>
       <S.Container>
