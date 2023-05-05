@@ -5,7 +5,7 @@ import { RequestLogin, RequestProfile } from '../../api/auth';
 // redux
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { setUser, setUserTask } from '../../redux/userSlice';
-import { setBooth_id, setBooth_name } from '../../redux/boothSlice';
+import { setBooth_id } from '../../redux/boothSlice';
 // style.js & fonts
 import * as S from './LoginReigster.style';
 import { BiUser, BiLockOpen } from 'react-icons/bi';

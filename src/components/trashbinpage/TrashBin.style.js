@@ -26,11 +26,12 @@ export const MapBox = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
 `;
-export const Pin = styled.object`
+export const Pin = styled.div`
   background-image: url(${pinbtn});
   background-repeat: no-repeat;
   background-size: 20px;
   position: absolute;
+
   /* position: relative; */
   width: 20px;
   height: 24px;
@@ -58,6 +59,7 @@ export const LocationBox = styled.div`
   /* height: 120px; */
   aspect-ratio: 2.8/1;
   max-width: 400px;
+  overflow: hidden;
   display: flex;
   margin: 20px 0 30px 0;
 

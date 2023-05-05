@@ -171,6 +171,10 @@ const ViewerContainer = styled.div`
     z-index: 1;
     overflow: hidden;
   }
+
+  img {
+    /* border: solid 1px; */
+  }
 `;
 
 const DataGrid = styled.div`
@@ -179,6 +183,7 @@ const DataGrid = styled.div`
   justify-content: center;
   align-items: center;
   width: 88%;
+  margin: 4px 0 4px 0;
 `;
 const DataContainer = styled.div`
   height: 30px;
@@ -208,7 +213,7 @@ export const F = {
 
 const Wrapper = styled.div`
   width: 100%;
-  /* height: 100vh; */
+  min-height: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -228,14 +233,14 @@ const BoothLength = styled.div`
   font-size: 13px;
   line-height: 15px;
   color: var(--gray2);
-  margin: 8px 0 4px 0;
+  margin: 4px 0 4px 0;
 `;
 
 const MapContainer = styled.div`
   width: 86%;
   position: relative;
 
-  margin: 12px 0 12px 0;
+  margin: 12px 0 4px 0;
 
   img {
     width: 100%;

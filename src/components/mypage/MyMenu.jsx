@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // api
 import { RequestLogout } from '../../api/auth';
 import { GetBooth } from '../../api/booth';
 // redux
-import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { useAppSelector } from '../../redux/store';
 // style.js
 import * as S from './MyMenu.style';
 //icons
@@ -47,7 +47,9 @@ const MyMenu = () => {
         {isBooth ? (
           <S.BoothContainer>
             <S.ManageTitle>부스 관리</S.ManageTitle>
-            <S.BoothTitle>{boothName}</S.BoothTitle>
+            <S.BoothTitle padding={boothName.length > 18 ? '5px' : 0}>
+              {boothName}
+            </S.BoothTitle>
             <S.GoManageBtn
               onClick={() => navigate(`/booth/detail/${booth_id}`)}
             >

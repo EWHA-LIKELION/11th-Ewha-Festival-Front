@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from 'react';
 // redux
-import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { useAppSelector } from '../../redux/store';
 // api
-import { getbooths } from '../../api/_mock/boothmock';
 import { GetLikes, GetLikesAll } from '../../api/booth';
 
 // component
 import BoothComponent from '../boothpage/BoothComponent';
 import MyFilterBar from './MyFilterBar';
-import BoothFilterBar from '../boothpage/BoothFilterBar';
 
 // style
-import { B } from '../boothpage/Booth.style';
 import * as M from './MyMenu.style';
-import { useMap } from '../boothdetailpage/useMap';
-import Footer from '../_common/footer/Footer';
 
 const MyLikedContainer = () => {
   // redux
@@ -25,6 +20,8 @@ const MyLikedContainer = () => {
   const [booth, setBooth] = useState([]);
   // 좋아요 갯수
   const [likeNum, setLikeNum] = useState(0);
+  // 좋아요 변경 감지
+  const [changeLike, setChangeLike] = useState('false');
 
   const getDay = () => {
     if (filter_day === '수') return 1;
@@ -45,9 +42,20 @@ const MyLikedContainer = () => {
       setLikeNum(res.data.data.length);
     });
   }, []);
+  // 좋아요 개수 변경에 따른 렌더링
+  useEffect(() => {
+    GetLikesAll().then(res => {
+      setLikeNum(res.data.data.length);
+    });
+  }, [changeLike]);
+
   // 필터링 값 변경에 따른 get api
   useEffect(() => {
     switch (filter) {
+      case 'all':
+        GetLikesAll().then(res => {
+          setBooth(res.data.data);
+        });
       case 'day':
         GetLikes(filter, getDay()).then(res => {
           setBooth(res.data.data);
@@ -78,6 +86,8 @@ const MyLikedContainer = () => {
               {...props}
               booth={booth}
               setBooth={setBooth}
+              setChangeLike={setChangeLike}
+              changeLike={changeLike}
             />
           ))}
         </M.LikedGrid>

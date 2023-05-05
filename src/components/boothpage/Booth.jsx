@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../redux/store';
 import {
   GetLocationBooth,
   GetCategoryBooth,
-  GetAllBooth,
+  GetDayBooth,
 } from '../../api/booth';
 // import { dayData } from './mock';
 // import { locationData } from './mock';
@@ -57,7 +57,7 @@ const Booth = () => {
         setLength(res.data.data.length);
       });
     } else {
-      GetAllBooth().then(res => {
+      GetDayBooth(getDay()).then(res => {
         setBooth(res.data.data);
         setLength(res.data.data.length);
       });

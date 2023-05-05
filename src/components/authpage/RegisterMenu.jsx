@@ -13,11 +13,10 @@ import { MdOutlineVpnKey } from 'react-icons/md';
 import TopBar from '../_common/topbar/TopBar';
 import Modal from '../_common/modal/Modal';
 //api
-import { RequestSignin, RequestProfile, RequestLogin } from '../../api/auth';
+import { RequestSignin, RequestLogin } from '../../api/auth';
 import { GetBooth } from '../../api/booth';
-import { useAppDispatch, useAppSelector } from '../../redux/store';
-import { setUser, setUserTask } from '../../redux/userSlice';
-import { setBooth_id, setBooth_name } from '../../redux/boothSlice';
+import { useAppDispatch } from '../../redux/store';
+import { setUser } from '../../redux/userSlice';
 
 const RegisterMenu = () => {
   const navigate = useNavigate();
