@@ -183,6 +183,7 @@ const DataGrid = styled.div`
   justify-content: center;
   align-items: center;
   width: 88%;
+  margin: 4px 0 4px 0;
 `;
 const DataContainer = styled.div`
   height: 30px;
@@ -232,14 +233,14 @@ const BoothLength = styled.div`
   font-size: 13px;
   line-height: 15px;
   color: var(--gray2);
-  margin: 8px 0 4px 0;
+  margin: 4px 0 4px 0;
 `;
 
 const MapContainer = styled.div`
   width: 86%;
   position: relative;
 
-  margin: 12px 0 12px 0;
+  margin: 12px 0 4px 0;
 
   img {
     width: 100%;
