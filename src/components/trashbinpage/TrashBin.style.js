@@ -59,6 +59,7 @@ export const LocationBox = styled.div`
   /* height: 120px; */
   aspect-ratio: 2.8/1;
   max-width: 400px;
+  overflow: hidden;
   display: flex;
   margin: 20px 0 30px 0;
 
