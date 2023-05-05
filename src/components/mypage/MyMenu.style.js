@@ -142,16 +142,19 @@ export const SelectFilter = styled.div`
 
   color: var(--gray2);
   font-weight: 400;
-  font-size: 15px;
+  font-size: 17px;
   .active {
     color: var(--red);
-    font-weight: bold;
+    font-weight: 800;
   }
   div {
-    margin-right: 10px;
+    margin-right: 18px;
   }
   @media (max-width: 300px) {
-    font-size: 12px;
+    font-size: 14px;
+    div {
+      margin-right: 12px;
+    }
   }
 `;
 export const SelectFilter_Detail = styled.div`

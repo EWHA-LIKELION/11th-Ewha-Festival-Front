@@ -4,7 +4,7 @@ import { PURGE } from 'redux-persist';
 const name = 'MypageSlice';
 
 const initialState = {
-  filter: 'day',
+  filter: 'all',
   filter_day: '수',
   filter_location: '정문',
   filter_category: '음식',

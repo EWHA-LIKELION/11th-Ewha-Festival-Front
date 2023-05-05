@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // api
 import { RequestLogout } from '../../api/auth';
 import { GetBooth } from '../../api/booth';
 // redux
-import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { useAppSelector } from '../../redux/store';
 // style.js
 import * as S from './MyMenu.style';
 //icons

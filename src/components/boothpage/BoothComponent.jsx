@@ -1,11 +1,6 @@
-import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-// api
-
 // style
 import { C } from './Booth.style';
-
 // image
 import fillheart from '../../assets/images/fillheart.svg';
 import strokeheart from '../../assets/images/strokeheart.svg';
@@ -24,6 +19,8 @@ const BoothComponent = props => {
     is_liked,
     thumnail,
     opened,
+    setChangeLike,
+    changeLike,
   } = props;
 
   const { booth, setBooth } = props;
@@ -44,10 +41,10 @@ const BoothComponent = props => {
     // 좋아요 api 요청 보내기
     LikeBooth(id)
       .then(res => {
-        // console.log(res);
+        setChangeLike(!changeLike);
+        alert('북마크 설정 완료되었습니다.');
       })
       .catch(err => {
-        console.log(err);
         if (err.response.status === 401) {
           if (window.confirm('로그인 후 북마크 기능을 사용하실 수 있습니다.'))
             navigate('/auth/login');
@@ -65,8 +62,10 @@ const BoothComponent = props => {
     );
     // 좋아요 삭제 api
     UnLikeBooth(id)
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+      .then(res => {
+        setChangeLike(!changeLike);
+      })
+      .catch(err => {});
   };
 
   return (
