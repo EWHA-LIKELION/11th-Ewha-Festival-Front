@@ -78,7 +78,7 @@ T.Title = styled.div`
   .text {
     word-break: break-all;
     font-family: var(--pre-font);
-    font-weight: 700;
+    font-weight: 600;
     font-size: 1.6rem;
   }
 `;
@@ -89,6 +89,9 @@ T.HeartDiv = styled.div`
   position: absolute;
   top: 15px;
   right: 5px;
+  object {
+    width: 30px;
+  }
 `;
 T.HeartImg = styled.img`
   width: 100%;
@@ -187,7 +190,7 @@ I.Text = styled.div`
 `;
 I.MapButton = styled.div`
   position: absolute;
-  width: 146px;
+  width: 145px;
   height: 22px;
   top: 88px;
   right: 0px;
@@ -198,11 +201,11 @@ I.MapButton = styled.div`
   justify-content: center;
   align-items: center;
   .text {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-family: var(--pre-font);
     font-weight: 700;
     color: var(--red);
-    margin: 1px 0 0 5px;
+    margin: 1px 0 0 4px;
   }
 `;
 I.Map = styled.img`
@@ -211,7 +214,7 @@ I.Map = styled.img`
 `;
 I.DesContainer = styled.div`
   width: 100%;
-  min-height: 44px;
+  min-height: 40px;
   word-break: break-all;
   overflow-x: hidden;
 `;
@@ -220,8 +223,8 @@ I.ShortDes = styled.div`
   font-size: 1rem;
   font-weight: 400;
   color: var(--black);
-  line-height: 130%;
-  height: 44px;
+  line-height: 1.2rem;
+  height: 40px;
   white-space: normal;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -234,7 +237,7 @@ I.LongDes = styled.div`
   font-size: 1rem;
   font-weight: 400;
   color: var(--black);
-  line-height: 130%;
+  line-height: 1.2rem;
 `;
 
 const M = {};

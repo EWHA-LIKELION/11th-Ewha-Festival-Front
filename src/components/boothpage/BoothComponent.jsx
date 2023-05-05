@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { C } from './Booth.style';
 // image
 import fillheart from '../../assets/images/fillheart.svg';
-import strokeheart from '../../assets/images/strokeheart.svg';
+import strokeheart from '../../assets/images/strokeheart.png';
 import defaultthumbnail from '../../assets/images/boothdetailpage/defaultthumbnail.svg';
 
 import { LikeBooth, UnLikeBooth } from '../../api/booth';

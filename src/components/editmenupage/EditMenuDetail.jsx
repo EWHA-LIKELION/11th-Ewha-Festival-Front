@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 // api
-import { boothmenu } from '../../api/_mock/boothmock';
+import { GetMenu, PatchMenu } from '../../api/booth';
+import { useAppSelector } from '../../redux/store';
 
 // component
 import TopBar from '../_common/topbar/TopBar';
@@ -10,8 +11,6 @@ import TopBar from '../_common/topbar/TopBar';
 // style
 import Switch from 'react-switch';
 import { D } from './EditMenu.style';
-import { GetMenu, PatchMenu } from '../../api/booth';
-import { useAppSelector } from '../../redux/store';
 import Footer from '../_common/footer/Footer';
 
 const EditMenuDetail = () => {
