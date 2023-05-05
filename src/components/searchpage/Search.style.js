@@ -3,14 +3,14 @@ import searchicon from '../../assets/images/searchpage/searchicon.png';
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 100%;
+  min-height: 800px;
   background-color: var(--beige);
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-export const InputContainer = styled.div`
+export const InputContainer = styled.form`
   margin-top: 10px;
   width: 85%;
   height: 45px;
@@ -24,6 +24,11 @@ export const InputContainer = styled.div`
 
   img {
     padding-right: 12px;
+  }
+
+  button {
+    border: none;
+    background-color: transparent;
   }
 `;
 
