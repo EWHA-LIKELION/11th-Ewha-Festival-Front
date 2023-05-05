@@ -108,6 +108,7 @@ const BoothFilterBar = () => {
           <img
             className='check'
             src={viewerchecked2}
+            width='95px'
             checked={filter_viewer === 'location'}
           />
           <div className='text'>카테고리별 보기</div>

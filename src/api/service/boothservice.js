@@ -15,7 +15,7 @@ const BoothService = {
   unLikeBooth: boothId =>
     http.delete(`/booths/${boothId}/likes/
 `),
-  getAllBooth: () => http.get('/booths/'), // 모든 부스 조회
+  getDayBooth: day => http.get(`/booths/?day=${day}`), // 모든 부스 조회
   getBooth: boothId => http.get(`/booths/${boothId}/`), // 부스 상세
   submitComment: (boothId, newComment) =>
     http.post(`/booths/${boothId}/comments/`, { content: newComment }), //댓글 작성

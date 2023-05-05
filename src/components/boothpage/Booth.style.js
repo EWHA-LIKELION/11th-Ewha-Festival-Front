@@ -171,6 +171,10 @@ const ViewerContainer = styled.div`
     z-index: 1;
     overflow: hidden;
   }
+
+  img {
+    overflow: hidden;
+  }
 `;
 
 const DataGrid = styled.div`
@@ -208,7 +212,7 @@ export const F = {
 
 const Wrapper = styled.div`
   width: 100%;
-  /* height: 100vh; */
+  min-height: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;

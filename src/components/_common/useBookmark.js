@@ -28,7 +28,6 @@ const useBookmark = (isBookmarked, currentBoothID) => {
         .then(res => {
           console.log(res.data);
           setState(!state);
-          alert('북마크 해제 완료되었습니다.');
         })
         .catch(err => {
           console.log(err);
@@ -42,7 +41,6 @@ const useBookmark = (isBookmarked, currentBoothID) => {
         .then(res => {
           console.log(res.data);
           setState(!state);
-          alert('북마크 설정 완료되었습니다.');
         })
         .catch(err => {
           console.log(err);
