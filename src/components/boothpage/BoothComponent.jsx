@@ -1,7 +1,4 @@
-import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-// api
 
 // style
 import { C } from './Booth.style';
@@ -24,6 +21,8 @@ const BoothComponent = props => {
     is_liked,
     thumnail,
     opened,
+    setChangeLike,
+    changeLike,
   } = props;
 
   const { booth, setBooth } = props;
@@ -45,6 +44,7 @@ const BoothComponent = props => {
     LikeBooth(id)
       .then(res => {
         console.log(res);
+        setChangeLike(!changeLike);
         alert('북마크 설정 완료되었습니다.');
       })
       .catch(err => {
@@ -66,7 +66,10 @@ const BoothComponent = props => {
     );
     // 좋아요 삭제 api
     UnLikeBooth(id)
-      .then(res => console.log(res))
+      .then(res => {
+        console.log(res);
+        setChangeLike(!changeLike);
+      })
       .catch(err => console.log(err));
   };
 
