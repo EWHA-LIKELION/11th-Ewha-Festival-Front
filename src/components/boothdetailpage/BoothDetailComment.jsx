@@ -7,7 +7,6 @@ import { FaTrashAlt } from 'react-icons/fa';
 import { HiPencil } from 'react-icons/hi';
 import { RequestProfile } from '../../api/auth';
 import { GetBooth, SubmitComment, DeleteComment } from '../../api/booth';
-import { boothdetail } from '../../api/_mock/boothmock';
 
 const BoothDetailComment = () => {
   const { id } = useParams();
