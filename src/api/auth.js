@@ -4,7 +4,8 @@ import axios from 'axios';
 import { http } from './http';
 import { persistor } from '../index';
 
-export const baseURL = 'http://3.37.131.250';
+export const baseURL = 'https://api.smilewha2023.com';
+// export const baseURL = 'http://3.37.131.250';
 // 회원가입 (POST)
 export const RequestSignin = async (id, pw, nickname) => {
   const userData = {
