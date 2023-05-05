@@ -88,6 +88,8 @@ const EditBooth = () => {
           <B.TextArea
             placeholder='실시간 부스 공지사항'
             value={notice}
+            type='text'
+            maxLength={100}
             onChange={e => setNotice(e.target.value)}
           />
           <B.Title>부스 소개</B.Title>
