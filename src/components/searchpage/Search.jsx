@@ -13,7 +13,8 @@ const Search = () => {
   const [keyword, setKeyword] = useState('');
   const [booth, setBooth] = useState([]);
 
-  const onSubmit = () => {
+  const onSubmit = e => {
+    e.preventDefault();
     setKeyword("'" + inputText + "'에 대한 검색 결과");
     if (inputText) {
       GetSearchBooth(inputText)
@@ -26,25 +27,23 @@ const Search = () => {
       setKeyword('');
     }
   };
+
   return (
     <>
       <S.Wrapper>
         <TopBar title='부스 검색'></TopBar>
-        <S.InputContainer>
+
+        <S.InputContainer onSubmit={onSubmit}>
           <S.Input
-            placeholder='부스나 메뉴 이름을 검색하세요'
+            placeholder='부스 또는 메뉴 이름을 검색하세요'
             type='text'
             value={inputText}
             onChange={e => setInputText(e.target.value)}
           />
-          <img
-            onClick={() => onSubmit()}
-            src={searchicon}
-            width='16px'
-            height='16px'
-          />
+          <button type='submit'>
+            <img src={searchicon} width='16px' height='16px' />
+          </button>
         </S.InputContainer>
-
         <S.TextContainer>
           <div>{keyword}</div>
           <div>총 {booth.length}개의 부스</div>
