@@ -47,7 +47,9 @@ const MyMenu = () => {
         {isBooth ? (
           <S.BoothContainer>
             <S.ManageTitle>부스 관리</S.ManageTitle>
-            <S.BoothTitle>{boothName}</S.BoothTitle>
+            <S.BoothTitle padding={boothName.length > 18 ? '5px' : 0}>
+              {boothName}
+            </S.BoothTitle>
             <S.GoManageBtn
               onClick={() => navigate(`/booth/detail/${booth_id}`)}
             >
