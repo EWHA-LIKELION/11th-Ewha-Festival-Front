@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 // style.js & icons
 import * as S from './LoginReigster.style';
 import { BiUser, BiLockOpen } from 'react-icons/bi';
@@ -19,6 +20,7 @@ import { setUser, setUserTask } from '../../redux/userSlice';
 import { setBooth_id, setBooth_name } from '../../redux/boothSlice';
 
 const RegisterMenu = () => {
+  const navigate = useNavigate();
   // input 상태 관리
   const [id, setID] = useState('');
   const [password, setPW] = useState('');
@@ -91,19 +93,12 @@ const RegisterMenu = () => {
               nickname: res.data.data.nickname,
             }),
           );
+          navigate('/');
+          setTimeout(() => window.location.reload(), 100);
         });
       })
-      .then(() => {
-        window.location.reload();
-        window.location.replace('/');
-      })
       .catch(error => {
-        if (
-          error.response.data.data.username ==
-          '해당 사용자 이름은 이미 존재합니다.'
-        ) {
-          alert('해당 아이디는 이미 존재합니다.');
-        }
+        alert('해당 아이디는 이미 존재합니다.');
       });
   };
   return (

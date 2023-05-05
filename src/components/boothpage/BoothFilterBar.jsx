@@ -17,7 +17,9 @@ import {
 
 // style
 import { F } from './Booth.style';
+
 import viewerchecked from '../../assets/images/boothpage/viewerchecked2.svg';
+import viewerchecked2 from '../../assets/images/boothpage/viewerchecked.svg';
 
 const BoothFilterBar = () => {
   // redux
@@ -105,7 +107,7 @@ const BoothFilterBar = () => {
         >
           <img
             className='check'
-            src={viewerchecked}
+            src={viewerchecked2}
             checked={filter_viewer === 'location'}
           />
           <div className='text'>카테고리별 보기</div>

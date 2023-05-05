@@ -34,7 +34,7 @@ export const Title = styled.div`
 
   .v1 {
     position: absolute;
-    left: 15%;
+    left: 10%;
     bottom: 20%;
   }
 

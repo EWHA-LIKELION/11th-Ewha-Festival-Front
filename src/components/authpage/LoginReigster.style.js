@@ -3,14 +3,15 @@ import styled from 'styled-components';
 import flower from '../../assets/images/authpage/flower.svg';
 
 export const Container = styled.div`
-  position: fixed;
   width: 100%;
   height: 100vh;
+  min-height: 640px;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #fff9f1;
-  font-family: 'Pretendard';
+  background-color: var(--beige);
+  font-family: var(--pre-font);
 `;
 export const LogoBox = styled.div`
   width: 158px;

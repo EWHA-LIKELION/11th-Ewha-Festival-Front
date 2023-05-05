@@ -1,11 +1,22 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--pre-font);
+`;
 export const Background = styled.div`
   position: fixed;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  z-index: 100;
+  width: 100%;
+  height: 100%;
 
   background-color: rgba(0, 0, 0, 0.5);
   animation: modal-bg-show 0.3s;
@@ -18,21 +29,14 @@ export const Background = styled.div`
     }
   }
 `;
-export const Container = styled.div`
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-
-  z-index: 100;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: var(--pre-font);
-`;
 export const ModalWrapper = styled.div`
   width: 80%;
+  @media (min-width: 576px) {
+    width: 312px;
+  }
+  z-index: 200;
   height: 213px;
+
   animation: modal-show 0.3s;
   @keyframes modal-show {
     from {
