@@ -96,9 +96,9 @@ export const GetCategoryBooth = async (day, category) => {
   }
 };
 
-export const GetAllBooth = async () => {
+export const GetDayBooth = async day => {
   try {
-    const response = await BoothService.getAllBooth();
+    const response = await BoothService.getDayBooth(day);
     return Promise.resolve(response);
   } catch (error) {
     if (
