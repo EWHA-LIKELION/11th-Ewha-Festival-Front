@@ -76,22 +76,22 @@ export const BoothTitle = styled.div`
   height: auto;
   margin-top: 12px;
 
-  padding: ${props => props.padding} 10px;
+  /* padding: 5px 20%; */
   line-height: 19px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  /* text-align: center; */
+  text-align: center;
 
-  font-size: 16px;
+  font-size: ${({ size }) => size + 'px'};
   background-color: var(--green1);
   filter: drop-shadow(0px 2px 6px rgba(165, 165, 165, 0.2));
   border-radius: 4px;
   color: var(--white);
 
   @media (max-width: 300px) {
-    font-size: 13px;
+    font-size: ${({ size }) => size - 2 + 'px'};
   }
 `;
 export const GoManageBtn = styled.div`
