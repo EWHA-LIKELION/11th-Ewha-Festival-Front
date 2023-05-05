@@ -38,7 +38,7 @@ const BoothDetailInfo = props => {
           <I.Title>부스 위치</I.Title>
         </div>
         <I.MapButton onClick={() => setIsOpen(!isOpen)}>
-          <FiMap stroke='var(--red)' size='17' />
+          <FiMap stroke='var(--red)' size='16' />
           <div className='text'>부스 위치 지도 {isOpen ? '닫기' : '보기'}</div>
         </I.MapButton>
         <I.Indent>

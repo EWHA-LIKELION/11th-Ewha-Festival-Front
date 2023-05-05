@@ -9,7 +9,7 @@ import { HiMenu } from 'react-icons/hi';
 import { COM, T } from './BoothDetail.style';
 import circle from '../../assets/images/boothdetailpage/circle.svg';
 import defaultthumbnail from '../../assets/images/boothdetailpage/defaultthumbnail.svg';
-import strokeheart from '../../assets/images/strokeheart.svg';
+import strokeheart from '../../assets/images/strokeheart.png';
 import fillheart from '../../assets/images/fillheart.svg';
 
 const BoothDetailTitle = props => {
@@ -50,6 +50,10 @@ const BoothDetailTitle = props => {
             </T.Title>
           </div>
           <T.HeartDiv onClick={toggle}>
+            {/* <object
+              type='image/svg+xml'
+              data={is_liked ? fillheart : strokeheart}
+            > */}
             <T.HeartImg src={is_liked ? fillheart : strokeheart} />
           </T.HeartDiv>
         </T.TitleContainer>
