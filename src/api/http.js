@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const http = axios.create({
-  baseURL: 'http://3.37.131.250',
+  baseURL: 'https://api.smilewha2023.com',
   contentType: 'application/json; charset=utf-8;',
 });
 

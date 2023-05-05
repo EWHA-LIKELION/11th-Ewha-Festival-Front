@@ -15,17 +15,21 @@ const TFMember = ({ team }) => {
         <LL.MajorText>{team.lead.major}</LL.MajorText>
         <LL.NameText>{team.lead.name}</LL.NameText>
       </TF.MemberContainer>
-      <TF.SubTitle>{`${team.team}원`}</TF.SubTitle>
-      <TF.MemberWrapper>
-        {team.member.map(item => {
-          return (
-            <TF.MemberContainer>
-              <LL.MajorText>{item.major}</LL.MajorText>
-              <LL.NameText>{item.name}</LL.NameText>
-            </TF.MemberContainer>
-          );
-        })}
-      </TF.MemberWrapper>
+      {team.member.length !== 0 ? (
+        <>
+          <TF.SubTitle>{`${team.team}원`}</TF.SubTitle>
+          <TF.MemberWrapper>
+            {team.member.map(item => {
+              return (
+                <TF.MemberContainer>
+                  <LL.MajorText>{item.major}</LL.MajorText>
+                  <LL.NameText>{item.name}</LL.NameText>
+                </TF.MemberContainer>
+              );
+            })}
+          </TF.MemberWrapper>
+        </>
+      ) : null}
     </>
   );
 };
