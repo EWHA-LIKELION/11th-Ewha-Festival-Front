@@ -50,16 +50,32 @@ T.Img = styled.img`
 T.Container = styled.div`
   width: 88%;
 `;
+T.CategoryWrapper = styled.div`
+  display: flex;
+  height: 27px;
+  margin-top: 15px;
+`;
+T.Category = styled.div`
+  font-size: 1.1rem;
+  color: var(--red);
+  font-family: var(--pre-font);
+  font-weight: 600;
+  margin-right: 5px;
+`;
 T.TitleContainer = styled.div`
+  position: relative;
   display: flex;
   flex-shrink: 0;
   justify-content: space-between;
   align-items: center;
-  margin: 20px 0 10px 0;
+  margin: 3px 0 10px 0;
+  .inner {
+    width: 90%;
+  }
 `;
 T.Title = styled.div`
-  width: calc(100% - 40px);
-  p {
+  width: calc(100% - 30px);
+  .text {
     word-break: break-all;
     font-family: var(--pre-font);
     font-weight: 700;
@@ -70,7 +86,9 @@ T.HeartDiv = styled.div`
   width: 30px;
   height: 35px;
   overflow: hidden;
-  position: relative;
+  position: absolute;
+  top: 15px;
+  right: 5px;
 `;
 T.HeartImg = styled.img`
   width: 100%;
@@ -82,17 +100,6 @@ T.Click = styled.div`
   top: 0;
   left: 0;
   z-index: 10;
-`;
-T.CategoryWrapper = styled.div`
-  display: flex;
-  height: 27px;
-`;
-T.Category = styled.div`
-  font-size: 1.1rem;
-  color: var(--red);
-  font-family: var(--pre-font);
-  font-weight: 600;
-  margin-right: 5px;
 `;
 T.Hashtag = styled.span`
   font-size: 1rem;

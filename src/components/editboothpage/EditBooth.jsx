@@ -80,12 +80,16 @@ const EditBooth = () => {
           <B.Input
             placeholder='부스 이름'
             value={name}
+            type='text'
+            maxLength={24}
             onChange={e => setName(e.target.value)}
           />
           <B.Title>실시간 부스 공지사항</B.Title>
           <B.TextArea
             placeholder='실시간 부스 공지사항'
             value={notice}
+            type='text'
+            maxLength={100}
             onChange={e => setNotice(e.target.value)}
           />
           <B.Title>부스 소개</B.Title>
