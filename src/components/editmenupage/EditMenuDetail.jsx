@@ -25,12 +25,14 @@ const EditMenuDetail = () => {
 
   useEffect(() => {
     if (menuId) {
-      GetMenu(menuId).then(res => {
-        console.log(res.data.data);
-        setMenu(res.data.data[menuId - 1].menu);
-        setPrice(res.data.data[menuId - 1].price);
-        setIsSoldout(res.data.data[menuId - 1].isSoldout);
-      });
+      GetMenu(booth_id)
+        .then(res => {
+          // console.log(res.data);
+          setMenu(res.data.data[menuId - 1].menu);
+          setPrice(res.data.data[menuId - 1].price);
+          setIsSoldout(res.data.data[menuId - 1].is_soldout);
+        })
+        .catch(err => console.log(err));
     }
   }, []);
 
@@ -39,9 +41,8 @@ const EditMenuDetail = () => {
       PatchMenu(booth_id, menuId, menu, price, isSoldout).then(res =>
         console.log(res),
       );
-      alert(menu, price, isSoldout);
       alert('메뉴 수정 성공');
-      navigate(-1);
+      navigate('/mypage');
     } else {
       alert('메뉴와 가격을 입력해주세요');
     }
@@ -76,7 +77,7 @@ const EditMenuDetail = () => {
             <D.SoldoutContainer>
               <div className='text'>Sold Out</div>
               <Switch
-                onChange={e => setIsSoldout(!isSoldout)}
+                onChange={() => setIsSoldout(!isSoldout)}
                 checked={isSoldout}
                 offHandleColor='#ffffff'
                 onHandleColor='#ffffff'

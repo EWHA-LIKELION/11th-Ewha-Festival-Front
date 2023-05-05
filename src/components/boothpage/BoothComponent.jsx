@@ -86,7 +86,13 @@ const BoothComponent = props => {
           </C.Bookmark>
           <C.Location closed={opened ? false : true}>
             {college}
-            {number}•{category}
+            {number}•
+            {category.map(props => (
+              <span key={category.indexOf(props)}>
+                {props}
+                {/* {category.indexOf(props) == category.length - 1 ? '' : ' / '} */}
+              </span>
+            ))}
           </C.Location>
           <C.BoothTitle closed={opened ? false : true} length={name.length}>
             {name}

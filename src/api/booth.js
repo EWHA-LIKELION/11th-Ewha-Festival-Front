@@ -206,9 +206,9 @@ export const PatchBoothTime = async (boothId, index, time) => {
   }
 };
 
-export const GetMenu = async menuId => {
+export const GetMenu = async boothId => {
   try {
-    const response = await BoothService.getMenu(menuId);
+    const response = await BoothService.getMenu(boothId);
     return Promise.resolve(response);
   } catch (error) {
     if (

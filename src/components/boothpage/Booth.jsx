@@ -81,7 +81,7 @@ const Booth = () => {
           ''
         )}
 
-        <B.BoothLength>총 {length} 개의 부스</B.BoothLength>
+        <B.BoothLength>총 {length}개의 부스</B.BoothLength>
         <B.ComponentGrid>
           {booth.map(props => (
             <BoothComponent
@@ -92,8 +92,8 @@ const Booth = () => {
             />
           ))}
         </B.ComponentGrid>
-        <Footer />
       </B.Wrapper>
+      <Footer />
     </>
   );
 };
