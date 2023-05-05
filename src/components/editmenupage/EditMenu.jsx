@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 // api
-// import { GetBoothMenus } from '../../api/booth';
-import { boothmenu } from '../../api/_mock/boothmock';
+import { useAppSelector } from '../../redux/store';
+import { GetMenu } from '../../api/booth';
 
 // component
 import TopBar from '../_common/topbar/TopBar';
@@ -10,8 +10,6 @@ import EditMenuComponent from './EditMenuComponent';
 
 // style
 import { M } from './EditMenu.style';
-import { useAppSelector } from '../../redux/store';
-import { GetMenu } from '../../api/booth';
 import Footer from '../_common/footer/Footer';
 
 const EditMenu = () => {

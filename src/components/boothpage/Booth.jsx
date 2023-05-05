@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 // redux
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 // api
-import { getbooths } from '../../api/_mock/boothmock';
 import {
   GetLocationBooth,
   GetCategoryBooth,
@@ -24,8 +23,6 @@ import { useMap } from '../boothdetailpage/useMap';
 import Footer from '../_common/footer/Footer';
 
 const Booth = () => {
-  const booths = getbooths.data;
-
   // redux
   const { filter_day, filter_location, filter_category, filter_viewer } =
     useAppSelector(state => state.page);
