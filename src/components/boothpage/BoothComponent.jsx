@@ -44,8 +44,7 @@ const BoothComponent = props => {
     // 좋아요 api 요청 보내기
     LikeBooth(id)
       .then(res => {
-        console.log(res);
-        alert('북마크 설정 완료되었습니다.');
+        // console.log(res);
       })
       .catch(err => {
         console.log(err);
