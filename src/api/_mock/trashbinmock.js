@@ -18,8 +18,8 @@ export const locationData = [
     info: '포스코관 건물 옆',
     // top: '145',
     // left: '192',
-    top: '42',
-    left: '52',
+    top: '44',
+    left: '53',
     selected: false,
   },
   {
@@ -28,8 +28,8 @@ export const locationData = [
     info: '학생문화관 7~14번 부스 건너편 공간',
     // top: '165',
     // left: '163',
-    top: '46',
-    left: '45',
+    top: '48',
+    left: '47',
     selected: false,
   },
   {
@@ -49,7 +49,7 @@ export const locationData = [
     // top: '220',
     // left: '120',
     top: '62',
-    left: '32',
+    left: '34',
     selected: false,
   },
   {
@@ -58,8 +58,8 @@ export const locationData = [
     info: '정문 24번 부스 옆',
     // top: '227',
     // left: '238',
-    top: '62',
-    left: '60',
+    top: '71',
+    left: '70',
     selected: true,
   },
 ];
