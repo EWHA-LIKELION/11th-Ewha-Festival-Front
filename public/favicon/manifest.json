@@ -1,0 +1,20 @@
+{
+  "name": "이웃제",
+  "short_name": "smilewha",
+  "description": "2023 이화여대 대동제 이웃제 부스 통합 안내 사이트",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-256x256.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#fff9f1",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
