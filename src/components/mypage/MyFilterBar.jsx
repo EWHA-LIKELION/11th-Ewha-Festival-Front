@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 // redux
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import {
@@ -17,8 +17,6 @@ import {
 } from '../../api/_mock/filtermock';
 
 const MyFilterBar = () => {
-  const liked_num = 11;
-
   // redux
   const dispatch = useAppDispatch();
   const { filter, filter_day, filter_location, filter_category } =
@@ -57,6 +55,7 @@ const MyFilterBar = () => {
       <>
         {dayData.map(data => (
           <div
+            key={data.date}
             id={data.day}
             className={day === data.day ? 'active1' : ''}
             style={{ width: '27%' }}
@@ -75,6 +74,7 @@ const MyFilterBar = () => {
       <>
         {locationData.map(data => (
           <div
+            key={data}
             id={data}
             className={location === data ? 'active2' : ''}
             style={{ width: '19%' }}
@@ -93,6 +93,7 @@ const MyFilterBar = () => {
       <>
         {categoryData.map(data => (
           <div
+            key={data}
             id={data}
             className={category === data ? 'active3' : ''}
             style={{ width: '19%' }}
@@ -110,22 +111,28 @@ const MyFilterBar = () => {
     <S.BarWrapper>
       <S.SelectFilter>
         <div
+          onClick={() => saveFilter('all')}
+          className={filter === 'all' ? 'active' : ''}
+        >
+          전체
+        </div>
+        <div
           onClick={() => saveFilter('day')}
           className={filter === 'day' ? 'active' : ''}
         >
-          날짜별 보기
+          날짜별
         </div>
         <div
           onClick={() => saveFilter('location')}
           className={filter === 'location' ? 'active' : ''}
         >
-          장소별 보기
+          장소별
         </div>
         <div
           onClick={() => saveFilter('category')}
           className={filter === 'category' ? 'active' : ''}
         >
-          카테고리별 보기
+          카테고리별
         </div>
       </S.SelectFilter>
       <S.SelectFilter_Detail>
