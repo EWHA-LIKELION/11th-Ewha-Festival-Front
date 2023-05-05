@@ -128,7 +128,7 @@ TF.SubTitle = styled.div`
   margin: 20px 0 10px 0;
 `;
 TF.MemberWrapper = styled.div`
-  width: 60%;
+  width: 45%;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
