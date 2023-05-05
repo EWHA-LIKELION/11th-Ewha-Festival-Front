@@ -116,23 +116,26 @@ const MyFilterBar = () => {
         >
           전체
         </div>
+        <div>·</div>
         <div
           onClick={() => saveFilter('day')}
           className={filter === 'day' ? 'active' : ''}
         >
-          날짜별
+          날짜
         </div>
+        <div>·</div>
         <div
           onClick={() => saveFilter('location')}
           className={filter === 'location' ? 'active' : ''}
         >
-          장소별
+          장소
         </div>
+        <div>·</div>
         <div
           onClick={() => saveFilter('category')}
           className={filter === 'category' ? 'active' : ''}
         >
-          카테고리별
+          카테고리
         </div>
       </S.SelectFilter>
       <S.SelectFilter_Detail>
