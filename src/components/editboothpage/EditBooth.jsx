@@ -52,18 +52,16 @@ const EditBooth = () => {
     } else if (day3 && time2 == '') {
       alert('운영 시간은 필수 정보입니다');
     } else {
-      PatchBooth(booth_id, name, opened, description).then(res =>
-        console.log(res),
-      );
-      PatchBoothNotice(booth_id, notice).then(res => console.log(res));
+      PatchBooth(booth_id, name, opened, description).then(res => {});
+      PatchBoothNotice(booth_id, notice).then(res => {});
       if (day1) {
-        PatchBoothTime(booth_id, 1, time0).then(res => console.log(res));
+        PatchBoothTime(booth_id, 1, time0).then(res => {});
       }
       if (day2) {
-        PatchBoothTime(booth_id, 2, time1).then(res => console.log(res));
+        PatchBoothTime(booth_id, 2, time1).then(res => {});
       }
       if (day3) {
-        PatchBoothTime(booth_id, 3, time2).then(res => console.log(res));
+        PatchBoothTime(booth_id, 3, time2).then(res => {});
       }
       alert('부스 수정 완료');
       navigate(-1);

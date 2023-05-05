@@ -26,20 +26,17 @@ const EditMenuDetail = () => {
     if (menuId) {
       GetMenu(booth_id)
         .then(res => {
-          // console.log(res.data);
           setMenu(res.data.data[menuId - 1].menu);
           setPrice(res.data.data[menuId - 1].price);
           setIsSoldout(res.data.data[menuId - 1].is_soldout);
         })
-        .catch(err => console.log(err));
+        .catch(err => {});
     }
   }, []);
 
   const onSubmit = () => {
     if (menu && price) {
-      PatchMenu(booth_id, menuId, menu, price, isSoldout).then(res =>
-        console.log(res),
-      );
+      PatchMenu(booth_id, menuId, menu, price, isSoldout).then(res => {});
       alert('메뉴 수정 성공');
       navigate('/mypage');
     } else {

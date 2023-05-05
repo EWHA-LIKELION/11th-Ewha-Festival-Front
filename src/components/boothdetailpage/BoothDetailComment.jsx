@@ -35,7 +35,6 @@ const BoothDetailComment = () => {
   const getComments = () => {
     GetBooth(id)
       .then(res => {
-        console.log(res.data.data);
         setThisBoothUserId(res.data.data.user);
         setThisComments(res.data.data.comments);
       })
