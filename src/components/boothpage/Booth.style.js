@@ -173,7 +173,7 @@ const ViewerContainer = styled.div`
   }
 
   img {
-    overflow: hidden;
+    /* border: solid 1px; */
   }
 `;
 
