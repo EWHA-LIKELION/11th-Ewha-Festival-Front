@@ -15,11 +15,16 @@ const Search = () => {
 
   const onSubmit = () => {
     setKeyword("'" + inputText + "'에 대한 검색 결과");
-    GetSearchBooth(inputText)
-      .then(res => {
-        setBooth(res.data.data);
-      })
-      .catch(err => console.log(err));
+    if (inputText) {
+      GetSearchBooth(inputText)
+        .then(res => {
+          setBooth(res.data.data);
+        })
+        .catch(err => console.log(err));
+    } else {
+      setBooth([]);
+      setKeyword('');
+    }
   };
   return (
     <>
