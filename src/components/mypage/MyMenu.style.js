@@ -148,12 +148,12 @@ export const SelectFilter = styled.div`
     font-weight: 800;
   }
   div {
-    margin-right: 18px;
+    margin-right: 9px;
   }
   @media (max-width: 300px) {
     font-size: 14px;
     div {
-      margin-right: 12px;
+      margin-right: 6px;
     }
   }
 `;
