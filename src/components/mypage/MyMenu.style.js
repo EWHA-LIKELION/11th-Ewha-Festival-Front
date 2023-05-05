@@ -72,12 +72,17 @@ export const ManageTitle = styled.div`
   color: var(--green1);
 `;
 export const BoothTitle = styled.div`
-  height: 45px;
+  min-height: 45px;
+  height: auto;
   margin-top: 12px;
 
+  padding: ${props => props.padding} 10px;
+  line-height: 19px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  /* text-align: center; */
 
   font-size: 16px;
   background-color: var(--green1);
