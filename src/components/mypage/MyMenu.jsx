@@ -21,12 +21,14 @@ const MyMenu = () => {
       setBoothName(res.data.data.name);
     });
   }, []);
+
   const navigate = useNavigate();
   // 유저 정보 redux
   const { ID, nickname, isBooth, isTF } = useAppSelector(state => state.user);
   const { booth_id } = useAppSelector(state => state.booth);
   // 부스 정보
   const [boothName, setBoothName] = useState('');
+
   // test 값
   return (
     <>
@@ -36,18 +38,16 @@ const MyMenu = () => {
           <S.TaskTitle>
             {isBooth ? '부스 관리자' : isTF ? 'TF 팀' : ''}
           </S.TaskTitle>
-          {nickname.length >= 6 ? (
-            <S.Name size='22px'>{nickname}</S.Name>
-          ) : (
-            <S.Name size='27px'>{nickname}</S.Name>
-          )}
+          <S.Name size={nickname.length >= 6 ? '22px' : '27px'}>
+            {nickname}
+          </S.Name>
           <S.ID>{ID}</S.ID>
           <S.Logout onClick={RequestLogout}>로그아웃</S.Logout>
         </S.NameContainer>
         {isBooth ? (
           <S.BoothContainer>
             <S.ManageTitle>부스 관리</S.ManageTitle>
-            <S.BoothTitle padding={boothName.length > 18 ? '5px' : 0}>
+            <S.BoothTitle size={boothName.length >= 24 ? '14' : '16'}>
               {boothName}
             </S.BoothTitle>
             <S.GoManageBtn
