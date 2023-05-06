@@ -122,6 +122,9 @@ export const GoManageBtn = styled.div`
     width: 20px;
     height: 20px;
   }
+  .editIcon {
+    padding: 2px;
+  }
   @media (max-width: 300px) {
     font-size: 13px;
   }
@@ -165,9 +168,8 @@ export const SelectFilter_Detail = styled.div`
   justify-content: space-between;
 
   div {
-    /* aspect-ratio: 2.3/1; */
-    height: 29.12px;
     margin: 0 10px 8px 0;
+    padding: 3px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -198,14 +200,9 @@ export const LikedContainer = styled.div`
 
 export const LikedGrid = styled.div`
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
-  width: 100%;
+  width: 86%;
+
   padding-bottom: 30px;
-`;
-export const FooterWrapper = styled.div`
-  width: 100%;
-  /* height: 100%; */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
 `;

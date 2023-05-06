@@ -60,7 +60,7 @@ const MyMenu = () => {
             </S.GoManageBtn>
             <S.GoManageBtn onClick={() => navigate('./editbooth')}>
               <div>
-                <FiEdit />내 부스 정보 수정하기
+                <FiEdit className='editIcon' />내 부스 정보 수정하기
               </div>
               <FiChevronRight />
             </S.GoManageBtn>
