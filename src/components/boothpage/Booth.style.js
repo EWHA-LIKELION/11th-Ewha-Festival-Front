@@ -18,7 +18,7 @@ const ImageWrapper = styled.div`
 
   width: 100%;
   aspect-ratio: 1/1;
-  overflow: hidden;
+  /* overflow: hidden; */
 
   img {
     width: 100%;
