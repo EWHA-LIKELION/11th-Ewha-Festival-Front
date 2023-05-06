@@ -75,7 +75,7 @@ const Bookmark = styled.div`
 
 const Location = styled.div`
   font-weight: 500;
-  font-size: 11px;
+  font-size: 9px;
   color: ${props => (props.closed ? 'var(--gray2)' : 'var(--red)')};
   margin: 7px 0 5px 0;
 
