@@ -6,13 +6,30 @@ import searchicon from '../../assets/images/searchpage/searchicon.png';
 import { GetSearchBooth } from '../../api/booth';
 import BoothComponent from '../boothpage/BoothComponent';
 
-// import { getbooths } from '../../api/_mock/boothmock';
-
 const Search = () => {
-  const [inputText, setInputText] = useState('');
+  const [restore, setRestore] = useState(
+    sessionStorage.getItem('searchKeyword'),
+  );
+  const [inputText, setInputText] = useState(restore ? restore : '');
   const [keyword, setKeyword] = useState('');
   const [booth, setBooth] = useState([]);
 
+  useEffect(() => {
+    sessionStorage.setItem('searchKeyword', inputText);
+  }, [keyword]);
+
+  useEffect(() => {
+    if (inputText) {
+      GetSearchBooth(inputText)
+        .then(res => {
+          setBooth(res.data.data);
+        })
+        .catch(err => {});
+    } else {
+      setBooth([]);
+      setKeyword('');
+    }
+  }, []);
   const onSubmit = e => {
     e.preventDefault();
     setKeyword("'" + inputText + "'에 대한 검색 결과");
