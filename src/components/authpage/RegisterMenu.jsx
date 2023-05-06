@@ -12,9 +12,10 @@ import { MdOutlineVpnKey } from 'react-icons/md';
 // components
 import TopBar from '../_common/topbar/TopBar';
 import Modal from '../_common/modal/Modal';
+import AlertModal from '../_common/modal/AlertModal';
+
 //api
 import { RequestSignin, RequestLogin } from '../../api/auth';
-import { GetBooth } from '../../api/booth';
 import { useAppDispatch } from '../../redux/store';
 import { setUser } from '../../redux/userSlice';
 
@@ -36,6 +37,8 @@ const RegisterMenu = () => {
     '이화여자대학교 유레카 포털 \n 자유게시판에서 ‘이웃제’ 검색하여 확인';
   const [modal, setModal] = useState(false);
   const [secretModal, setSecretModal] = useState(false);
+  const [alertM, setAlertM] = useState(false);
+
   const openModal = () => {
     setModal(true);
   };
@@ -48,36 +51,35 @@ const RegisterMenu = () => {
   const closeSModal = () => {
     setSecretModal(false);
   };
+  const openAModal = () => {
+    setAlertM(true);
+  };
+  const closeAModal = () => {
+    setAlertM(false);
+  };
   // 필수 필드 확인 함수
   const checkInput = () => {
-    return (
-      checkID() === '' &&
-      checkPW() === '' &&
-      checkSecretWord() === '' &&
-      checkName() === ''
-    );
+    return checkID() && checkPW() && checkSecretWord() && checkName() === true;
   };
   const checkID = () => {
-    return id !== '' ? '' : '아이디 필드가 비어있습니다.\n';
+    return id !== '' ? true : false;
   };
   const checkPW = () => {
-    return password !== '' && password === password2
-      ? ''
-      : '비밀번호가 일치하지 않습니다.\n';
+    return password !== '' && password === password2 ? true : false;
   };
   const checkSecretWord = () => {
-    return secretWord === SECRETWORD ? '' : '비밀단어가 일치하지 않습니다.\n';
+    return secretWord === SECRETWORD ? true : false;
   };
   const checkName = () => {
-    return name.length <= 10 && name !== ''
-      ? ''
-      : '닉네임은 10자 이하로 작성해주세요.';
+    return name.length > 10
+      ? '닉네임은 10자 이하로 작성해주세요'
+      : name == ''
+      ? '닉네임을 확인해주세요'
+      : true;
   };
   const checkSubmit = e => {
     e.preventDefault();
-    checkInput()
-      ? openModal(true)
-      : alert(checkID() + checkPW() + checkSecretWord() + checkName());
+    checkInput() ? openModal(true) : setAlertM(true);
   };
   // Submit
   const onSubmitAccount = () => {
@@ -116,6 +118,16 @@ const RegisterMenu = () => {
       {modal ? (
         <Modal open={openModal} close={closeModal} onClick={onSubmitAccount} />
       ) : null}
+      {alertM ? (
+        <AlertModal
+          open={openAModal}
+          close={closeAModal}
+          checkID={checkID()}
+          checkPW={checkPW()}
+          checkSecretWord={checkSecretWord()}
+          checkName={checkName()}
+        />
+      ) : null}
       <S.Container>
         <TopBar title='회원가입' />
         <S.LogoBox />
@@ -146,13 +158,13 @@ const RegisterMenu = () => {
                 }}
               />
             </S.InputWrapper>
-            {checkPW() === '' ? (
+            {checkPW() ? (
               <BsFillCheckCircleFill color=' #029C54' />
             ) : (
               <BsFillCheckCircleFill color='#EAEAEA' />
             )}
           </S.CheckWrapper>
-          <S.InputWrapper marginTop='15px'>
+          <S.InputWrapper marginTop='7.5px'>
             <BsFlower2 />
             <S.Input
               placeholder='닉네임 (10자 이하)'

@@ -103,11 +103,26 @@ export const AlertText = styled.div`
   font-size: 11.5px;
   line-height: 18px;
 `;
+export const AlertTextWrapper = styled.div`
+  color: var(--green1);
+  font-weight: 500;
+  font-size: 11.5px;
+  line-height: 18px;
+  text-align: center;
+  margin-bottom: 10px;
+  min-height: 55px;
+`;
 export const AlertMessage = styled.div`
   margin: 9px 0 17px 0;
   color: var(--red);
   font-weight: 500;
   font-size: 13px;
+`;
+export const AlertTitle = styled.div`
+  margin: 9px 0 10px 0;
+  color: var(--red);
+  font-weight: 700;
+  font-size: 15px;
 `;
 export const ButtonWrapper = styled.div`
   width: 100%;
