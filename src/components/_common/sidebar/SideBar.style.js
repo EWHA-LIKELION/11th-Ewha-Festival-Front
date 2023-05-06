@@ -44,7 +44,7 @@ export const Bar = styled.div`
   background-position: bottom;
 
   background-repeat: no-repeat;
-  background-color: var(--beige);
+  background-color: #fff9f1;
   border-radius: 0 50px 50px 0px;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
 
