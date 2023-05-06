@@ -26,7 +26,6 @@ const ImageWrapper = styled.div`
     top: 0;
     left: 0;
     object-fit: cover;
-    filter: ${props => (props.closed ? 'blur(2px)' : '')};
   }
 
   .closed {
@@ -42,6 +41,7 @@ const ImageWrapper = styled.div`
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
   }
 `;
 
