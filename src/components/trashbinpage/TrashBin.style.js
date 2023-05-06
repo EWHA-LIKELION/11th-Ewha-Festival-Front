@@ -52,6 +52,15 @@ export const Pin = styled.div`
           animation-iteration-count: infinite;
         `
       : css``}
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(0, -10px);
+    }
+  }
 `;
 
 export const LocationBox = styled.div`
