@@ -20,6 +20,7 @@ const Search = () => {
 
   useEffect(() => {
     if (inputText) {
+      setKeyword("'" + inputText + "'에 대한 검색 결과");
       GetSearchBooth(inputText)
         .then(res => {
           setBooth(res.data.data);
