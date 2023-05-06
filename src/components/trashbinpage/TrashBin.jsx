@@ -4,7 +4,6 @@ import * as S from './TrashBin.style';
 //component
 import TopBar from '../_common/topbar/TopBar';
 import Footer from '../_common/footer/Footer';
-import pinbtn from '../../assets/images/trashbinpage/pin.svg';
 
 import { locationData, photoData } from '../../api/_mock/trashbinmock';
 
@@ -39,7 +38,6 @@ const TrashBin = () => {
                   key={trash.id}
                   top={trash.top}
                   left={trash.left}
-                  src={pinbtn}
                   onClick={() => selectPla(trash.id)}
                   selected
                 />
@@ -50,7 +48,6 @@ const TrashBin = () => {
                   key={trash.id}
                   top={trash.top}
                   left={trash.left}
-                  src={pinbtn}
                   onClick={() => selectPla(trash.id)}
                 />
               );

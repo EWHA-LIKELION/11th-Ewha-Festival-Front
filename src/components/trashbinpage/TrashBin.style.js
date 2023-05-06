@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { css } from 'styled-components';
-import pinbtn from '../../assets/images/trashbinpage/pin.svg';
-import map from '../../assets/images/trashbinpage/trashbinMap.png';
+import pinbtn from '../../assets/images/trashbinpage/pin.webp';
+import map from '../../assets/images/trashbinpage/trashbinMap.webp';
 
 export const Container = styled.div`
   width: 100%;
