@@ -27,6 +27,9 @@ const EditBooth = () => {
   const [day2, setDay2] = useState('');
   const [day3, setDay3] = useState('');
 
+  const [noticeId, setNoticeId] = useState(0);
+  const [timeId, setTimeId] = useState(0);
+
   useEffect(() => {
     if (booth_id !== null)
       GetBooth(booth_id).then(res => {
@@ -41,9 +44,19 @@ const EditBooth = () => {
         setDay3(res.data.data.times[2].time);
         setOpened(res.data.data.opened);
       });
-  }, []);
 
+    if (booth_id >= 17) {
+      setNoticeId(518 + booth_id);
+      setTimeId(610 + 3 * (booth_id - 1));
+    } else if (booth_id < 16) {
+      setNoticeId(519 + booth_id);
+      setTimeId(613 + 3 * (booth_id - 1));
+    }
+  }, []);
   const onSubmit = () => {
+    if (!notice) {
+      setNotice('');
+    }
     if (!name) alert('부스 이름은 필수 정보입니다');
     else if (day1 && time0 == '') {
       alert('운영 시간은 필수 정보입니다');
@@ -53,15 +66,17 @@ const EditBooth = () => {
       alert('운영 시간은 필수 정보입니다');
     } else {
       PatchBooth(booth_id, name, opened, description).then(res => {});
-      PatchBoothNotice(booth_id, notice).then(res => {});
+      PatchBoothNotice(booth_id, notice, noticeId)
+        .then(res => {})
+        .catch(err => console.log(err));
       if (day1) {
-        PatchBoothTime(booth_id, 1, time0).then(res => {});
+        PatchBoothTime(booth_id, timeId, time0).then(res => {});
       }
       if (day2) {
-        PatchBoothTime(booth_id, 2, time1).then(res => {});
+        PatchBoothTime(booth_id, timeId + 1, time1).then(res => {});
       }
       if (day3) {
-        PatchBoothTime(booth_id, 3, time2).then(res => {});
+        PatchBoothTime(booth_id, timeId + 2, time2).then(res => {});
       }
       alert('부스 수정 완료');
       navigate(-1);
@@ -78,7 +93,7 @@ const EditBooth = () => {
             placeholder='부스 이름'
             value={name}
             type='text'
-            maxLength={24}
+            maxLength={26}
             onChange={e => setName(e.target.value)}
           />
           <B.Title>실시간 부스 공지사항</B.Title>
@@ -104,6 +119,8 @@ const EditBooth = () => {
                   placeholder='수요일 운영시간'
                   value={time0}
                   onChange={e => setTime0(e.target.value)}
+                  maxLength={20}
+                  type='text'
                 />
               </B.TimeWrapper>
             </>
@@ -118,6 +135,8 @@ const EditBooth = () => {
                   placeholder='목요일 운영시간'
                   value={time1}
                   onChange={e => setTime1(e.target.value)}
+                  maxLength={20}
+                  type='text'
                 />
               </B.TimeWrapper>
             </>
@@ -132,6 +151,8 @@ const EditBooth = () => {
                   placeholder='금요일 운영시간'
                   value={time2}
                   onChange={e => setTime2(e.target.value)}
+                  maxLength={20}
+                  type='text'
                 />
               </B.TimeWrapper>
             </>
@@ -165,7 +186,10 @@ const EditBooth = () => {
             </B.Button>
           </B.ButtonWrapper>
         </B.ComponentContainer>
+        <br />
+        <br />
       </B.Wrapper>
+
       <Footer />
     </>
   );

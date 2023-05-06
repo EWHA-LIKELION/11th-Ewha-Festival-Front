@@ -14,7 +14,7 @@ const ComponentContainer = styled.div`
 
 const ImageWrapper = styled.div`
   position: relative;
-  border-radius: 6px;
+  border-radius: 8px;
 
   width: 100%;
   aspect-ratio: 1/1;

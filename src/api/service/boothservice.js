@@ -29,8 +29,8 @@ const BoothService = {
       opened: opened,
     }),
   // 부스 공지사항 수정
-  patchBoothNotice: (boothId, notice) =>
-    http.patch(`/booths/${boothId}/notices/1/`, {
+  patchBoothNotice: (boothId, notice, noticeId) =>
+    http.patch(`/booths/${boothId}/notices/${noticeId}/`, {
       content: notice,
     }),
   // 부스 운영시간 수정
