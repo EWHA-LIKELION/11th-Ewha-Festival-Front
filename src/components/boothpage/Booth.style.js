@@ -26,7 +26,7 @@ const ImageWrapper = styled.div`
     top: 0;
     left: 0;
     object-fit: cover;
-    filter: ${props => (props.closed ? 'blur(5px)' : '')};
+    filter: ${props => (props.closed ? 'blur(2px)' : '')};
   }
 
   .closed {
@@ -36,12 +36,12 @@ const ImageWrapper = styled.div`
     font-size: 20px;
     font-weight: 600;
     color: var(--white);
-    text-shadow: 0px 0px 3px rgba(165, 165, 165, 0.8);
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
   }
 `;
 
@@ -49,21 +49,33 @@ const TitleWrapper = styled.div`
   width: 100%;
   min-height: 46px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   position: relative;
+  flex-shrink: 0;
+  .inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+  }
 `;
 
 const Bookmark = styled.div`
-  position: absolute;
-  top: 6px;
-  right: 6px;
+  width: 18px;
+  height: 18px;
+  overflow: hidden;
+  position: relative;
+  padding: 5px 8px 0 0;
+  img {
+    width: 16px;
+  }
 `;
 
 const Location = styled.div`
   font-weight: 500;
-  font-size: 12px;
+  font-size: 11px;
   color: ${props => (props.closed ? 'var(--gray2)' : 'var(--red)')};
   margin: 7px 0 5px 0;
 

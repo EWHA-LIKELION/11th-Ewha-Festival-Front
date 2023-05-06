@@ -79,23 +79,25 @@ const BoothComponent = props => {
           {opened ? '' : <div className='closed'>운영 종료</div>}
         </C.ImageWrapper>
         <C.TitleWrapper>
+          <div className='inner'>
+            <C.Location closed={opened ? false : true}>
+              {college}
+              {number}•
+              {category.map(props => (
+                <span key={category.indexOf(props)}>
+                  {props}
+                  {/* {category.indexOf(props) == category.length - 1 ? '' : ' / '} */}
+                </span>
+              ))}
+            </C.Location>
+            <C.BoothTitle closed={opened ? false : true} length={name.length}>
+              {name}
+            </C.BoothTitle>
+            <C.Hashtag closed={opened ? false : true}>{hashtag}</C.Hashtag>
+          </div>
           <C.Bookmark onClick={() => (is_liked ? unLike(id) : Like(id))}>
             <img width='16px' src={is_liked ? fillheart : strokeheart} />
           </C.Bookmark>
-          <C.Location closed={opened ? false : true}>
-            {college}
-            {number}•
-            {category.map(props => (
-              <span key={category.indexOf(props)}>
-                {props}
-                {/* {category.indexOf(props) == category.length - 1 ? '' : ' / '} */}
-              </span>
-            ))}
-          </C.Location>
-          <C.BoothTitle closed={opened ? false : true} length={name.length}>
-            {name}
-          </C.BoothTitle>
-          <C.Hashtag closed={opened ? false : true}>{hashtag}</C.Hashtag>
         </C.TitleWrapper>
       </C.ComponentContainer>
     </>
