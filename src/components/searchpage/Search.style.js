@@ -28,6 +28,7 @@ export const InputContainer = styled.form`
 
   button {
     border: none;
+    margin-top: 3px;
     background-color: transparent;
   }
 `;

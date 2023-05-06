@@ -42,7 +42,6 @@ const BoothComponent = props => {
     LikeBooth(id)
       .then(res => {
         setChangeLike(!changeLike);
-        alert('북마크 설정 완료되었습니다.');
       })
       .catch(err => {
         if (err.response.status === 401) {
@@ -82,7 +81,7 @@ const BoothComponent = props => {
           <div className='inner'>
             <C.Location closed={opened ? false : true}>
               {college}
-              {number}•
+              {number} <span>·</span>
               {category.map(props => (
                 <span key={category.indexOf(props)}>
                   {props}
@@ -90,7 +89,11 @@ const BoothComponent = props => {
                 </span>
               ))}
             </C.Location>
-            <C.BoothTitle closed={opened ? false : true} length={name.length}>
+            <C.BoothTitle
+              closed={opened ? false : true}
+              length={name.length}
+              onClick={() => navigate(`/booth/detail/${id}`)}
+            >
               {name}
             </C.BoothTitle>
             <C.Hashtag closed={opened ? false : true}>{hashtag}</C.Hashtag>

@@ -9,6 +9,7 @@ const ComponentWrapper = styled.button`
   border-radius: 4px;
   border: solid 0.4px var(--green1);
   background-color: var(--white);
+  color: black;
 
   .arrowIcons {
     width: 40px;
