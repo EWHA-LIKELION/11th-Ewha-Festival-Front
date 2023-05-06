@@ -55,15 +55,16 @@ const EditBooth = () => {
   }, []);
   const onSubmit = () => {
     if (!notice) {
-      setNotice('');
+      alert('공지사항을 입력해주세요');
+      return;
     }
-    if (!name) alert('부스 이름은 필수 정보입니다');
+    if (!name) alert('부스 이름을 입력해주세요');
     else if (day1 && time0 == '') {
-      alert('운영 시간은 필수 정보입니다');
+      alert('운영 시간을 입력해주세요');
     } else if (day2 && time1 == '') {
-      alert('운영 시간은 필수 정보입니다');
+      alert('운영 시간을 입력해주세요');
     } else if (day3 && time2 == '') {
-      alert('운영 시간은 필수 정보입니다');
+      alert('운영 시간을 입력해주세요');
     } else {
       PatchBooth(booth_id, name, opened, description).then(res => {});
       PatchBoothNotice(booth_id, notice, noticeId)
