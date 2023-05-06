@@ -5,7 +5,7 @@ import daychecked from '../../assets/images/boothpage/daychecked.png';
 // booth component
 const ComponentContainer = styled.div`
   width: 46%;
-  height: 230px;
+  height: 250px;
   display: flex;
   flex-direction: column;
   /* justify-content: space-between; */
@@ -17,7 +17,6 @@ const ComponentContainer = styled.div`
 const ImageWrapper = styled.div`
   position: relative;
   border-radius: 8px;
-
   width: 100%;
   aspect-ratio: 1/1;
   overflow: hidden;
