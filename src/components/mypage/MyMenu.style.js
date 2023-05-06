@@ -168,8 +168,8 @@ export const SelectFilter_Detail = styled.div`
   justify-content: space-between;
 
   div {
-    margin: 0 10px 8px 0;
-    padding: 3px 0;
+    margin-bottom: 8px;
+    padding: 7.5px 0;
     display: flex;
     justify-content: center;
     align-items: center;
