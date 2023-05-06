@@ -46,8 +46,8 @@ export const InputWrapper = styled.div`
 `;
 export const CheckWrapper = styled.div`
   width: 233px;
-  height: 43px;
-  margin-top: 15px;
+  height: 58px;
+  margin-top: 7.5px;
   display: flex;
   align-items: center;
 
