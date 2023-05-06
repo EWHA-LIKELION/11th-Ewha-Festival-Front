@@ -5,8 +5,10 @@ import daychecked from '../../assets/images/boothpage/daychecked.png';
 // booth component
 const ComponentContainer = styled.div`
   width: 46%;
+  height: 230px;
   display: flex;
   flex-direction: column;
+  /* justify-content: space-between; */
   align-items: center;
   padding: 2%;
   position: relative;
@@ -42,15 +44,15 @@ const ImageWrapper = styled.div`
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.5);
-    /* backdrop-filter: blur(2px); */
   }
 `;
 
 const TitleWrapper = styled.div`
   width: 100%;
-  min-height: 46px;
+  height: 85px;
+  padding-left: 4%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
   position: relative;
   flex-shrink: 0;
