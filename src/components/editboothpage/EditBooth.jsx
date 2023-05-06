@@ -54,6 +54,9 @@ const EditBooth = () => {
     }
   }, []);
   const onSubmit = () => {
+    if (!notice) {
+      setNotice('');
+    }
     if (!name) alert('부스 이름은 필수 정보입니다');
     else if (day1 && time0 == '') {
       alert('운영 시간은 필수 정보입니다');
@@ -62,11 +65,9 @@ const EditBooth = () => {
     } else if (day3 && time2 == '') {
       alert('운영 시간은 필수 정보입니다');
     } else {
-      PatchBooth(booth_id, name, opened, description).then(res => {
-        console.log(res);
-      });
+      PatchBooth(booth_id, name, opened, description).then(res => {});
       PatchBoothNotice(booth_id, notice, noticeId)
-        .then(res => console.log(res))
+        .then(res => {})
         .catch(err => console.log(err));
       if (day1) {
         PatchBoothTime(booth_id, timeId, time0).then(res => {});
