@@ -47,7 +47,7 @@ function App() {
         />
         <Route
           exact
-          path='/mypage/editmenu/:menuId'
+          path='/mypage/editmenu/:menuIndex'
           element={<AuthRoute component={<EditMenuDetailPage />} />}
         />
         {/* 부스 및 상세 페이지 */}

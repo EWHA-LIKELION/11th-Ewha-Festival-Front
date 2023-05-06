@@ -34,6 +34,7 @@ const EditMenu = () => {
             <EditMenuComponent
               key={props.id}
               id={props.id}
+              index={getmenus.findIndex(obj => obj.id === props.id)}
               menu={props.menu}
               price={props.price
                 .toString()

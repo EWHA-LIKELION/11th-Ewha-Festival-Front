@@ -214,7 +214,7 @@ I.Map = styled.img`
 `;
 I.DesContainer = styled.div`
   width: 100%;
-  min-height: 40px;
+  min-height: 44px;
   word-break: break-all;
   overflow-x: hidden;
 `;
@@ -223,8 +223,8 @@ I.ShortDes = styled.div`
   font-size: 1rem;
   font-weight: 400;
   color: var(--black);
-  line-height: 1.2rem;
-  height: 40px;
+  line-height: 1.4rem;
+  height: 42px;
   white-space: normal;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -237,7 +237,7 @@ I.LongDes = styled.div`
   font-size: 1rem;
   font-weight: 400;
   color: var(--black);
-  line-height: 1.2rem;
+  line-height: 1.4rem;
 `;
 
 const M = {};

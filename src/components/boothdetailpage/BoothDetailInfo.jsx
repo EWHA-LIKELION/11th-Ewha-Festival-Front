@@ -43,9 +43,11 @@ const BoothDetailInfo = props => {
         </I.MapButton>
         <I.Indent>
           <div className='inner'>
-            <I.Text
-              style={{ marginBottom: '15px' }}
-            >{`${college} ${number}`}</I.Text>
+            {college && number && (
+              <I.Text
+                style={{ marginBottom: '15px' }}
+              >{`${college} ${number}`}</I.Text>
+            )}
             {isOpen ? (
               <I.Map src={mapSrc} onClick={() => setMapModal(true)} />
             ) : null}
@@ -59,7 +61,8 @@ const BoothDetailInfo = props => {
           <div className='inner'>
             {times &&
               times.map((item, idx) => {
-                if (item.time === '') return;
+                if (item.time === '' || item.time === ' ' || item.time === null)
+                  return;
                 else
                   return (
                     <I.Text key={item.id}>
