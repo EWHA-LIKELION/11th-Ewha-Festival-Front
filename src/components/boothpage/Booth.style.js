@@ -8,7 +8,6 @@ const ComponentContainer = styled.div`
   height: 250px;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   align-items: center;
   padding: 2%;
   position: relative;
@@ -27,7 +26,7 @@ const ImageWrapper = styled.div`
     top: 0;
     left: 0;
     object-fit: cover;
-    filter: ${props => (props.opened ? '' : 'blur(2px)')};
+    filter: ${props => (props.closed ? 'blur(2px)' : '')};
   }
 
   .closed {
