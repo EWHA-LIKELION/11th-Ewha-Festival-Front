@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // style
@@ -26,9 +26,17 @@ import { event1, event2, event3 } from '../../api/_mock/eventmock';
 // component
 import Footer from '../_common/footer/Footer';
 import TopBar from '../_common/topbar/TopBar';
+import AdModal from './AdModal';
 
 const Main = () => {
   const navigate = useNavigate();
+  const cookies = document.cookie.split(`; `).map(el => el.split('='));
+
+  const [isChecked, setIsChecked] = useState(
+    cookies[0][1] ? cookies[0][1] : 'false',
+  );
+
+  const refreshday = new Date(new Date().setHours(24, 0, 0, 0));
 
   const List = props => {
     return (
@@ -41,8 +49,19 @@ const Main = () => {
     );
   };
 
+  const modalSubmit = checked => {
+    document.cookie = `maincheck=${checked};expires=${refreshday.toUTCString()}`;
+    setIsChecked('true');
+  };
+
   return (
     <>
+      {isChecked === 'true' ? (
+        ''
+      ) : (
+        <AdModal submit={checked => modalSubmit(checked)} />
+      )}
+
       <S.Wrapper>
         <TopBar />
         <S.Title>
