@@ -96,6 +96,8 @@ const EditMenuDetail = () => {
             </D.Button>
           </D.ButtonWrapper>
         </D.ComponentContainer>
+        <br />
+        <br />
       </D.Wrapper>
       <Footer />
     </>

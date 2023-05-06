@@ -46,7 +46,7 @@ export const C = { ComponentWrapper, ContentWrapper, Menu, Price };
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 90vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   background-color: var(--beige);

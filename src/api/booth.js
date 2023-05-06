@@ -176,9 +176,13 @@ export const PatchBooth = async (boothId, name, opened, description) => {
   }
 };
 
-export const PatchBoothNotice = async (boothId, notice) => {
+export const PatchBoothNotice = async (boothId, notice, noticeId) => {
   try {
-    const response = await BoothService.patchBoothNotice(boothId, notice);
+    const response = await BoothService.patchBoothNotice(
+      boothId,
+      notice,
+      noticeId,
+    );
     return Promise.resolve(response);
   } catch (error) {
     if (

@@ -27,6 +27,9 @@ const EditBooth = () => {
   const [day2, setDay2] = useState('');
   const [day3, setDay3] = useState('');
 
+  const [noticeId, setNoticeId] = useState(0);
+  const [timeId, setTimeId] = useState(0);
+
   useEffect(() => {
     if (booth_id !== null)
       GetBooth(booth_id).then(res => {
@@ -41,8 +44,15 @@ const EditBooth = () => {
         setDay3(res.data.data.times[2].time);
         setOpened(res.data.data.opened);
       });
-  }, []);
 
+    if (booth_id >= 17) {
+      setNoticeId(518 + booth_id);
+      setTimeId(610 + 3 * (booth_id - 1));
+    } else if (booth_id < 16) {
+      setNoticeId(519 + booth_id);
+      setTimeId(613 + 3 * (booth_id - 1));
+    }
+  }, []);
   const onSubmit = () => {
     if (!name) alert('부스 이름은 필수 정보입니다');
     else if (day1 && time0 == '') {
@@ -55,15 +65,17 @@ const EditBooth = () => {
       PatchBooth(booth_id, name, opened, description).then(res => {
         console.log(res);
       });
-      PatchBoothNotice(booth_id, notice).then(res => console.log(res));
+      PatchBoothNotice(booth_id, notice, noticeId)
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
       if (day1) {
-        PatchBoothTime(booth_id, 1, time0).then(res => {});
+        PatchBoothTime(booth_id, timeId, time0).then(res => {});
       }
       if (day2) {
-        PatchBoothTime(booth_id, 2, time1).then(res => {});
+        PatchBoothTime(booth_id, timeId + 1, time1).then(res => {});
       }
       if (day3) {
-        PatchBoothTime(booth_id, 3, time2).then(res => {});
+        PatchBoothTime(booth_id, timeId + 2, time2).then(res => {});
       }
       alert('부스 수정 완료');
       navigate(-1);
