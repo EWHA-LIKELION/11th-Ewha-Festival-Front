@@ -20,7 +20,6 @@ const EditMenu = () => {
     if (booth_id !== null) {
       // booth_id 잘 들어오면 정상 작동할 것
       GetMenu(booth_id).then(res => {
-        console.log(res);
         setGetmenus(res.data.data);
       });
     }
@@ -35,6 +34,7 @@ const EditMenu = () => {
             <EditMenuComponent
               key={props.id}
               id={props.id}
+              index={getmenus.findIndex(obj => obj.id === props.id)}
               menu={props.menu}
               price={props.price
                 .toString()

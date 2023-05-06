@@ -21,7 +21,7 @@ const Search = () => {
         .then(res => {
           setBooth(res.data.data);
         })
-        .catch(err => console.log(err));
+        .catch(err => {});
     } else {
       setBooth([]);
       setKeyword('');

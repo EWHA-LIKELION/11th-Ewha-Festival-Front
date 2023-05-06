@@ -14,32 +14,31 @@ import { D } from './EditMenu.style';
 import Footer from '../_common/footer/Footer';
 
 const EditMenuDetail = () => {
-  const { menuId } = useParams();
+  const { menuIndex } = useParams();
   const { booth_id } = useAppSelector(state => state.booth);
   const navigate = useNavigate();
 
   const [menu, setMenu] = useState('');
   const [price, setPrice] = useState(0);
   const [isSoldout, setIsSoldout] = useState(false);
+  const [patchId, setPatchId] = useState(0);
 
   useEffect(() => {
-    if (menuId) {
+    if (menuIndex) {
       GetMenu(booth_id)
         .then(res => {
-          // console.log(res.data);
-          setMenu(res.data.data[menuId - 1].menu);
-          setPrice(res.data.data[menuId - 1].price);
-          setIsSoldout(res.data.data[menuId - 1].is_soldout);
+          setMenu(res.data.data[menuIndex].menu);
+          setPrice(res.data.data[menuIndex].price);
+          setIsSoldout(res.data.data[menuIndex].is_soldout);
+          setPatchId(res.data.data[menuIndex].id);
         })
-        .catch(err => console.log(err));
+        .catch(err => {});
     }
   }, []);
 
   const onSubmit = () => {
     if (menu && price) {
-      PatchMenu(booth_id, menuId, menu, price, isSoldout).then(res =>
-        console.log(res),
-      );
+      PatchMenu(booth_id, patchId, menu, price, isSoldout).then(res => {});
       alert('메뉴 수정 성공');
       navigate('/mypage');
     } else {

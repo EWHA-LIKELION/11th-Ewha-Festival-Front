@@ -165,8 +165,9 @@ export const SelectFilter_Detail = styled.div`
   justify-content: space-between;
 
   div {
+    /* aspect-ratio: 2.3/1; */
     height: 29.12px;
-    margin: 0 10px 5px 0;
+    margin: 0 10px 8px 0;
     display: flex;
     justify-content: center;
     align-items: center;
