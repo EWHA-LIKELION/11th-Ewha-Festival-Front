@@ -42,7 +42,6 @@ const BoothComponent = props => {
     LikeBooth(id)
       .then(res => {
         setChangeLike(!changeLike);
-        alert('북마크 설정 완료되었습니다.');
       })
       .catch(err => {
         if (err.response.status === 401) {
