@@ -165,7 +165,7 @@ const ArrowContainer = styled.div`
 `;
 
 const ClickArea = styled.div`
-  width: 20%;
+  width: 35%;
   height: 100%;
   display: flex;
   position: absolute;
