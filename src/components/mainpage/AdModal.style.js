@@ -46,7 +46,7 @@ const ImageWrapper = styled.div`
   width: 90%;
   height: 80%;
   margin-top: 5%;
-  background-color: #d9d9d9;
+  background-color: var(--white);
   background-image: url(${adimage});
   background-size: contain;
   background-repeat: no-repeat;
