@@ -144,7 +144,7 @@ N.Text = styled.div`
   font-weight: 300;
   color: var(--black);
   margin-top: 5px;
-  word-break: keep-all;
+  word-break: break-all;
 `;
 N.Time = styled.div`
   font-size: 0.9rem;
