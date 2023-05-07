@@ -21,7 +21,7 @@ const TFMember = ({ team }) => {
           <TF.MemberWrapper>
             {team.member.map(item => {
               return (
-                <TF.MemberContainer>
+                <TF.MemberContainer key={item.name}>
                   <LL.MajorText>{item.major}</LL.MajorText>
                   <LL.NameText>{item.name}</LL.NameText>
                 </TF.MemberContainer>

@@ -26,7 +26,7 @@ const Makers = () => {
           <div className='border' />
         </COM.SubTitle>
         {makerslist.likelion.map(team => {
-          return <LikeLionMember team={team} />;
+          return <LikeLionMember team={team} key={team.team} />;
         })}
         <div style={{ height: '50px' }} />
         <COM.SubTitle>
@@ -35,7 +35,7 @@ const Makers = () => {
           <div className='border' />
         </COM.SubTitle>
         {makerslist.tf.map(team => {
-          return <TFMember team={team} />;
+          return <TFMember team={team} key={team.team} />;
         })}
       </COM.Container>
       <Footer />

@@ -12,11 +12,11 @@ const LikeLionMember = ({ team }) => {
       <LL.MemberWrapper>
         {team.member.map(item => {
           return (
-            <LL.MemberContainer>
+            <LL.MemberContainer key={item.name}>
               <LL.MajorText>{item.major}</LL.MajorText>
               <LL.NameText>{item.name}</LL.NameText>
               {item.task.map(t => {
-                return <LL.DesText>{t}</LL.DesText>;
+                return <LL.DesText key={t}>{t}</LL.DesText>;
               })}
             </LL.MemberContainer>
           );
