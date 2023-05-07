@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import side from '../../../assets/images/sidebar/side.svg';
+import side from '../../../assets/images/sidebar/side.webp';
 
 export const Wrapper = styled.div`
   @media (min-width: 576px) {
