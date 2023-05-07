@@ -91,28 +91,32 @@ L.Bottom = styled.div`
 const D = {};
 D.Container = styled.div`
   width: 88%;
-  min-height: calc(100vh - 250px);
+  min-height: calc(100vh - 248px);
   margin: 0 auto;
   margin-top: 30px;
   display: flex;
   flex-direction: column;
   .inner {
     display: flex;
+    justify-content: space-between;
     height: 40px;
     align-items: center;
+    margin-bottom: 10px;
+    padding: 0 5px;
   }
 `;
 D.Border = styled.div`
   width: 1000%;
   border-bottom: 1px solid var(--gray2);
   opacity: 0.5;
-  margin: 20px 0;
+  margin: 20px 0 10px 0;
 `;
 D.NoticeTitle = styled.div`
   font-family: var(--pre-font);
   font-size: 1.1em;
   font-weight: 600;
   color: var(--black);
+  padding: 0 5px;
 `;
 D.NoticeText = styled.div`
   font-family: var(--pre-font);
@@ -121,10 +125,11 @@ D.NoticeText = styled.div`
 `;
 D.Text = styled.div`
   font-family: var(--pre-font);
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 400;
   color: var(--black);
   margin: 10px 0;
+  padding: 0 5px;
 `;
 D.Input = styled.input`
   font-size: 1.1rem;
@@ -134,13 +139,15 @@ D.Input = styled.input`
   :focus {
     outline: 0;
   }
+  padding-left: 5px;
 `;
 D.TextArea = styled.textarea`
   border: 0;
   background-color: transparent;
   resize: none;
   width: 100%;
-  height: calc(100vh - 425px);
+  height: calc(100vh - 430px);
+  padding: 5px;
   font-size: 1rem;
   font-family: var(--pre-font);
   :focus {
@@ -152,6 +159,7 @@ D.BottomContainer = styled.div`
   height: 50px;
   display: flex;
   justify-content: flex-end;
+  margin-top: 10px;
 `;
 
 const W = {};

@@ -66,15 +66,17 @@ const NoticeDetail = () => {
         ) : (
           <D.NoticeTitle>{notice.title}</D.NoticeTitle>
         )}
-        <div className='inner'>
-          <D.NoticeText style={{ color: 'var(--green2)' }}>TF팀</D.NoticeText>
-          <D.NoticeText style={{ marginLeft: '10px', color: 'var(--gray2)' }}>
-            {notice.created_at === notice.updated_at
-              ? notice.created_at
-              : `${notice.updated_at} 수정`}
-          </D.NoticeText>
-        </div>
         <D.Border />
+        {isEditing ? null : (
+          <div className='inner'>
+            <D.NoticeText style={{ color: 'var(--green2)' }}>TF팀</D.NoticeText>
+            <D.NoticeText style={{ marginLeft: '10px', color: 'var(--gray2)' }}>
+              {notice.created_at === notice.updated_at
+                ? notice.created_at
+                : `${notice.updated_at} 수정`}
+            </D.NoticeText>
+          </div>
+        )}
         {isEditing ? (
           <D.TextArea
             type='text'
