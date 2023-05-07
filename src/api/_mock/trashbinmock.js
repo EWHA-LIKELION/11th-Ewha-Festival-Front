@@ -1,7 +1,7 @@
-import posco from '../../assets/images/trashbinpage/posco.png';
-import studentunion from '../../assets/images/trashbinpage/studentunion.png';
-import humanechology from '../../assets/images/trashbinpage/humanechology.png';
-import maingate from '../../assets/images/trashbinpage/maingate.png';
+import posco from '../../assets/images/trashbinpage/posco.webp';
+import studentunion from '../../assets/images/trashbinpage/studentunion.webp';
+import humanechology from '../../assets/images/trashbinpage/humanechology.webp';
+import maingate from '../../assets/images/trashbinpage/maingate.webp';
 
 export const photoData = [
   posco,

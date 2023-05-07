@@ -79,19 +79,19 @@ const MyLikedContainer = () => {
       <M.ListContainer>
         <M.ManageTitle>좋아요한 부스 ({likeNum})</M.ManageTitle>
         <MyFilterBar />
-        <M.LikedGrid>
-          {booth.map(props => (
-            <BoothComponent
-              key={props.id}
-              {...props}
-              booth={booth}
-              setBooth={setBooth}
-              setChangeLike={setChangeLike}
-              changeLike={changeLike}
-            />
-          ))}
-        </M.LikedGrid>
       </M.ListContainer>
+      <M.LikedGrid>
+        {booth.map(props => (
+          <BoothComponent
+            key={props.id}
+            {...props}
+            booth={booth}
+            setBooth={setBooth}
+            setChangeLike={setChangeLike}
+            changeLike={changeLike}
+          />
+        ))}
+      </M.LikedGrid>
     </>
   );
 };

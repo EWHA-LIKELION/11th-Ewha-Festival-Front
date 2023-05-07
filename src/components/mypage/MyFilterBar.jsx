@@ -58,7 +58,7 @@ const MyFilterBar = () => {
             key={data.date}
             id={data.day}
             className={day === data.day ? 'active1' : ''}
-            style={{ width: '27%' }}
+            style={{ width: '32%' }}
             onClick={() => {
               saveFilter_detail(data.day);
             }}
@@ -77,7 +77,7 @@ const MyFilterBar = () => {
             key={data}
             id={data}
             className={location === data ? 'active2' : ''}
-            style={{ width: '19%' }}
+            style={{ width: '23.5%' }}
             onClick={() => {
               saveFilter_detail(data);
             }}
@@ -96,7 +96,7 @@ const MyFilterBar = () => {
             key={data}
             id={data}
             className={category === data ? 'active3' : ''}
-            style={{ width: '19%' }}
+            style={{ width: '23.5%' }}
             onClick={() => {
               saveFilter_detail(data);
             }}
@@ -108,36 +108,38 @@ const MyFilterBar = () => {
     );
   };
   return (
-    <S.BarWrapper>
-      <S.SelectFilter>
-        <div
-          onClick={() => saveFilter('all')}
-          className={filter === 'all' ? 'active' : ''}
-        >
-          전체
-        </div>
-        <div>·</div>
-        <div
-          onClick={() => saveFilter('day')}
-          className={filter === 'day' ? 'active' : ''}
-        >
-          날짜
-        </div>
-        <div>·</div>
-        <div
-          onClick={() => saveFilter('location')}
-          className={filter === 'location' ? 'active' : ''}
-        >
-          장소
-        </div>
-        <div>·</div>
-        <div
-          onClick={() => saveFilter('category')}
-          className={filter === 'category' ? 'active' : ''}
-        >
-          카테고리
-        </div>
-      </S.SelectFilter>
+    <>
+      <S.BarWrapper>
+        <S.SelectFilter>
+          <div
+            onClick={() => saveFilter('all')}
+            className={filter === 'all' ? 'active' : ''}
+          >
+            전체
+          </div>
+          <div>·</div>
+          <div
+            onClick={() => saveFilter('day')}
+            className={filter === 'day' ? 'active' : ''}
+          >
+            날짜
+          </div>
+          <div>·</div>
+          <div
+            onClick={() => saveFilter('location')}
+            className={filter === 'location' ? 'active' : ''}
+          >
+            장소
+          </div>
+          <div>·</div>
+          <div
+            onClick={() => saveFilter('category')}
+            className={filter === 'category' ? 'active' : ''}
+          >
+            카테고리
+          </div>
+        </S.SelectFilter>
+      </S.BarWrapper>
       <S.SelectFilter_Detail>
         {filter === 'day' ? (
           <DayBar />
@@ -147,7 +149,7 @@ const MyFilterBar = () => {
           <CategoryBar />
         ) : null}
       </S.SelectFilter_Detail>
-    </S.BarWrapper>
+    </>
   );
 };
 export default MyFilterBar;

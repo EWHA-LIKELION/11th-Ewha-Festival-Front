@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import flower from '../../../assets/images/sidebar/sidebar_flower.svg';
-import title from '../../../assets/images/sidebar/sidebar_title.svg';
 import side from '../../../assets/images/sidebar/side.svg';
 
 export const Wrapper = styled.div`
