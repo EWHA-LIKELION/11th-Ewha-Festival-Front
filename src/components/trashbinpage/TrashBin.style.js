@@ -32,7 +32,6 @@ export const Pin = styled.div`
   background-size: 20px;
   position: absolute;
 
-  /* position: relative; */
   width: 20px;
   height: 24px;
   margin-top: ${({ top }) => top + '%'};
@@ -65,42 +64,64 @@ export const Pin = styled.div`
 
 export const LocationBox = styled.div`
   width: 85%;
-  /* height: 120px; */
-  aspect-ratio: 2.8/1;
-  max-width: 400px;
-  overflow: hidden;
-  display: flex;
-  margin: 20px 0 30px 0;
+  height: auto;
 
-  background: var(--white);
-  box-shadow: 0px 2px 6px rgba(165, 165, 165, 0.2);
+  max-width: 400px;
+
+  display: flex;
+  flex-direction: column;
+  margin: -30px 0 30px 0;
+  background-color: var(--white);
+
+  filter: drop-shadow(0px 2px 6px rgba(165, 165, 165, 0.2));
   border-radius: 10px;
 `;
+export const LocationTitle = styled.div`
+  width: 100%;
+  aspect-ratio: 1/ 0.13;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 700;
+  font-size: 16px;
+  color: white;
+  background-color: var(--green2);
+
+  @media (max-width: 300px) {
+    font-size: 13px;
+    font-weight: 600;
+  }
+`;
 export const LocationImg = styled.div`
-  width: 43%;
-  height: 100%;
-  border-radius: 10px 0 0 10px;
+  width: 100%;
+  aspect-ratio: 1.56/1;
+
   background-image: url(${props => props.data});
   background-size: contain;
   background-repeat: no-repeat;
 `;
-
 export const LocationInfo = styled.div`
+  width: 100%;
+  aspect-ratio: 1/ 0.13;
+  overflow: visible;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
-  .name {
-    font-size: 15px;
-    font-family: 'Pretendard-Regular';
-    font-weight: 700;
-    color: var(--green1);
-  }
-  .info {
-    font-size: 11px;
-    font-family: 'Pretendard-Regular';
-    font-weight: 400;
-    line-height: 16px;
-    color: var(--black);
-    margin-top: 5px;
+  text-align: center;
+  white-space: pre-wrap;
+
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--green1);
+  background-color: var(--white);
+  padding: ${props => props.padding + 'px'} 0;
+  line-height: 20px;
+
+  @media (max-width: 300px) {
+    font-size: 12px;
+    padding: ${props => props.padding - 5 + 'px'} 0;
   }
 `;

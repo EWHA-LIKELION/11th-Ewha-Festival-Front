@@ -55,10 +55,10 @@ const TrashBin = () => {
           })}
         </S.MapBox>
         <S.LocationBox>
+          <S.LocationTitle>{trashname}</S.LocationTitle>
           <S.LocationImg data={photoData[pickedId - 1]} />
-          <S.LocationInfo>
-            <p className='name'>{trashname}</p>
-            <p className='info'>{trashinfo}</p>
+          <S.LocationInfo padding={pickedId === 3 ? 20 : 0}>
+            {trashinfo}
           </S.LocationInfo>
         </S.LocationBox>
       </S.Container>
