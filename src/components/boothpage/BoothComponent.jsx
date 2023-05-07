@@ -76,9 +76,9 @@ const BoothComponent = props => {
         >
           <img
             src={thumnail ? thumnail : defaultthumbnail}
-            closed={opened ? false : true}
+            closed={opened ? 'false' : 'true'}
           />
-          {opened ? '' : <div className='closed'>운영 종료</div>}
+          {opened ? '' : <div className='close'>운영 종료</div>}
         </C.ImageWrapper>
         <C.TitleWrapper>
           <div className='inner'>

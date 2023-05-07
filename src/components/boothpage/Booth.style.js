@@ -26,10 +26,10 @@ const ImageWrapper = styled.div`
     top: 0;
     left: 0;
     object-fit: cover;
-    filter: ${props => (props.closed ? 'blur(2px)' : '')};
+    filter: ${props => (props.closed == 'true' ? 'blur(2px)' : '')};
   }
 
-  .closed {
+  .close {
     position: absolute;
     top: 0;
     z-index: 1;
