@@ -27,6 +27,8 @@ const ImageWrapper = styled.div`
     left: 0;
     object-fit: cover;
     filter: ${props => (props.closed ? 'blur(2px)' : '')};
+    transform: scale(1.1);
+    pointer-events: none;
   }
 
   .close {
