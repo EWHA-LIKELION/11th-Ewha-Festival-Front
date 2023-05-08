@@ -42,14 +42,9 @@
         <td  align="center"><img src = "" width="80px"/></td>
     </tr>
     <tr width="100%">
-      <td  align="center"><p>메인 페이지</p><p>검색 페이지</p><p>부스 목록 페이지</p><p>부스 수정 페이지</p></td>
-      <td  align="center"><p>공지사항 작성</p><p>공지사항 수정</p></td>
-
-메뉴 수정 페이지
-<td  align="center"><p>마이페이지(유저/관리자)</p><p>쓰레기통 페이지</p><p>메뉴 수정 페이지</p></td>
-<td  align="center"><p>부스 상세 페이지</p><p>만든이들 페이지</p><p>TF 게시판 메인/상세 페이지</p><p>TF 게시판 글 작성/수정 페이지</p></td>
-<td  align="center"><p>로그인 & 회원가입</p><p>유저인증 & 로그인 유지</p><p>마이페이지</p><p>쓰레기통 페이지</p><p>사이드바<p></td>
-
+        <td  align="center"><p>메인 페이지</p><p>검색 페이지</p><p>부스 목록 페이지</p><p>부스 수정 페이지</p></td>
+        <td  align="center"><p>부스 상세 페이지</p><p>만든이들 페이지</p><p>TF 게시판 메인/상세 페이지</p><p>TF 게시판 글 작성/수정 페이지</p></td>
+        <td  align="center"><p>로그인 & 회원가입</p><p>유저인증 & 로그인 유지</p><p>마이페이지</p><p>쓰레기통 페이지</p><p>사이드바<p></td>
    </tr>
 </table>
 
