@@ -120,7 +120,7 @@ export const makerslist = {
         { name: '김민서', major: '체육 21' },
         { name: '김은지', major: '식영 21' },
         { name: '이정하', major: '간호 22' },
-        { name: '임은미', major: '-' },
+        { name: '임은미', major: '경영 20' },
         { name: '한송희', major: '인공지능 23' },
       ],
     },
