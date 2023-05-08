@@ -3,12 +3,13 @@
 ### 🎉 프로젝트 소개
 
 2023 이화여대 대동제를 맞이해 '이화여대 멋쟁이 사자처럼 11기'가 대동제 TF팀과 협업하여 **부스 통합 안내 서비스**를 제작하였습니다.
-<br/> **smilewha2023**는 150개의 부스들을 한 번에 조회 가능한 유일한 플랫폼으로써,
+<br/> **smilewha2023**는 206개의 부스들을 한 번에 조회 가능한 유일한 플랫폼으로써,
 대동제를 즐기는 벗들의 편의와 즐거움을 증진시키고
 부스를 운영하는 벗들에겐 부스 홍보 효과를 제공합니다.
 <br/>
 더불어 smilewha2023는 [이화여대 총학생회 비상대책위원회]의 공식 소통 창구에도 홍보되어, <br/>
-많은 벗들에게 자신의 부스를 홍보 할 수 있는 기회가 되었습니다.
+많은 벗들에게 자신의 부스를 홍보 할 수 있는 기회가 되었습니다. <br/>
+smilewha2023와 함께 이웃제에서 웃음 가득 행복한 시간을 보내시길 바랍니다:)
 
 💚 [사이트 바로가기](https://smilewha2023.com/) 💚 <br>
 
@@ -37,9 +38,9 @@
         <td  align="center"><a href= "https://github.com/miinjoo">이채원</a></td>
     </tr>
     <tr width="100%">
-         <td  align="center"><img src = "" width="80px"/></td>
-        <td  align="center"><img src = ="" width="80px" /></td>
-        <td  align="center"><img src = "" width="80px"/></td>
+         <td  align="center"><img src = "https://ifh.cc/v-dZKYgS" width="80px"/></td>
+        <td  align="center"><img src = ="https://ifh.cc/v-PRCRah" width="80px" /></td>
+        <td  align="center"><img src = "https://ifh.cc/v-jN81fd" width="80px"/></td>
     </tr>
     <tr width="100%">
         <td  align="center"><p>메인 페이지</p><p>검색 페이지</p><p>부스 목록 페이지</p><p>부스 수정 페이지</p><p>메뉴 수정 페이지
