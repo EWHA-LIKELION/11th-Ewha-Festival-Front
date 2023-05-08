@@ -34,9 +34,9 @@ smilewha2023와 함께 이웃제에서 웃음 가득 행복한 시간을 보내�
 
 <table border="" cellspacing="0" cellpadding="0" width="100%">
     <tr width="100%">
-        <td align="center"><a href= "https://github.com/dy6578ekdbs">정연주</a></td>
-        <td align="center"><a href= "https://ifh.cc/g/oMg5Q0.jpg">이서진</a></td>
-        <td  align="center"><a href= "https://github.com/miinjoo">이채원</a></td>
+        <td align="center"><a href= "https://github.com/yyeonzu">정연주</a></td>
+        <td align="center"><a href= "https://github.com/529539">이서진</a></td>
+        <td  align="center"><a href= "https://github.com/gchaewon">이채원</a></td>
     </tr>
     <tr width="100%">
          <td  align="center"><img src="https://ifh.cc/g/dZKYgS.jpg" width="80px"></a></td>
