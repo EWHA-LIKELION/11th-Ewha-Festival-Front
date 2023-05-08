@@ -104,7 +104,7 @@ const Main = () => {
         </S.Event>
         <br />
         <S.ScheduleButton
-          href='https://www.instagram.com/likelion_ewha/'
+          href='https://www.instagram.com/p/Cr9zvUsPUq_/?igshid=NTc4MTIwNjQ2YQ%3D%3D'
           target='_blank'
         >
           공연 일정표 보러가기
