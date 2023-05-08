@@ -1,9 +1,9 @@
-import posco from '../../assets/images/trashbinpage/posco.png';
-import studentunion from '../../assets/images/trashbinpage/studentunion.png';
-import humanechology from '../../assets/images/trashbinpage/humanecology.png';
-import maingate from '../../assets/images/trashbinpage/maingate.png';
-import auditorium from '../../assets/images/trashbinpage/auditorium.png';
-import education from '../../assets/images/trashbinpage/education.png';
+import posco from '../../assets/images/trashbinpage/posco.webp';
+import studentunion from '../../assets/images/trashbinpage/studentunion.webp';
+import humanechology from '../../assets/images/trashbinpage/humanecology.webp';
+import maingate from '../../assets/images/trashbinpage/maingate.webp';
+import auditorium from '../../assets/images/trashbinpage/auditorium.webp';
+import education from '../../assets/images/trashbinpage/education.webp';
 
 export const photoData = [
   education,
@@ -37,7 +37,7 @@ export const locationData = [
     info: '학생문화관 1층 출입구 우측\n학생문화관 숲 중간 통로 옆\n학생문화관 - ECC 연결 보도 안쪽',
     top: '42',
     left: '46',
-    selected: false,
+    selected: true,
   },
   {
     id: 4,
@@ -61,6 +61,6 @@ export const locationData = [
     info: '잔디광장 24번 부스 옆',
     top: '70',
     left: '60',
-    selected: true,
+    selected: false,
   },
 ];

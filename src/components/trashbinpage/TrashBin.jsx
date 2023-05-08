@@ -9,9 +9,11 @@ import { locationData, photoData } from '../../api/_mock/trashbinmock';
 
 const TrashBin = () => {
   const [trashs, setTrashs] = useState(locationData);
-  const [trashname, setTrashname] = useState('정문');
-  const [trashinfo, setTrashinfo] = useState('정문 24번 부스 옆');
-  const [pickedId, setId] = useState(5);
+  const [trashname, setTrashname] = useState('학생문화관 쓰레기통 위치');
+  const [trashinfo, setTrashinfo] = useState(
+    '학생문화관 1층 출입구 우측\n학생문화관 숲 중간 통로 옆\n학생문화관 - ECC 연결 보도 안쪽',
+  );
+  const [pickedId, setId] = useState(2);
 
   const selectPla = id => {
     setTrashs(
@@ -40,6 +42,7 @@ const TrashBin = () => {
                   left={trash.left}
                   onClick={() => selectPla(trash.id)}
                   selected
+                  padding={trash.id === 3 ? 20 : 0}
                 />
               );
             } else {
