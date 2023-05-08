@@ -26,14 +26,6 @@ const ImageWrapper = styled.div`
     top: 0;
     left: 0;
     object-fit: cover;
-    /* filter: ${props => (props.closed ? 'blur(2px)' : '')}; */
-    /* -webkit-filter: ${props => (props.closed ? 'blur(2px)' : '')};
-    -moz-filter: ${props => (props.closed ? 'blur(2px)' : '')};
-    -o-filter: ${props => (props.closed ? 'blur(2px)' : '')};
-    -ms-filter: ${props => (props.closed ? 'blur(2px)' : '')};
-    transform: scale(1.1);
-    pointer-events: none; */
-    filter: ${props => (props.closed ? 'opacity(0.7)' : '')};
   }
 
   .close {
@@ -49,6 +41,14 @@ const ImageWrapper = styled.div`
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.5);
+    filter: ${props => (props.closed ? 'opacity(0.7)' : '')};
+    /* filter: ${props => (props.closed ? 'blur(2px)' : '')}; */
+    /* -webkit-filter: ${props => (props.closed ? 'blur(2px)' : '')};
+    -moz-filter: ${props => (props.closed ? 'blur(2px)' : '')};
+    -o-filter: ${props => (props.closed ? 'blur(2px)' : '')};
+    -ms-filter: ${props => (props.closed ? 'blur(2px)' : '')};
+    transform: scale(1.1);
+    pointer-events: none; */
   }
 `;
 
