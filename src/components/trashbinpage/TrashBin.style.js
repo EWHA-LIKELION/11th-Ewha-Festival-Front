@@ -73,7 +73,7 @@ export const LocationBox = styled.div`
   margin: -30px 0 30px 0;
   background-color: var(--white);
 
-  filter: drop-shadow(0px 2px 6px rgba(165, 165, 165, 0.2));
+  filter: drop-shadow(0px 2px 6px rgba(165, 165, 165, 0.4));
   border-radius: 10px;
 `;
 export const LocationTitle = styled.div`
