@@ -41,7 +41,7 @@ const ImageWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
 
     /* filter: ${props => (props.closed ? 'blur(2px)' : '')}; */
     /* -webkit-filter: ${props => (props.closed ? 'blur(2px)' : '')};
