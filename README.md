@@ -100,7 +100,7 @@ npm start
 
 ## 🎉 프로젝트 구조
 
-<img width="80%" src=""/>
+<img width="80%" src="https://ifh.cc/g/JX9tom.jpg"/>
 
 ### 🎉 폴더 구조
 
