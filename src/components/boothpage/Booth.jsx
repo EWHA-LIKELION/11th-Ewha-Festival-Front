@@ -96,7 +96,7 @@ const Booth = () => {
   };
   const boothRef = useRef(null);
   const scrollToBooth = () => {
-    boothRef.current.scrollIntoView({ behavior: 'smooth' });
+    boothRef.current.scrollIntoView({ behavior: 'instant' });
   };
   return (
     <>

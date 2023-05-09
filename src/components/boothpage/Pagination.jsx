@@ -10,7 +10,7 @@ const Pagination = props => {
   const { currentPage, totalPage, scrollToBooth } = props;
   const { booth_page_num } = useAppSelector(state => state.page);
   useEffect(() => {
-    scrollToBooth();
+    if (booth_page_num !== 1) scrollToBooth();
   }, [booth_page_num]);
   return (
     <Wrapper>
@@ -48,8 +48,7 @@ const Wrapper = styled.div`
   width: 18%;
   justify-content: space-between;
   align-items: center;
-  padding-top: 10px;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
   height: 30px;
 `;
 
