@@ -30,10 +30,25 @@ import AdModal from './AdModal';
 
 const Main = () => {
   const navigate = useNavigate();
-  const cookies = document.cookie.split(`; `).map(el => el.split('='));
+
+  // 아침 9시 쿠키네임 addchecked로 변경
+  const cookieName = 'applee';
+  const findCookie = `${cookieName}=`;
+  // const cookies = document.cookie.split(`; `).map(el => el.split('='));
+  const cookieData = document.cookie;
+
+  let cookieValue = '';
+  let start = cookieData.indexOf(findCookie);
+
+  if (start !== -1) {
+    start += cookieName.length;
+    let end = cookieData.indexOf(';', start);
+    if (end === -1) end = cookieData.length;
+    cookieValue = cookieData.substring(start + 1, end);
+  }
 
   const [isChecked, setIsChecked] = useState(
-    cookies[0][1] ? cookies[0][1] : 'false',
+    cookieValue ? cookieValue : 'false',
   );
 
   const refreshday = new Date(new Date().setHours(24, 0, 0, 0));
@@ -50,18 +65,17 @@ const Main = () => {
   };
 
   const modalSubmit = checked => {
-    document.cookie = `maincheck=${checked};expires=${refreshday.toUTCString()}`;
+    document.cookie = `${cookieName}=${checked};expires=${refreshday.toUTCString()}`;
     setIsChecked('true');
   };
 
   return (
     <>
-      {/* {isChecked === 'true' ? (
+      {isChecked === 'true' ? (
         ''
       ) : (
         <AdModal submit={checked => modalSubmit(checked)} />
-      )} */}
-      <AdModal />
+      )}
       <S.Wrapper>
         <TopBar />
         <S.Title>
