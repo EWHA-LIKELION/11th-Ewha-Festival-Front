@@ -34,7 +34,7 @@ const RegisterMenu = () => {
 
   // modal 관리
   const contents =
-    '이화여자대학교 유레카 포털 \n 자유게시판에서 ‘이웃제’ 검색하여 확인';
+    '이화여자대학교 유레카 포털 \n 자유게시판에서 ‘이웃’ 검색하여 확인';
   const [modal, setModal] = useState(false);
   const [secretModal, setSecretModal] = useState(false);
   const [alertM, setAlertM] = useState(false);
