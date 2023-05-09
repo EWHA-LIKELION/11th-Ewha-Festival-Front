@@ -99,8 +99,9 @@ const Booth = () => {
   };
   return (
     <>
-      <B.Wrapper>
+      <B.Wrapper ref={topRef}>
         <TopBar title='부스 목록' />
+
         <BoothFilterBar />
         {filter_viewer === 'location' ? (
           <B.MapContainer>
@@ -109,7 +110,7 @@ const Booth = () => {
         ) : (
           ''
         )}
-        <B.BoothLength ref={topRef}>총 {length}개의 부스</B.BoothLength>
+        <B.BoothLength>총 {length}개의 부스</B.BoothLength>
         <B.ComponentGrid>
           {booth.map(props => (
             <BoothComponent

@@ -235,6 +235,8 @@ export const F = {
 const Wrapper = styled.div`
   width: 100%;
   min-height: 800px;
+  /* min-height: calc(100vh - 130px); */
+  /* height: 100%; */
   display: flex;
   flex-direction: column;
   align-items: center;

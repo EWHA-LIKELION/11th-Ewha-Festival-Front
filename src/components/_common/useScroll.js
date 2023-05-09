@@ -1,19 +1,12 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
-function useScroll(sessionStorageKey, isScroll) {
+export default function ScrollToTop() {
+  const { pathname } = useLocation();
+
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      sessionStorage.setItem(sessionStorageKey, currentScrollY);
-    };
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
-    const scrollPosition = sessionStorage.getItem(sessionStorageKey);
-    if (isScroll) {
-      window.addEventListener('scroll', handleScroll);
-      setTimeout(() => window.scrollTo(0, scrollPosition));
-      document.querySelector('body').scrollTo(0, scrollPosition);
-    }
-  }, []);
+  return null;
 }
-
-export default useScroll;
