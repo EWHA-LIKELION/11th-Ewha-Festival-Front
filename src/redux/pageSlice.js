@@ -9,6 +9,7 @@ const initialState = {
   filter_location: '정문',
   filter_category: '음식',
   filter_viewer: 'location',
+  liked_page_num: 1,
 };
 
 export const mypageSlice = createSlice({
@@ -36,6 +37,9 @@ export const mypageSlice = createSlice({
     setFilterViewer: (state, action) => {
       state.filter_viewer = action.payload.filter_viewer;
     },
+    setLikedPageNumber: (state, action) => {
+      state.liked_page_num = action.payload.liked_page_num;
+    },
   },
   extraReducers: builder => {
     builder.addCase(PURGE, () => initialState);
@@ -49,6 +53,7 @@ export const {
   setFilterLocation,
   setFilterCategory,
   setFilterViewer,
+  setLikedPageNumber,
 } = mypageSlice.actions;
 
 export default mypageSlice.reducer;
