@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useRef } from 'react';
 // redux
 import { useAppSelector } from '../../redux/store';
 // api
@@ -52,6 +53,11 @@ const MyLikedContainer = () => {
     });
   }, [changeLike]);
 
+  const boothRef = useRef(null);
+  const scrollToBooth = () => {
+    boothRef.current.scrollIntoView({ behavior: 'instant' });
+  };
+
   // 필터링 값 변경에 따른 get api
   useEffect(() => {
     switch (filter) {
@@ -84,7 +90,7 @@ const MyLikedContainer = () => {
   return (
     <>
       <M.ListContainer>
-        <M.ManageTitle>좋아요한 부스 ({likeNum})</M.ManageTitle>
+        <M.ManageTitle ref={boothRef}>좋아요한 부스 ({likeNum})</M.ManageTitle>
         <MyFilterBar />
       </M.ListContainer>
       <M.LikedGrid>
@@ -100,7 +106,11 @@ const MyLikedContainer = () => {
         ))}
       </M.LikedGrid>
       {booth.length > 0 ? (
-        <MyPagination currentPage={liked_page_num} totalPage={totalPage} />
+        <MyPagination
+          currentPage={liked_page_num}
+          totalPage={totalPage}
+          scrollToBooth={scrollToBooth}
+        />
       ) : null}
     </>
   );

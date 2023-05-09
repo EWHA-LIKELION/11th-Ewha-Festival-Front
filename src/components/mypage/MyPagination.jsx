@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BsFillCaretLeftFill, BsFillCaretRightFill } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
@@ -6,14 +6,25 @@ import { setLikedPageNumber } from '../../redux/pageSlice';
 
 const MyPagination = props => {
   const dispatch = useDispatch();
-  const { currentPage, totalPage } = props;
+  const { currentPage, totalPage, scrollToBooth } = props;
+
+  const [state, setState] = useState(0);
+
+  useEffect(() => {
+    scrollToBooth();
+  }, [state]);
   return (
     <Wrapper>
       <ArrowRect
         onClick={() =>
           currentPage === 1
             ? null
-            : dispatch(setLikedPageNumber({ liked_page_num: currentPage - 1 }))
+            : dispatch(
+                setLikedPageNumber(
+                  { liked_page_num: currentPage - 1 },
+                  setState(state + 1),
+                ),
+              )
         }
       >
         <BsFillCaretLeftFill
@@ -25,7 +36,10 @@ const MyPagination = props => {
         onClick={() =>
           currentPage === totalPage
             ? null
-            : dispatch(setLikedPageNumber({ liked_page_num: currentPage + 1 }))
+            : dispatch(
+                setLikedPageNumber({ liked_page_num: currentPage + 1 }),
+                setState(state + 1),
+              )
         }
       >
         <BsFillCaretRightFill
