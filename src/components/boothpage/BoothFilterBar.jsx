@@ -7,6 +7,7 @@ import {
   setFilterLocation,
   setFilterCategory,
   setFilterViewer,
+  setPageNumberInit,
 } from '../../redux/pageSlice';
 // data
 import {
@@ -30,20 +31,24 @@ const BoothFilterBar = () => {
   // 날짜 필터
   const saveFilterDay = option => {
     dispatch(setFilterDay({ filter_day: option }));
+    dispatch(setPageNumberInit());
   };
 
   // 장소/카테고리 필터
   const saveFilterViewer = option => {
     dispatch(setFilterViewer({ filter_viewer: option }));
+    dispatch(setPageNumberInit());
   };
 
   // 그 이하의 상세 필터
   const saveFilterDetail = option => {
     if (filter_viewer === 'location') {
       dispatch(setFilterLocation({ filter_location: option }));
+      dispatch(setPageNumberInit());
     } else if (filter_viewer === 'category') {
       dispatch(setFilterCategory({ filter_category: option }));
-    } else return;
+      dispatch(setPageNumberInit());
+    } else dispatch(setPageNumberInit());
   };
   // 상세 필터 함수형 컴포넌트
   const UnderBar = () => {

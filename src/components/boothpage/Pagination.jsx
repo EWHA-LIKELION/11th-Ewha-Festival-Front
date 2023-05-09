@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
 import { BsFillCaretLeftFill, BsFillCaretRightFill } from 'react-icons/bs';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { setPageNumber, setPageNumberInit } from '../../redux/pageSlice';
+import { useEffect } from 'react';
+import { useAppSelector } from '../../redux/store';
 
 const Pagination = props => {
-  const { currentPage, setCurrentPage, totalPage } = props;
+  const dispatch = useDispatch();
+
+  const { currentPage, totalPage } = props;
+
   return (
     <Wrapper>
       <ArrowRect
         onClick={() =>
-          currentPage === 1 ? null : setCurrentPage(currentPage - 1)
+          currentPage === 1
+            ? null
+            : dispatch(setPageNumber({ booth_page_num: currentPage - 1 }))
         }
       >
         <BsFillCaretLeftFill
@@ -18,7 +27,9 @@ const Pagination = props => {
       <Text>{currentPage}</Text>
       <ArrowRect
         onClick={() =>
-          currentPage === totalPage ? null : setCurrentPage(currentPage + 1)
+          currentPage === totalPage
+            ? null
+            : dispatch(setPageNumber({ booth_page_num: currentPage + 1 }))
         }
       >
         <BsFillCaretRightFill
