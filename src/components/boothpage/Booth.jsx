@@ -21,6 +21,7 @@ import BoothFilterBar from './BoothFilterBar';
 import { B } from './Booth.style';
 import { useMap } from '../boothdetailpage/useMap';
 import Footer from '../_common/footer/Footer';
+import Pagination from './Pagination';
 
 const Booth = () => {
   // redux
@@ -44,25 +45,38 @@ const Booth = () => {
     else return 4;
   };
 
+  const [reduxPageIndex, setReduxPageIndex] = useState(1);
+  const [totalPage, setTotalPage] = useState(1);
+
   // get api
   useEffect(() => {
     if (filter_viewer === 'location') {
-      GetLocationBooth(getDay(), filter_location).then(res => {
+      GetLocationBooth(getDay(), filter_location, reduxPageIndex).then(res => {
+        console.log(res);
         setBooth(res.data.data);
-        setLength(res.data.data.length);
+        setLength(res.data.total);
+        setTotalPage(res.data.total_page);
       });
     } else if (filter_viewer === 'category') {
-      GetCategoryBooth(getDay(), getCategory()).then(res => {
+      GetCategoryBooth(getDay(), getCategory(), reduxPageIndex).then(res => {
         setBooth(res.data.data);
-        setLength(res.data.data.length);
+        setLength(res.data.total);
+        setTotalPage(res.data.total_page);
       });
     } else {
-      GetDayBooth(getDay()).then(res => {
+      GetDayBooth(getDay(), reduxPageIndex).then(res => {
         setBooth(res.data.data);
-        setLength(res.data.data.length);
+        setLength(res.data.total);
+        setTotalPage(res.data.total_page);
       });
     }
-  }, [filter_day, filter_location, filter_category, filter_viewer]);
+  }, [
+    filter_day,
+    filter_location,
+    filter_category,
+    filter_viewer,
+    reduxPageIndex,
+  ]);
 
   const mapSrc = useMap(filter_location);
   return (
@@ -77,7 +91,6 @@ const Booth = () => {
         ) : (
           ''
         )}
-
         <B.BoothLength>총 {length}개의 부스</B.BoothLength>
         <B.ComponentGrid>
           {booth.map(props => (
@@ -89,6 +102,11 @@ const Booth = () => {
             />
           ))}
         </B.ComponentGrid>
+        <Pagination
+          currentPage={reduxPageIndex}
+          setCurrentPage={setReduxPageIndex}
+          totalPage={totalPage}
+        />
       </B.Wrapper>
       <Footer />
     </>

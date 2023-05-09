@@ -245,7 +245,6 @@ const ComponentGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 90%;
-  padding-bottom: 30px;
 `;
 
 const BoothLength = styled.div`

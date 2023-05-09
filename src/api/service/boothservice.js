@@ -4,18 +4,18 @@ const BoothService = {
   // 부스 검색
   getSearchBooth: keyword => http.get(`/booths/search/?keyword=${keyword}`),
   // 요일, 장소에 따른 부스 조회
-  getLocationBooth: (day, college) =>
-    http.get(`/booths/?day=${day}&college=${college}`),
+  getLocationBooth: (day, college, page) =>
+    http.get(`/booths/?day=${day}&college=${college}&page=${page}`),
   // 요일, 카테고리에 따른 부스 조회
-  getCategoryBooth: (day, category) =>
-    http.get(`/booths/?day=${day}&category=${category}`),
+  getCategoryBooth: (day, category, page) =>
+    http.get(`/booths/?day=${day}&category=${category}&page=${page}`),
   likeBooth: boothId =>
     http.post(`/booths/${boothId}/likes/
 `),
   unLikeBooth: boothId =>
     http.delete(`/booths/${boothId}/likes/
 `),
-  getDayBooth: day => http.get(`/booths/?day=${day}`), // 모든 부스 조회
+  getDayBooth: (day, page) => http.get(`/booths/?day=${day}&page=${page}`), // 모든 부스 조회
   getBooth: boothId => http.get(`/booths/${boothId}/`), // 부스 상세
   submitComment: (boothId, newComment) =>
     http.post(`/booths/${boothId}/comments/`, { content: newComment }), //댓글 작성

@@ -74,8 +74,7 @@ const BoothComponent = props => {
           closed={opened ? false : true}
           onClick={() => navigate(`/booth/detail/${id}`)}
         >
-          {/* <img src={thumnail ? thumnail : defaultthumbnail} /> */}
-          <img src={defaultthumbnail} />
+          <img src={thumnail ? thumnail : defaultthumbnail} />
           {opened ? '' : <div className='close'>운영 종료</div>}
         </C.ImageWrapper>
         <C.TitleWrapper>

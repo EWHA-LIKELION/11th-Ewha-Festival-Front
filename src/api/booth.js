@@ -66,9 +66,9 @@ export const GetSearchBooth = async keyword => {
   }
 };
 
-export const GetLocationBooth = async (day, college) => {
+export const GetLocationBooth = async (day, college, page) => {
   try {
-    const response = await BoothService.getLocationBooth(day, college);
+    const response = await BoothService.getLocationBooth(day, college, page);
     return Promise.resolve(response);
   } catch (error) {
     if (
@@ -81,9 +81,9 @@ export const GetLocationBooth = async (day, college) => {
   }
 };
 
-export const GetCategoryBooth = async (day, category) => {
+export const GetCategoryBooth = async (day, category, page) => {
   try {
-    const response = await BoothService.getCategoryBooth(day, category);
+    const response = await BoothService.getCategoryBooth(day, category, page);
     return Promise.resolve(response);
   } catch (error) {
     if (
@@ -96,9 +96,9 @@ export const GetCategoryBooth = async (day, category) => {
   }
 };
 
-export const GetDayBooth = async day => {
+export const GetDayBooth = async (day, page) => {
   try {
-    const response = await BoothService.getDayBooth(day);
+    const response = await BoothService.getDayBooth(day, page);
     return Promise.resolve(response);
   } catch (error) {
     if (
