@@ -108,9 +108,9 @@ export const Event = styled.div`
     flex-direction: column;
     align-items: flex-end;
     justify-content: flex-end;
-    bottom: 12%;
+    bottom: 9%;
     right: 14%;
-
+    /* margin-top: 10px; */
     .content {
       margin: 6px;
       display: flex;
@@ -120,13 +120,14 @@ export const Event = styled.div`
   }
 
   .box2 {
+    margin-top: 10px;
     position: absolute;
     z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    bottom: 11%;
+    bottom: 8%;
 
     .content {
       margin: 6px;
@@ -143,7 +144,7 @@ export const Event = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    bottom: 14%;
+    bottom: 10%;
     left: 27%;
 
     .content {
