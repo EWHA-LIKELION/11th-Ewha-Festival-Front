@@ -34,7 +34,8 @@ const BoothDetailTitle = props => {
         </T.CircleRect>
       </T.CircleWrapper>
       <T.ImgDiv onClick={() => setImgModal(true)}>
-        <T.Img src={thumnail ? thumnail : defaultthumbnail} />
+        {/* <T.Img src={thumnail ? thumnail : defaultthumbnail} /> */}
+        <T.Img src={defaultthumbnail} />
       </T.ImgDiv>
       <T.Container>
         <T.TitleContainer>

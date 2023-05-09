@@ -25,7 +25,7 @@ const BoothDetailMenu = props => {
         <COM.Wrapper>
           <M.Container>
             <PartTitle text='메뉴' />
-            {imgArray.length === 0 ? null : (
+            {/* {imgArray.length === 0 ? null : (
               <M.ImageContainer>
                 {imgArray.map((img, idx) => {
                   return (
@@ -41,7 +41,7 @@ const BoothDetailMenu = props => {
                   );
                 })}
               </M.ImageContainer>
-            )}
+            )} */}
             {menus &&
               menus.map(item => {
                 let money = item.price;
