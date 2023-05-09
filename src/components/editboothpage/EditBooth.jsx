@@ -69,7 +69,7 @@ const EditBooth = () => {
       PatchBooth(booth_id, name, opened, description).then(res => {});
       PatchBoothNotice(booth_id, notice, noticeId)
         .then(res => {})
-        .catch(err => console.log(err));
+        .catch(err => {});
       if (day1) {
         PatchBoothTime(booth_id, timeId, time0).then(res => {});
       }

@@ -2,25 +2,35 @@ import BoothService from './service/boothservice';
 import { http } from './http';
 import { RequestLogout } from './auth';
 
-export const GetLikes = async (keyword, detail) => {
+export const GetLikes = async (keyword, detail, page) => {
   try {
-    const response = await http.get(`/accounts/likes/?${keyword}=${detail}`);
+    const response = await http.get(
+      `/accounts/likes/?${keyword}=${detail}&page=${page}`,
+    );
     return Promise.resolve(response);
   } catch (error) {
     RequestLogout();
     return Promise.reject(error, '좋아요한 부스 조회 실패');
   }
 };
-export const GetLikesAll = async () => {
+export const GetLikesAll = async page => {
   try {
-    const response = await http.get(`/accounts/likes/`);
+    const response = await http.get(`/accounts/likes/?page=${page}`);
     return Promise.resolve(response);
   } catch (error) {
     RequestLogout();
     return Promise.reject(error, '좋아요한 부스 조회 실패');
   }
 };
-
+export const GetLikesAllNum = async () => {
+  try {
+    const response = await http.get(`/accounts/likes`);
+    return Promise.resolve(response);
+  } catch (error) {
+    RequestLogout();
+    return Promise.reject(error, '좋아요한 부스 조회 실패');
+  }
+};
 export const LikeBooth = async boothId => {
   try {
     const response = await BoothService.likeBooth(boothId);

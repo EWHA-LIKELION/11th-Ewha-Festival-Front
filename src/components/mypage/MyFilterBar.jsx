@@ -6,6 +6,7 @@ import {
   setFilterDay,
   setFilterLocation,
   setFilterCategory,
+  setLikedPageNumber,
 } from '../../redux/pageSlice';
 // style.js
 import * as S from './MyMenu.style';
@@ -24,6 +25,7 @@ const MyFilterBar = () => {
 
   const saveFilter = option => {
     dispatch(setFilter({ filter: option }));
+    dispatch(setLikedPageNumber({ liked_page_num: 1 }));
   };
   // 선택 관리용
   const [day, setDay] = useState(filter_day !== '' ? filter_day : '수');
@@ -38,14 +40,17 @@ const MyFilterBar = () => {
     switch (filter) {
       case 'day':
         dispatch(setFilterDay({ filter_day: option }));
+        dispatch(setLikedPageNumber({ liked_page_num: 1 }));
         setDay(option);
         break;
       case 'location':
         dispatch(setFilterLocation({ filter_location: option }));
+        dispatch(setLikedPageNumber({ liked_page_num: 1 }));
         setLocation(option);
         break;
       case 'category':
         dispatch(setFilterCategory({ filter_category: option }));
+        dispatch(setLikedPageNumber({ liked_page_num: 1 }));
         setCategory(option);
         break;
     }

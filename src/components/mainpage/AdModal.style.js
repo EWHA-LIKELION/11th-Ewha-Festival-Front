@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import adimage from '../../assets/images/mainpage/adimage.png';
 import errornotice from '../../assets/images/mainpage/errornotice.png';
+import recovernotice from '../../assets/images/mainpage/recovernotice.png';
 
 const Container = styled.div`
   position: fixed;
@@ -34,27 +35,25 @@ const Block = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
-  justify-content: center;
+  justify-content: ${props => (props.errors ? 'center' : 'space-between')};
   border-radius: 4px;
   box-shadow: 0px 2px 6px rgba(165, 165, 165, 0.2);
   width: 80%;
   height: 350px;
 
-  /* background-color: var(--white); */
-  background-color: var(--gray2);
+  background-color: ${props =>
+    props.errors ? 'var(--gray2)' : 'var(--white)'};
 `;
 
 const ImageWrapper = styled.div`
   width: 90%;
-  /* height: 90%; */
-  height: 80%;
-  /* margin-top: 5%; */
-
-  /* background-color: var(--white); */
-  background-color: var(--gray2);
-  /* background-image: url(${adimage}); */
-  background-image: url(${errornotice});
+  height: 90%;
+  // height: 80%;
+  margin-top: ${props => (props.errors ? '0' : '5%')};
+  background-color: ${props =>
+    props.errors ? 'var(--gray2)' : 'var(--white)'};
+  background-image: ${props =>
+    props.errors ? `url(${errornotice})` : `url(${recovernotice})`};
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -67,16 +66,19 @@ const ButtonLine = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  display: ${props => (props.errors ? 'none' : 'flex')};
 `;
 
 const CheckBox = styled.div`
-  width: 50%;
+  width: 55%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   font-size: 15px;
   img {
     margin-top: 1px;
+    margin-right: 5px;
   }
 `;
 

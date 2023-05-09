@@ -24,15 +24,15 @@ const AdModal = props => {
     <>
       <M.Container>
         <M.Background>
-          <M.Block>
-            <M.ImageWrapper></M.ImageWrapper>
-            {/* <M.ButtonLine>
+          <M.Block errors={false}>
+            <M.ImageWrapper errors={false}></M.ImageWrapper>
+            <M.ButtonLine errors={false}>
               <M.CheckBox onClick={() => setChecked(!checked)}>
                 <img src={checked ? greencheck : graycheck} />
-                1일동안 보지 않기
+                오늘 하루 보지 않기
               </M.CheckBox>
               <M.Close onClick={() => submit(checked)}>닫기</M.Close>
-            </M.ButtonLine> */}
+            </M.ButtonLine>
           </M.Block>
         </M.Background>
       </M.Container>
