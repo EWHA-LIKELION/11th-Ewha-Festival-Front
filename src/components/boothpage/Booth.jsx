@@ -63,21 +63,18 @@ const Booth = () => {
   useEffect(() => {
     if (filter_viewer === 'location') {
       GetLocationBooth(getDay(), filter_location, booth_page_num).then(res => {
-        console.log('장소별' + res);
         setBooth(res.data.data);
         setLength(res.data.total);
         setTotalPage(res.data.total_page);
       });
     } else if (filter_viewer === 'category') {
       GetCategoryBooth(getDay(), getCategory(), booth_page_num).then(res => {
-        console.log('카테고리별' + res);
         setBooth(res.data.data);
         setLength(res.data.total);
         setTotalPage(res.data.total_page);
       });
     } else {
       GetDayBooth(getDay(), booth_page_num).then(res => {
-        console.log('날짜별' + res);
         setBooth(res.data.data);
         setLength(res.data.total);
         setTotalPage(res.data.total_page);
