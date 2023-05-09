@@ -8,17 +8,22 @@ import { useAppSelector } from '../../redux/store';
 const Pagination = props => {
   const dispatch = useDispatch();
   const { currentPage, totalPage, scrollToBooth } = props;
-  const { booth_page_num } = useAppSelector(state => state.page);
+
+  const [state, setState] = useState(0);
+
   useEffect(() => {
-    if (booth_page_num !== 1) scrollToBooth();
-  }, [booth_page_num]);
+    scrollToBooth();
+  }, [state]);
   return (
     <Wrapper>
       <ArrowRect
         onClick={() =>
           currentPage === 1
             ? null
-            : dispatch(setPageNumber({ booth_page_num: currentPage - 1 }))
+            : dispatch(
+                setPageNumber({ booth_page_num: currentPage - 1 }),
+                setState(state + 1),
+              )
         }
       >
         <BsFillCaretLeftFill
@@ -31,7 +36,10 @@ const Pagination = props => {
         onClick={() =>
           currentPage === totalPage
             ? null
-            : dispatch(setPageNumber({ booth_page_num: currentPage + 1 }))
+            : dispatch(
+                setPageNumber({ booth_page_num: currentPage + 1 }),
+                setState(state + 1),
+              )
         }
       >
         <BsFillCaretRightFill
