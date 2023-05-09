@@ -9,6 +9,7 @@ const initialState = {
   filter_location: '정문',
   filter_category: '음식',
   filter_viewer: 'location',
+  liked_page_num: 1,
   booth_page_num: 1,
 };
 
@@ -38,6 +39,9 @@ export const mypageSlice = createSlice({
     setFilterViewer: (state, action) => {
       state.filter_viewer = action.payload.filter_viewer;
     },
+    setLikedPageNumber: (state, action) => {
+      state.liked_page_num = action.payload.liked_page_num;
+    },
     setPageNumber: (state, action) => {
       state.booth_page_num = action.payload.booth_page_num;
     },
@@ -57,6 +61,7 @@ export const {
   setFilterLocation,
   setFilterCategory,
   setFilterViewer,
+  setLikedPageNumber,
   setPageNumber,
   setPageNumberInit,
 } = mypageSlice.actions;
