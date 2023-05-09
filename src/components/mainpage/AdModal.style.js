@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import adimage from '../../assets/images/mainpage/adimage.png';
+import errornotice from '../../assets/images/mainpage/errornotice.png';
 
 const Container = styled.div`
   position: fixed;
@@ -34,18 +35,22 @@ const Block = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  /* justify-content: center; */
   border-radius: 4px;
   box-shadow: 0px 2px 6px rgba(165, 165, 165, 0.2);
   width: 80%;
   height: 350px;
 
   background-color: var(--white);
+  /* background-color: var(--gray2); */
 `;
 
 const ImageWrapper = styled.div`
   width: 90%;
+  height: 90%;
   height: 80%;
   margin-top: 5%;
+
   background-color: var(--white);
   background-image: url(${adimage});
   background-size: contain;

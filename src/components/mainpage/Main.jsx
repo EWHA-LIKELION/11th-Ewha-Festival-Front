@@ -61,7 +61,7 @@ const Main = () => {
       ) : (
         <AdModal submit={checked => modalSubmit(checked)} />
       )}
-
+      {/* <AdModal /> */}
       <S.Wrapper>
         <TopBar />
         <S.Title>
@@ -77,8 +77,8 @@ const Main = () => {
         </S.Cloud>
         <S.Event>
           <img alt='blank' src={b1} />
-          <img alt='blank' className='date' src={date1} />
-          <div className='box'>
+          <img alt='blank' className='date1' src={date1} />
+          <div className='box1'>
             {event1.map(props => (
               <List key={props.id} {...props} />
             ))}
@@ -86,8 +86,8 @@ const Main = () => {
         </S.Event>
         <S.Event>
           <img alt='blank' src={b2} />
-          <img alt='blank' className='date' src={date2} />
-          <div className='box'>
+          <img alt='blank' className='date2' src={date2} />
+          <div className='box2'>
             {event2.map(props => (
               <List key={props.id} {...props} />
             ))}
@@ -95,8 +95,8 @@ const Main = () => {
         </S.Event>
         <S.Event>
           <img alt='blank' src={b3} />
-          <img alt='blank' className='date' src={date3} />
-          <div className='box'>
+          <img alt='blank' className='date3' src={date3} />
+          <div className='box3'>
             {event3.map(props => (
               <List key={props.id} {...props} />
             ))}
@@ -115,13 +115,17 @@ const Main = () => {
         </S.Cloud>
         <S.AboutContainer>
           <img alt='blank' src={logo} width='170px' />
-          <S.Text>
+          <S.P>
             이화여자대학교는 국가와 인류사회 발전에 공헌하는 <br />
-            여성 리더 양성을 목적으로 건립된
-            <br /> 한국 최초의 여학교이자 한국 최초의 종합대학입니다. <br />
+            여성 리더 양성을 목적으로 건립된 한국 최초의 여학교이자 <br /> 한국
+            최초의 종합대학입니다. <br />
             <br />
             2023년, 이화여자대학교 개교 137주년을 맞아 <br />
-            대동제 ‘이웃: 이화와 함께 웃다’를 개최합니다. <br />
+            <div className='set'>
+              <p className='green'>대동제 ‘이웃: 이화와 함께 웃다’</p>를
+              개최합니다.
+            </div>
+            <br />
             <br />
             이웃제는 이화인 간의 화합과 연대, 학생활동의 활성화,
             <br /> 사회적 가치를 추구하는 대학 축제 문화 선도의 <br /> 세 가지
@@ -129,11 +133,12 @@ const Main = () => {
             <br />
             <br />
             이화인 한솥밥, 영산 줄다리기, ‘EWHA’S TURNTABLE’, <br /> 학생 부스
-            및 동아리 공연 등 다채로운 프로그램이 기획되어 있습니다. <br />
+            및 동아리 공연 등 <br />
+            다채로운 프로그램이 기획되어 있습니다. <br />
             <br />
-            이웃제에서 벗들과 함께 이화의 웃음을 만들고, 나누고, 지키며
-            <br /> 행복한 시간 보내시길 바랍니다.
-          </S.Text>
+            이웃제에서 벗들과 함께 이화의 웃음을 <br /> 만들고, 나누고, 지키며
+            행복한 시간 보내시길 바랍니다.
+          </S.P>
           <S.TFButton onClick={() => navigate('/notice')}>
             TF팀 공지 보러가기
           </S.TFButton>
