@@ -88,37 +88,82 @@ export const Event = styled.div`
     z-index: 0;
   }
 
-  .date {
-    top: 15%;
-    left: 25%;
+  .date1 {
+    bottom: 38%;
+    right: 15%;
   }
 
-  .box {
+  .date2 {
+    bottom: 38%;
+  }
+
+  .date3 {
+    bottom: 41%;
+  }
+
+  .box1 {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    bottom: 9%;
+    right: 14%;
+    /* margin-top: 10px; */
+    .content {
+      margin: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  }
+
+  .box2 {
+    margin-top: 10px;
     position: absolute;
     z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 36px;
+    bottom: 8%;
+
+    .content {
+      margin: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
-  .content {
-    margin: 6px;
+  .box3 {
+    position: absolute;
+    z-index: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
+    bottom: 10%;
+    left: 27%;
+
+    .content {
+      margin: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 
   .title {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 18px;
   }
 
   .time {
     font-weight: 500;
-    font-size: 12px;
+    font-size: 10px;
+    margin-top: 8px;
   }
 `;
 
@@ -169,7 +214,7 @@ export const P = styled.div`
   margin: 20px 0 20px 0;
 
   .green {
-    color: var(--green1);
+    color: var(--green2);
   }
 
   .set {

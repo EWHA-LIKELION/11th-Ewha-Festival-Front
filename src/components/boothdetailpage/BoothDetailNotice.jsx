@@ -12,6 +12,18 @@ const BoothDetailNotice = () => {
       .then(res => setNotice(res.data.data.notices[0]))
       .catch();
   }, []);
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  const replace = content => {
+    const convertContent = content.replace(urlRegex, function (url) {
+      return '<a href="' + url + '" target="_blank">' + url + '</a>';
+    });
+    const htmlArr = [];
+    convertContent.split('\n').forEach(function (text) {
+      const textHtml = '<span>' + text + '</span>';
+      htmlArr.push(textHtml);
+    });
+    return { __html: htmlArr.join('') };
+  };
   return (
     <COM.Wrapper>
       <N.Container>
@@ -28,16 +40,14 @@ const BoothDetailNotice = () => {
                         {notice.content.split('\n').map((line, idx) => {
                           return (
                             <span key={idx}>
-                              {line}
+                              <span dangerouslySetInnerHTML={replace(line)} />
                               <br />
                             </span>
                           );
                         })}
                       </>
                     ) : (
-                      <>
-                        <span>{notice.content}</span>
-                      </>
+                      <span dangerouslySetInnerHTML={replace(notice.content)} />
                     ))}
                 </N.Text>
                 <N.Time>update {notice.updated_at}</N.Time>
