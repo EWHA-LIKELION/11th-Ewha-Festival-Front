@@ -9,6 +9,7 @@ const initialState = {
   filter_location: '정문',
   filter_category: '음식',
   filter_viewer: 'location',
+  booth_page_num: 1,
 };
 
 export const mypageSlice = createSlice({
@@ -20,6 +21,7 @@ export const mypageSlice = createSlice({
       state.filter_day = initialState.filter_day;
       state.filter_location = initialState.filter_location;
       state.filter_category = initialState.filter_category;
+      state.booth_page_num = initialState.booth_page_num;
     },
     setFilter: (state, action) => {
       state.filter = action.payload.filter;
@@ -36,6 +38,12 @@ export const mypageSlice = createSlice({
     setFilterViewer: (state, action) => {
       state.filter_viewer = action.payload.filter_viewer;
     },
+    setPageNumber: (state, action) => {
+      state.booth_page_num = action.payload.booth_page_num;
+    },
+    setPageNumberInit: state => {
+      state.booth_page_num = 1;
+    },
   },
   extraReducers: builder => {
     builder.addCase(PURGE, () => initialState);
@@ -49,6 +57,8 @@ export const {
   setFilterLocation,
   setFilterCategory,
   setFilterViewer,
+  setPageNumber,
+  setPageNumberInit,
 } = mypageSlice.actions;
 
 export default mypageSlice.reducer;
