@@ -17,7 +17,7 @@ const BoothDetail = () => {
   useEffect(() => {
     GetBooth(id)
       .then(res => {
-        console.log(res.data.data);
+        // console.log(res.data.data);
         setCurrentBooth(res.data.data);
       })
       .catch(err => {
