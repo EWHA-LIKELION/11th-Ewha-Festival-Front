@@ -106,7 +106,7 @@ D.Container = styled.div`
   }
 `;
 D.Border = styled.div`
-  width: 1000%;
+  width: 100%;
   border-bottom: 1px solid var(--gray2);
   opacity: 0.5;
   margin: 20px 0 10px 0;
