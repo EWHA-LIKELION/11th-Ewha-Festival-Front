@@ -2,20 +2,29 @@ import React, { useEffect, useState } from 'react';
 // redux
 import { useAppSelector } from '../../redux/store';
 // api
-import { GetLikes, GetLikesAll } from '../../api/booth';
+import { GetLikes, GetLikesAll, GetLikesAllNum } from '../../api/booth';
 
 // component
 import BoothComponent from '../boothpage/BoothComponent';
 import MyFilterBar from './MyFilterBar';
+import MyPagination from './MyPagination';
 
 // style
 import * as M from './MyMenu.style';
 
 const MyLikedContainer = () => {
   // redux
-  const { filter, filter_day, filter_location, filter_category } =
-    useAppSelector(state => state.page);
+  const {
+    filter,
+    filter_day,
+    filter_location,
+    filter_category,
+    liked_page_num,
+  } = useAppSelector(state => state.page);
 
+  // 페이지네이션
+  const [page, setPage] = useState(liked_page_num);
+  const [totalPage, setTotalPage] = useState(0);
   // 부스 정보
   const [booth, setBooth] = useState([]);
   // 좋아요 갯수
@@ -36,16 +45,10 @@ const MyLikedContainer = () => {
     else return 4;
   };
 
-  // 초기 렌더링
+  //좋아요 개수 변경에 따른 렌더링
   useEffect(() => {
-    GetLikesAll().then(res => {
-      setLikeNum(res.data.data.length);
-    });
-  }, []);
-  // 좋아요 개수 변경에 따른 렌더링
-  useEffect(() => {
-    GetLikesAll().then(res => {
-      setLikeNum(res.data.data.length);
+    GetLikesAllNum().then(res => {
+      setLikeNum(res.data.total);
     });
   }, [changeLike]);
 
@@ -53,26 +56,30 @@ const MyLikedContainer = () => {
   useEffect(() => {
     switch (filter) {
       case 'all':
-        GetLikesAll().then(res => {
+        GetLikesAll(liked_page_num).then(res => {
           setBooth(res.data.data);
+          setTotalPage(res.data.total_page);
         });
       case 'day':
-        GetLikes(filter, getDay()).then(res => {
+        GetLikes(filter, getDay(), liked_page_num).then(res => {
           setBooth(res.data.data);
+          setTotalPage(res.data.total_page);
         });
         break;
       case 'location':
-        GetLikes('college', filter_location).then(res => {
+        GetLikes('college', filter_location, liked_page_num).then(res => {
           setBooth(res.data.data);
+          setTotalPage(res.data.total_page);
         });
         break;
       case 'category':
-        GetLikes(filter, getCategory()).then(res => {
+        GetLikes(filter, getCategory(), liked_page_num).then(res => {
           setBooth(res.data.data);
+          setTotalPage(res.data.total_page);
         });
         break;
     }
-  }, [filter, filter_day, filter_location, filter_category]);
+  }, [filter, filter_day, filter_location, filter_category, liked_page_num]);
 
   return (
     <>
@@ -92,6 +99,9 @@ const MyLikedContainer = () => {
           />
         ))}
       </M.LikedGrid>
+      {booth.length > 0 ? (
+        <MyPagination currentPage={liked_page_num} totalPage={totalPage} />
+      ) : null}
     </>
   );
 };
