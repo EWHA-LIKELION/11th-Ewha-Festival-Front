@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import adimage from '../../assets/images/mainpage/adimage.png';
 import errornotice from '../../assets/images/mainpage/errornotice.png';
 import recovernotice from '../../assets/images/mainpage/recovernotice.png';
+import closeopen from '../../assets/images/mainpage/closeopen.png';
 
 const Container = styled.div`
   position: fixed;
@@ -20,7 +21,7 @@ const Background = styled.div`
   position: fixed;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: ${props => (props.num ? 'rgba(0, 0, 0, 0.7)' : '')};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,7 +54,7 @@ const ImageWrapper = styled.div`
   background-color: ${props =>
     props.errors ? 'var(--gray2)' : 'var(--white)'};
   background-image: ${props =>
-    props.errors ? `url(${errornotice})` : `url(${recovernotice})`};
+    props.num ? `url(${adimage})` : `url(${recovernotice})`};
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
