@@ -162,7 +162,7 @@ export const Event = styled.div`
   .time {
     font-weight: 500;
     font-size: 10px;
-    margin-top: 4px;
+    margin-top: 8px;
   }
 `;
 
