@@ -22,6 +22,7 @@ const Pagination = props => {
         }
       >
         <BsFillCaretLeftFill
+          className='arrow'
           fill={currentPage === 1 ? 'var(--gray3)' : 'var(--gray2)'}
         />
       </ArrowRect>
@@ -34,6 +35,7 @@ const Pagination = props => {
         }
       >
         <BsFillCaretRightFill
+          className='arrow'
           fill={currentPage === totalPage ? 'var(--gray3)' : 'var(--gray2)'}
         />
       </ArrowRect>
@@ -45,16 +47,20 @@ export default Pagination;
 
 const Wrapper = styled.div`
   display: flex;
-  width: 18%;
+  width: 100px;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 30px;
-  height: 30px;
+  height: 80px;
 `;
 
 const ArrowRect = styled.div`
   display: flex;
+  width: 30px;
+  justify-content: center;
   align-items: center;
+  .arrow:active {
+    fill: var(--red);
+  }
 `;
 
 const Text = styled.div`
