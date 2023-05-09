@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BsFillCaretLeftFill, BsFillCaretRightFill } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { setPageNumber, setPageNumberInit } from '../../redux/pageSlice';
-import { useEffect } from 'react';
 import { useAppSelector } from '../../redux/store';
 
 const Pagination = props => {
   const dispatch = useDispatch();
-
-  const { currentPage, totalPage } = props;
-
+  const { currentPage, totalPage, scrollToBooth } = props;
+  const { booth_page_num } = useAppSelector(state => state.page);
+  useEffect(() => {
+    scrollToBooth();
+  }, [booth_page_num]);
   return (
     <Wrapper>
       <ArrowRect
