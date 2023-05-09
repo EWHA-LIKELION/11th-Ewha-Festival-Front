@@ -17,9 +17,11 @@ import Footer from '../_common/footer/Footer';
 
 const MyMenu = () => {
   useEffect(() => {
-    GetBooth(booth_id).then(res => {
-      setBoothName(res.data.data.name);
-    });
+    if (isBooth) {
+      GetBooth(booth_id).then(res => {
+        setBoothName(res.data.data.name);
+      });
+    }
   }, []);
 
   const navigate = useNavigate();
