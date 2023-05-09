@@ -55,14 +55,9 @@ const Booth = () => {
   };
 
   const [totalPage, setTotalPage] = useState(0);
-  const [state, setState] = useState(0);
+  const [state, setState] = useState(1);
 
   // get api
-  useEffect(() => {
-    dispatch(setPageNumberInit());
-    setState(state + 1);
-  }, [filter_day, filter_location, filter_category, filter_viewer]);
-
   useEffect(() => {
     if (filter_viewer === 'location') {
       GetLocationBooth(getDay(), filter_location, booth_page_num).then(res => {
@@ -86,7 +81,13 @@ const Booth = () => {
         setTotalPage(res.data.total_page);
       });
     }
-  }, [state, booth_page_num]);
+  }, [
+    filter_day,
+    filter_location,
+    filter_category,
+    filter_viewer,
+    booth_page_num,
+  ]);
 
   const mapSrc = useMap(filter_location);
 
