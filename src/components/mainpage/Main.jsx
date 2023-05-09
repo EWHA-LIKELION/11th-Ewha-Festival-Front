@@ -56,12 +56,12 @@ const Main = () => {
 
   return (
     <>
-      {isChecked === 'true' ? (
+      {/* {isChecked === 'true' ? (
         ''
       ) : (
         <AdModal submit={checked => modalSubmit(checked)} />
-      )}
-      {/* <AdModal /> */}
+      )} */}
+      <AdModal />
       <S.Wrapper>
         <TopBar />
         <S.Title>
