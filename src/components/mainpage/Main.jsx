@@ -32,13 +32,16 @@ const Main = () => {
   const navigate = useNavigate();
 
   // 아침 9시 쿠키네임 addchecked로 변경
-  const cookieName = 'applee';
+  const cookieName = 'applecookie';
+  const cookieName2 = 'adcookie';
   const findCookie = `${cookieName}=`;
-  // const cookies = document.cookie.split(`; `).map(el => el.split('='));
+  const findCookie2 = `${cookieName2}=`;
   const cookieData = document.cookie;
 
   let cookieValue = '';
+  let cookieValue2 = '';
   let start = cookieData.indexOf(findCookie);
+  let start2 = cookieData.indexOf(findCookie2);
 
   if (start !== -1) {
     start += cookieName.length;
@@ -47,8 +50,19 @@ const Main = () => {
     cookieValue = cookieData.substring(start + 1, end);
   }
 
+  if (start2 !== -1) {
+    start2 += cookieName2.length;
+    let end2 = cookieData.indexOf(';', start2);
+    if (end2 === -1) end2 = cookieData.length;
+    cookieValue2 = cookieData.substring(start2 + 1, end2);
+  }
+
   const [isChecked, setIsChecked] = useState(
     cookieValue ? cookieValue : 'false',
+  );
+
+  const [isChecked2, setIsChecked2] = useState(
+    cookieValue2 ? cookieValue2 : 'false',
   );
 
   const refreshday = new Date(new Date().setHours(24, 0, 0, 0));
@@ -64,18 +78,28 @@ const Main = () => {
     );
   };
 
-  const modalSubmit = checked => {
+  const modalSubmit1 = checked => {
     document.cookie = `${cookieName}=${checked};expires=${refreshday.toUTCString()}`;
     setIsChecked('true');
   };
 
+  const modalSubmit2 = checked => {
+    document.cookie = `${cookieName2}=${checked};expires=${refreshday.toUTCString()}`;
+    setIsChecked2('true');
+  };
+
   return (
     <>
-      {/* {isChecked === 'true' ? (
+      {isChecked2 === 'true' ? (
         ''
       ) : (
-        <AdModal submit={checked => modalSubmit(checked)} />
-      )} */}
+        <AdModal submit={checked => modalSubmit2(checked)} type='two' />
+      )}
+      {isChecked === 'true' ? (
+        ''
+      ) : (
+        <AdModal submit={checked => modalSubmit1(checked)} />
+      )}
       <S.Wrapper>
         <TopBar />
         <S.Title>

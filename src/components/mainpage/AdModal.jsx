@@ -4,7 +4,7 @@ import graycheck from '../../assets/images/mainpage/graycheck.svg';
 import greencheck from '../../assets/images/mainpage/greencheck.svg';
 
 const AdModal = props => {
-  const { submit } = props;
+  const { submit, type } = props;
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
@@ -23,9 +23,9 @@ const AdModal = props => {
   return (
     <>
       <M.Container>
-        <M.Background>
+        <M.Background num={type}>
           <M.Block errors={false}>
-            <M.ImageWrapper errors={false}></M.ImageWrapper>
+            <M.ImageWrapper errors={false} num={type}></M.ImageWrapper>
             <M.ButtonLine errors={false}>
               <M.CheckBox onClick={() => setChecked(!checked)}>
                 <img src={checked ? greencheck : graycheck} />
