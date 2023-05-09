@@ -94,11 +94,14 @@ const Booth = () => {
   const scrollToTop = () => {
     topRef.current.scrollIntoView({ behavior: 'smooth' });
   };
+  const boothRef = useRef(null);
+  const scrollToBooth = () => {
+    boothRef.current.scrollIntoView({ behavior: 'instant' });
+  };
   return (
     <>
       <B.Wrapper ref={topRef}>
         <TopBar title='부스 목록' />
-
         <BoothFilterBar />
         {filter_viewer === 'location' ? (
           <B.MapContainer>
@@ -107,7 +110,7 @@ const Booth = () => {
         ) : (
           ''
         )}
-        <B.BoothLength>총 {length}개의 부스</B.BoothLength>
+        <B.BoothLength ref={boothRef}>총 {length}개의 부스</B.BoothLength>
         <B.ComponentGrid>
           {booth.map(props => (
             <BoothComponent
@@ -118,8 +121,11 @@ const Booth = () => {
             />
           ))}
         </B.ComponentGrid>
-        <Pagination currentPage={booth_page_num} totalPage={totalPage} />
-
+        <Pagination
+          currentPage={booth_page_num}
+          totalPage={totalPage}
+          scrollToBooth={scrollToBooth}
+        />
         <B.CircleWrapper>
           <B.CircleRect onClick={() => scrollToTop()}>
             <img src={circle} className='circle' />
