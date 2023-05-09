@@ -50,12 +50,14 @@ const LoginMenu = () => {
                 booth_id: res.data.data.booth_id,
               }),
             );
+            window.localStorage.setItem('booth_id', res.data.data.booth_id);
           }
         });
       })
       .then(() => {
+        alert('로그인에 성공했습니다.');
         navigate('/');
-        setTimeout(() => window.location.reload(), 100);
+        window.location.reload();
       })
       .catch(error => {
         alert('아이디와 비밀번호를 확인해주세요.');
