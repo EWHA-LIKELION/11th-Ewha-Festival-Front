@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 // redux
 import { useAppDispatch, useAppSelector } from '../../redux/store';
@@ -22,6 +22,8 @@ import { B } from './Booth.style';
 import { useMap } from '../boothdetailpage/useMap';
 import Footer from '../_common/footer/Footer';
 import Pagination from './Pagination';
+import circle from '../../assets/images/boothpage/circle.svg';
+import { TbArrowBigUpLineFilled } from 'react-icons/tb';
 
 const Booth = () => {
   // redux
@@ -79,6 +81,11 @@ const Booth = () => {
   ]);
 
   const mapSrc = useMap(filter_location);
+
+  const topRef = useRef(null);
+  const scrollToTop = () => {
+    topRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
   return (
     <>
       <B.Wrapper>
@@ -91,7 +98,7 @@ const Booth = () => {
         ) : (
           ''
         )}
-        <B.BoothLength>총 {length}개의 부스</B.BoothLength>
+        <B.BoothLength ref={topRef}>총 {length}개의 부스</B.BoothLength>
         <B.ComponentGrid>
           {booth.map(props => (
             <BoothComponent
@@ -107,6 +114,12 @@ const Booth = () => {
           setCurrentPage={setReduxPageIndex}
           totalPage={totalPage}
         />
+        <B.CircleWrapper>
+          <B.CircleRect onClick={() => scrollToTop()}>
+            <img src={circle} className='circle' />
+            <TbArrowBigUpLineFilled size='38' color='var(--white)' />
+          </B.CircleRect>
+        </B.CircleWrapper>
       </B.Wrapper>
       <Footer />
     </>

@@ -267,9 +267,40 @@ const MapContainer = styled.div`
   }
 `;
 
+const CircleWrapper = styled.div`
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 100;
+  @media (min-width: 576px) {
+    width: 390px;
+  }
+`;
+
+const CircleRect = styled.div`
+  position: relative;
+  padding: 30px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .circle {
+    width: 60px;
+    filter: drop-shadow(0px 1px 4px rgb(150 150 150 / 0.4));
+  }
+  svg {
+    position: absolute;
+    z-index: 101;
+  }
+`;
+
 export const B = {
   Wrapper,
   ComponentGrid,
   BoothLength,
   MapContainer,
+  CircleWrapper,
+  CircleRect,
 };
