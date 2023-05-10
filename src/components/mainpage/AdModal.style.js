@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import adimage from '../../assets/images/mainpage/adimage.png';
+import adimage from '../../assets/images/mainpage/adimage2.png';
 import errornotice from '../../assets/images/mainpage/errornotice.png';
 import recovernotice from '../../assets/images/mainpage/recovernotice.png';
 import closeopen from '../../assets/images/mainpage/closeopen.png';
