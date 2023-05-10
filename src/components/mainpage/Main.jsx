@@ -95,11 +95,11 @@ const Main = () => {
       ) : (
         <AdModal submit={checked => modalSubmit2(checked)} type='two' />
       )}
-      {isChecked === 'true' ? (
+      {/* {isChecked === 'true' ? (
         ''
       ) : (
         <AdModal submit={checked => modalSubmit1(checked)} />
-      )}
+      )} */}
       <S.Wrapper>
         <TopBar />
         <S.Title>
