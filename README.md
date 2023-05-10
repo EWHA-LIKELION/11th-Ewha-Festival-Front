@@ -121,3 +121,7 @@ npm start
 ```
 
 ## 🎉 UI
+메인페이지 ![mainpage](https://github.com/EWHA-LIKELION/11th-Ewha-Festival-Front/assets/98073664/0197f180-fe34-43e6-91db-acfbda945307)|부스 목록 페이지![boothlist](https://github.com/EWHA-LIKELION/11th-Ewha-Festival-Front/assets/98073664/de71630a-a766-4cff-8e6c-b456f5598a63) |마이페이지 - 일반유저![mypage](https://github.com/EWHA-LIKELION/11th-Ewha-Festival-Front/assets/98073664/f7a33222-8725-4c58-a221-53e51204c8a8)
+--|--|--|
+<img width="1128" alt="UI" src="https://github.com/EWHA-LIKELION/11th-Ewha-Festival-Front/assets/98073664/cdae80a6-a67b-4233-94cd-744b5e8331fb">
+
