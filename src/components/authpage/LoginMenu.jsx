@@ -11,6 +11,7 @@ import * as S from './LoginReigster.style';
 import { BiUser, BiLockOpen } from 'react-icons/bi';
 // components
 import TopBar from '../_common/topbar/TopBar';
+import LoadingModal from './LoadingModal';
 const LoginMenu = () => {
   const navigate = useNavigate();
   // redux
@@ -21,8 +22,12 @@ const LoginMenu = () => {
   const [id, setID] = useState(ID);
   const [password, setPW] = useState(PW);
 
+  // loading
+  const [loading, setLoading] = useState(false);
+
   // Submit
   const onSubmitAccount = e => {
+    setLoading(true);
     e.preventDefault();
     RequestLogin(id, password)
       .then(res => {
@@ -55,11 +60,17 @@ const LoginMenu = () => {
         });
       })
       .then(() => {
+        setTimeout(() => {
+          setLoading(false);
+        }, 500);
+      })
+      .then(() => {
         alert('로그인에 성공했습니다.');
         navigate('/');
         window.location.reload();
       })
       .catch(error => {
+        setLoading(false);
         alert('아이디와 비밀번호를 확인해주세요.');
       });
   };
@@ -67,6 +78,7 @@ const LoginMenu = () => {
   return (
     <>
       <S.Container>
+        {loading ? <LoadingModal /> : null}
         <TopBar title='로그인' />
         <S.LogoBox />
         <S.InputForm onSubmit={onSubmitAccount}>
