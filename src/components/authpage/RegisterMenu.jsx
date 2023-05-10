@@ -13,6 +13,7 @@ import { MdOutlineVpnKey } from 'react-icons/md';
 import TopBar from '../_common/topbar/TopBar';
 import Modal from '../_common/modal/Modal';
 import AlertModal from '../_common/modal/AlertModal';
+import LoadingModal from './LoadingModal';
 
 //api
 import { RequestSignin, RequestLogin } from '../../api/auth';
@@ -38,6 +39,8 @@ const RegisterMenu = () => {
   const [modal, setModal] = useState(false);
   const [secretModal, setSecretModal] = useState(false);
   const [alertM, setAlertM] = useState(false);
+  // loading
+  const [loading, setLoading] = useState(false);
 
   const openModal = () => {
     setModal(true);
@@ -85,6 +88,7 @@ const RegisterMenu = () => {
   const onSubmitAccount = () => {
     RequestSignin(id, password, name)
       .then(() => {
+        setLoading(true);
         RequestLogin(id, password).then(res => {
           //아이디 비밀번호 닉네임 저장
           dispatch(
@@ -94,11 +98,20 @@ const RegisterMenu = () => {
               nickname: res.data.data.nickname,
             }),
           );
-          navigate('/');
-          setTimeout(() => window.location.reload(), 100);
         });
       })
+      .then(() => {
+        setTimeout(() => {
+          setLoading(false);
+        }, 500);
+      })
+      .then(() => {
+        alert('회원가입에 성공했습니다.');
+        navigate('/');
+        window.location.reload();
+      })
       .catch(error => {
+        setLoading(false);
         alert('해당 아이디는 이미 존재합니다.');
       });
   };
@@ -118,6 +131,7 @@ const RegisterMenu = () => {
       {modal ? (
         <Modal open={openModal} close={closeModal} onClick={onSubmitAccount} />
       ) : null}
+      {loading ? <LoadingModal /> : null}
       {alertM ? (
         <AlertModal
           open={openAModal}
