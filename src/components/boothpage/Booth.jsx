@@ -60,33 +60,42 @@ const Booth = () => {
   const [state, setState] = useState(1);
 
   // get api
+  // useEffect(() => {
+  //   if (filter_viewer === 'location') {
+  //     GetLocationBooth(getDay(), filter_location, booth_page_num).then(res => {
+  //       setBooth(res.data.data);
+  //       setLength(res.data.total);
+  //       setTotalPage(res.data.total_page);
+  //     });
+  //   } else if (filter_viewer === 'category') {
+  //     GetCategoryBooth(getDay(), getCategory(), booth_page_num).then(res => {
+  //       setBooth(res.data.data);
+  //       setLength(res.data.total);
+  //       setTotalPage(res.data.total_page);
+  //     });
+  //   } else {
+  //     GetDayBooth(getDay(), booth_page_num).then(res => {
+  //       setBooth(res.data.data);
+  //       setLength(res.data.total);
+  //       setTotalPage(res.data.total_page);
+  //     });
+  //   }
+  // }, [
+  //   filter_day,
+  //   filter_location,
+  //   filter_category,
+  //   filter_viewer,
+  //   booth_page_num,
+  // ]);
+
   useEffect(() => {
-    if (filter_viewer === 'location') {
-      GetLocationBooth(getDay(), filter_location, booth_page_num).then(res => {
-        setBooth(res.data.data);
-        setLength(res.data.total);
-        setTotalPage(res.data.total_page);
-      });
-    } else if (filter_viewer === 'category') {
-      GetCategoryBooth(getDay(), getCategory(), booth_page_num).then(res => {
-        setBooth(res.data.data);
-        setLength(res.data.total);
-        setTotalPage(res.data.total_page);
-      });
-    } else {
-      GetDayBooth(getDay(), booth_page_num).then(res => {
-        setBooth(res.data.data);
-        setLength(res.data.total);
-        setTotalPage(res.data.total_page);
-      });
-    }
-  }, [
-    filter_day,
-    filter_location,
-    filter_category,
-    filter_viewer,
-    booth_page_num,
-  ]);
+    GetLocationBooth(getDay(), filter_location, booth_page_num).then(res => {
+      setBooth(res.data.data);
+      setLength(res.data.total);
+      setTotalPage(res.data.total_page);
+      console.log(res.data.data);
+    });
+  }, [filter_day, filter_location, booth_page_num]);
 
   const mapSrc = useMap(filter_location);
 

@@ -94,7 +94,8 @@ const BoothFilterBar = () => {
           </F.DayContainer>
         ))}
       </F.DayFilterContainer>
-      <F.ViewerFilterContainer>
+      <br />
+      {/* <F.ViewerFilterContainer>
         <F.ViewerContainer
           checked={filter_viewer === 'location'}
           onClick={() => saveFilterViewer('location')}
@@ -129,7 +130,7 @@ const BoothFilterBar = () => {
           />
           <div className='text'>전체 보기</div>
         </F.ViewerContainer>
-      </F.ViewerFilterContainer>
+      </F.ViewerFilterContainer> */}
       <UnderBar />
     </>
   );
