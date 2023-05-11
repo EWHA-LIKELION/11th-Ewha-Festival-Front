@@ -127,7 +127,7 @@ export const Event = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    bottom: 8%;
+    bottom: 11%;
 
     .content {
       margin: 6px;
