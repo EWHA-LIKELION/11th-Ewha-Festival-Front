@@ -51,8 +51,8 @@ const Booth = () => {
 
   const getCategory = () => {
     if (filter_category === '음식') return 1;
-    else if (filter_category === '굿즈') return 2;
-    else if (filter_category === '체험') return 3;
+    else if (filter_category === '굿즈') return 3;
+    else if (filter_category === '체험') return 2;
     else return 4;
   };
 
