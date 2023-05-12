@@ -74,7 +74,7 @@ export const LocationBox = styled.div`
   background-color: var(--white);
 
   box-shadow: 0px 2px 8px rgba(84, 84, 84, 0.2);
-  border-radius: 10px;
+  border-radius: 15px;
 `;
 export const LocationTitle = styled.div`
   width: 100%;
@@ -88,7 +88,7 @@ export const LocationTitle = styled.div`
   font-size: 16px;
   color: white;
   background-color: var(--green2);
-
+  border-radius: 15px 15px 0 0;
   @media (max-width: 300px) {
     font-size: 13px;
     font-weight: 600;
@@ -119,6 +119,7 @@ export const LocationInfo = styled.div`
   background-color: var(--white);
   padding: ${props => props.padding + 'px'} 0;
   line-height: 20px;
+  border-radius: 0 0 15px 15px;
 
   @media (max-width: 300px) {
     font-size: 12px;
